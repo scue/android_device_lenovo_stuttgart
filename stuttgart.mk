@@ -325,9 +325,9 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mass_storage,adb \
     ro.build.display.id=lephone.cc_linkscue_cm10.1 
 ADDITIONAL_DEFAULT_PROPERTIES += \
-    ro.secure=1 \
-    ro.allow.mock.location=0 \
-    ro.debuggable=0 \
+    ro.secure=0 \
+    ro.allow.mock.location=1 \
+    ro.debuggable=1 \
 	persist.service.adb.enable=1 
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
