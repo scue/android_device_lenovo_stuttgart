@@ -32,7 +32,7 @@ PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
 #Fix can not hang the Calls
 
-#FRAMEWORKS_BASE_SUBDIRS += ../../$(LOCAL_PATH)/stuttgartril/
+FRAMEWORKS_BASE_SUBDIRS += ../../$(LOCAL_PATH)/stuttgartril/
 
 #
 # Init files
