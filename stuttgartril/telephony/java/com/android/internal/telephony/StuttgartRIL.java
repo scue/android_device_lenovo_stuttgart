@@ -46,15 +46,15 @@ import android.os.SystemProperties;
 import android.os.PowerManager.WakeLock;
 import android.telephony.NeighboringCellInfo;
 import android.telephony.PhoneNumberUtils;
-import android.telephony.SmsManager;
-import android.telephony.SmsMessage;
+//import android.telephony.SmsManager;
+//import android.telephony.SmsMessage;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.android.internal.telephony.gsm.SmsBroadcastConfigInfo;
-import com.android.internal.telephony.gsm.SuppServiceNotification;
-import com.android.internal.telephony.cdma.CdmaCallWaitingNotification;
-import com.android.internal.telephony.cdma.CdmaInformationRecords;
+//import com.android.internal.telephony.gsm.SmsBroadcastConfigInfo;
+//import com.android.internal.telephony.gsm.SuppServiceNotification;
+//import com.android.internal.telephony.cdma.CdmaCallWaitingNotification;
+//import com.android.internal.telephony.cdma.CdmaInformationRecords;
 
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;

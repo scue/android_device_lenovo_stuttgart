@@ -32,7 +32,7 @@ PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
 #Fix can not hang the Calls
 
-FRAMEWORKS_BASE_SUBDIRS += ../../$(LOCAL_PATH)/stuttgartril/
+# FRAMEWORKS_BASE_SUBDIRS += ../../$(LOCAL_PATH)/stuttgartril/
 
 #
 # Init files
@@ -257,13 +257,13 @@ PRODUCT_COPY_FILES += \
 
 # RIL
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.telephony.ril_class=StuttgartRIL \
     mobiledata.interfaces=pdp0,wlan0,gprs,ppp0,rmnet0 \
     ro.ril.hsxpa=1 \
     ro.ril.gprsclass=10 \
     persist.sys.timezone=Asia/Shanghai \
     persist.sys.language=zh \
     persist.sys.country=CN
+#    ro.telephony.ril_class=StuttgartRIL \
 # Filesystem management tools
 PRODUCT_PACKAGES += \
     static_busybox \
