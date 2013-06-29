@@ -1,0 +1,48 @@
+#!/system/bin/sh
+
+APPNAME=$0
+GPIODEVICE=/d/gpio
+
+usage()
+{
+	echo "Usage: $APPNAME gpio_num [o/i] [h/l]"
+	echo "	example: $APPNAME a            -> show all status"
+	echo "	example: $APPNAME g            -> show gpio groups"
+	echo "	example: $APPNAME 159          -> show gpio-159 status"
+	echo "	example: $APPNAME 159 o l      -> set gpio-159 to output low"
+	echo "	example: $APPNAME 159 o h      -> set gpio-159 to output high"
+	echo "	example: $APPNAME 159 i        -> set gpio-159 to input"
+	echo
+	exit
+}
+
+if [ $# -eq 1 ] ; then
+	if [ "$1" = "*" -o "$1" = "a" -o "$1" = "all" ] ; then
+		cat $GPIODEVICE
+	elif [ "$1" = "g" ] ; then
+		cat $GPIODEVICE |grep "GPIOs"
+	else
+		cat $GPIODEVICE |grep " gpio-$1 "
+	fi
+elif [ $# -gt 1 ] ; then
+	if [ $1 -lt 10 ] ; then
+		gpio="00$1"
+	elif [ $1 -lt 100 ] ; then
+		gpio="0$1"
+	else
+		gpio=$1
+	fi
+	if [ "$2" = "o" -o "$2" = "O" ] ; then
+		if [ "$3" = "l" -o "$3" = "L" ] ; then
+			echo "-$gpio=0" > $GPIODEVICE
+		elif [ "$3" =  "h" -o "$3" =  "H" ] ; then
+			echo "-$gpio=1" > $GPIODEVICE
+		else
+			usage
+		fi
+	elif [ "$2" = "i" -o "$2" = "I" ] ; then
+		echo "+$gpio=?" > $GPIODEVICE
+	fi
+else
+	usage
+fi

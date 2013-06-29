@@ -1,0 +1,565 @@
+# Copyright (C) 2012 The Android Open Source Project
+#
+# IMPORTANT: Do not create world writable files or directories.
+# This is a common source of Android security bugs.
+#
+
+import /init.usb.rc
+import /init.${ro.hardware}.rc
+import /init.trace.rc
+
+on early-init
+    # Set init and its forked children's oom_adj.
+    write /proc/1/oom_adj -16
+
+    # Set the security context for the init process.
+    # This should occur before anything else (e.g. ueventd) is started.
+    setcon u:r:init:s0
+
+    start ueventd
+
+# create mountpoints
+    mkdir /mnt 0775 root system
+
+on init
+
+sysclktz 0
+
+loglevel 3
+
+# setup the global environment
+    export PATH /sbin:/vendor/bin:/system/sbin:/system/bin:/system/xbin
+    export LD_LIBRARY_PATH /vendor/lib:/system/lib
+    export ANDROID_BOOTLOGO 1
+    export ANDROID_ROOT /system
+    export ANDROID_ASSETS /system/app
+    export ANDROID_DATA /data
+    export ANDROID_STORAGE /storage
+    export ASEC_MOUNTPOINT /mnt/asec
+    export LOOP_MOUNTPOINT /mnt/obb
+    export BOOTCLASSPATH /system/framework/core.jar:/system/framework/core-junit.jar:/system/framework/bouncycastle.jar:/system/framework/ext.jar:/system/framework/framework.jar:/system/framework/framework2.jar:/system/framework/telephony-common.jar:/system/framework/mms-common.jar:/system/framework/android.policy.jar:/system/framework/services.jar:/system/framework/apache-xml.jar
+
+# Backward compatibility
+    symlink /system/etc /etc
+    symlink /sys/kernel/debug /d
+    symlink /data/local /local
+
+# Right now vendor lives on the same filesystem as system,
+# but someday that may change.
+    symlink /system/vendor /vendor
+
+# busybox tools
+    symlink /sbin/busybox /sbin/[
+    symlink /sbin/busybox /sbin/[[
+    symlink /sbin/busybox /sbin/ash
+    symlink /sbin/busybox /sbin/awk
+    symlink /sbin/busybox /sbin/basename
+    symlink /sbin/busybox /sbin/bunzip2
+    symlink /sbin/busybox /sbin/bzcat
+    symlink /sbin/busybox /sbin/bzip2
+    symlink /sbin/busybox /sbin/chgrp
+    symlink /sbin/busybox /sbin/clear
+    symlink /sbin/busybox /sbin/comm
+    symlink /sbin/busybox /sbin/cp
+    symlink /sbin/busybox /sbin/cpio
+    symlink /sbin/busybox /sbin/cut
+    symlink /sbin/busybox /sbin/diff
+    symlink /sbin/busybox /sbin/dirname
+    symlink /sbin/busybox /sbin/dos2unix
+    symlink /sbin/busybox /sbin/df
+    symlink /sbin/busybox /sbin/du
+    symlink /sbin/busybox /sbin/echo
+    symlink /sbin/busybox /sbin/env
+    symlink /sbin/busybox /sbin/expr
+    symlink /sbin/busybox /sbin/false
+    symlink /sbin/busybox /sbin/find
+    symlink /sbin/busybox /sbin/free
+    symlink /sbin/busybox /sbin/fuser
+    symlink /sbin/busybox /sbin/getopt
+    symlink /sbin/busybox /sbin/grep
+    symlink /sbin/busybox /sbin/gunzip
+    symlink /sbin/busybox /sbin/head
+    symlink /sbin/busybox /sbin/hexdump
+    symlink /sbin/busybox /sbin/killall
+    symlink /sbin/busybox /sbin/less
+    symlink /sbin/busybox /sbin/md5sum
+    symlink /sbin/busybox /sbin/mkfs.vfat
+    symlink /sbin/busybox /sbin/mknod
+    symlink /sbin/busybox /sbin/more
+    symlink /sbin/busybox /sbin/mount
+    symlink /sbin/busybox /sbin/nice
+    symlink /sbin/busybox /sbin/pidof
+    symlink /sbin/busybox /sbin/pkill
+    symlink /sbin/busybox /sbin/printf
+    symlink /sbin/busybox /sbin/pwd
+    symlink /sbin/busybox /sbin/readlink
+    symlink /sbin/busybox /sbin/realpath
+    symlink /sbin/busybox /sbin/reset
+    symlink /sbin/busybox /sbin/sed
+    symlink /sbin/busybox /sbin/seq
+    symlink /sbin/busybox /sbin/sort
+    symlink /sbin/busybox /sbin/split
+    symlink /sbin/busybox /sbin/stat
+    symlink /sbin/busybox /sbin/strings
+    symlink /sbin/busybox /sbin/stty
+    symlink /sbin/busybox /sbin/sum
+    symlink /sbin/busybox /sbin/sysctl
+    symlink /sbin/busybox /sbin/tac
+    symlink /sbin/busybox /sbin/tail
+    symlink /sbin/busybox /sbin/tar
+    symlink /sbin/busybox /sbin/tee
+    symlink /sbin/busybox /sbin/test
+    symlink /sbin/busybox /sbin/time
+    symlink /sbin/busybox /sbin/timeout
+    symlink /sbin/busybox /sbin/tr
+    symlink /sbin/busybox /sbin/true
+    symlink /sbin/busybox /sbin/uname
+    symlink /sbin/busybox /sbin/uniq
+    symlink /sbin/busybox /sbin/unix2dos
+    symlink /sbin/busybox /sbin/unzip
+    symlink /sbin/busybox /sbin/usleep
+    symlink /sbin/busybox /sbin/vi
+    symlink /sbin/busybox /sbin/watch
+    symlink /sbin/busybox /sbin/wc
+    symlink /sbin/busybox /sbin/wget
+    symlink /sbin/busybox /sbin/which
+    symlink /sbin/busybox /sbin/xargs
+    symlink /sbin/busybox /sbin/zcat
+
+# Create cgroup mount point for cpu accounting
+    mkdir /acct
+    mount cgroup none /acct cpuacct
+    mkdir /acct/uid
+
+    mkdir /system
+    mkdir /data 0771 system system
+    mkdir /cache 0770 system cache
+    mkdir /config 0500 root root
+
+    # See storage config details at http://source.android.com/tech/storage/
+    mkdir /mnt/shell 0700 shell shell
+    mkdir /storage 0050 root sdcard_r
+
+    # Directory for putting things only root should see.
+    mkdir /mnt/secure 0700 root root
+    # Create private mountpoint so we can MS_MOVE from staging
+    mount tmpfs tmpfs /mnt/secure mode=0700,uid=0,gid=0
+
+    # Directory for staging bindmounts
+    mkdir /mnt/secure/staging 0700 root root
+
+    # Directory-target for where the secure container
+    # imagefile directory will be bind-mounted
+    mkdir /mnt/secure/asec  0700 root root
+
+    # Secure container public mount points.
+    mkdir /mnt/asec  0700 root system
+    mount tmpfs tmpfs /mnt/asec mode=0755,gid=1000
+
+    # Filesystem image public mount points.
+    mkdir /mnt/obb 0700 root system
+    mount tmpfs tmpfs /mnt/obb mode=0755,gid=1000
+
+    write /proc/sys/kernel/panic_on_oops 1
+    write /proc/sys/kernel/hung_task_timeout_secs 0
+    write /proc/cpu/alignment 4
+    write /proc/sys/kernel/sched_latency_ns 10000000
+    write /proc/sys/kernel/sched_wakeup_granularity_ns 2000000
+    write /proc/sys/kernel/sched_compat_yield 1
+    write /proc/sys/kernel/sched_child_runs_first 0
+    write /proc/sys/kernel/randomize_va_space 2
+    write /proc/sys/kernel/kptr_restrict 2
+    write /proc/sys/kernel/dmesg_restrict 1
+    write /proc/sys/vm/mmap_min_addr 32768
+    write /proc/sys/kernel/sched_rt_runtime_us 950000
+    write /proc/sys/kernel/sched_rt_period_us 1000000
+
+# Create cgroup mount points for process groups
+    mkdir /dev/cpuctl
+    mount cgroup none /dev/cpuctl cpu
+    chown system system /dev/cpuctl
+    chown system system /dev/cpuctl/tasks
+    chmod 0660 /dev/cpuctl/tasks
+    write /dev/cpuctl/cpu.shares 1024
+    write /dev/cpuctl/cpu.rt_runtime_us 950000
+    write /dev/cpuctl/cpu.rt_period_us 1000000
+
+    mkdir /dev/cpuctl/apps
+    chown system system /dev/cpuctl/apps/tasks
+    chmod 0666 /dev/cpuctl/apps/tasks
+    write /dev/cpuctl/apps/cpu.shares 1024
+    write /dev/cpuctl/apps/cpu.rt_runtime_us 800000
+    write /dev/cpuctl/apps/cpu.rt_period_us 1000000
+
+    mkdir /dev/cpuctl/apps/bg_non_interactive
+    chown system system /dev/cpuctl/apps/bg_non_interactive/tasks
+    chmod 0666 /dev/cpuctl/apps/bg_non_interactive/tasks
+    # 5.0 %
+    write /dev/cpuctl/apps/bg_non_interactive/cpu.shares 52
+    write /dev/cpuctl/apps/bg_non_interactive/cpu.rt_runtime_us 700000
+    write /dev/cpuctl/apps/bg_non_interactive/cpu.rt_period_us 1000000
+
+# Allow everybody to read the xt_qtaguid resource tracking misc dev.
+# This is needed by any process that uses socket tagging.
+    chmod 0644 /dev/xt_qtaguid
+
+on fs
+# mount mtd partitions
+    # Mount /system rw first to give the filesystem a chance to save a checkpoint
+#    mount yaffs2 mtd@system /system
+#    mount yaffs2 mtd@system /system ro remount
+#    mount yaffs2 mtd@userdata /data nosuid nodev
+#    mount yaffs2 mtd@cache /cache nosuid nodev
+
+    wait /dev/block/mmcblk0p2
+    mount ext4 /dev/block/mmcblk0p2 /system ro wait
+    wait /dev/block/mmcblk0p3
+#   mount ext4 /dev/block/mmcblk0p3 /data wait nosuid nodev noatime nomblk_io_submit
+    mount ext4 /dev/block/mmcblk0p3 /data wait nosuid nodev noatime usedm discard,noauto_da_alloc,nodelalloc
+
+on post-fs
+    # once everything is setup, no need to modify /
+    mount rootfs rootfs / ro remount
+    # mount shared so changes propagate into child namespaces
+    mount rootfs rootfs / shared rec
+    mount tmpfs tmpfs /mnt/secure private rec
+
+    # We chown/chmod /cache again so because mount is run as root + defaults
+    chown system cache /cache
+    chmod 0770 /cache
+    # We restorecon /cache in case the cache partition has been reset.
+    restorecon /cache
+
+    # This may have been created by the recovery system with odd permissions
+    chown system cache /cache/recovery
+    chmod 0770 /cache/recovery
+    # This may have been created by the recovery system with the wrong context.
+    restorecon /cache/recovery
+
+    #change permissions on vmallocinfo so we can grab it from bugreports
+    chown root log /proc/vmallocinfo
+    chmod 0440 /proc/vmallocinfo
+
+    chown root log /proc/slabinfo
+    chmod 0440 /proc/slabinfo
+
+    #change permissions on kmsg & sysrq-trigger so bugreports can grab kthread stacks
+    chown root system /proc/kmsg
+    chmod 0440 /proc/kmsg
+    chown root system /proc/sysrq-trigger
+    chmod 0220 /proc/sysrq-trigger
+    chown system log /proc/last_kmsg
+    chmod 0440 /proc/last_kmsg
+
+    # create the lost+found directories, so as to enforce our permissions
+    mkdir /cache/lost+found 0770 root root
+
+    # enable debugfs
+    mount debugfs none /sys/kernel/debug
+
+on post-fs-data
+    # We chown/chmod /data again so because mount is run as root + defaults
+    chown system system /data
+    chmod 0771 /data
+    # We restorecon /data in case the userdata partition has been reset.
+    restorecon /data
+
+    # Create dump dir and collect dumps.
+    # Do this before we mount cache so eventually we can use cache for
+    # storing dumps on platforms which do not have a dedicated dump partition.
+    mkdir /data/dontpanic 0750 root log
+
+    # Collect apanic data, free resources and re-arm trigger
+    copy /proc/apanic_console /data/dontpanic/apanic_console
+    chown root log /data/dontpanic/apanic_console
+    chmod 0640 /data/dontpanic/apanic_console
+
+    copy /proc/apanic_threads /data/dontpanic/apanic_threads
+    chown root log /data/dontpanic/apanic_threads
+    chmod 0640 /data/dontpanic/apanic_threads
+
+    write /proc/apanic_console 1
+
+    # create basic filesystem structure
+    mkdir /data/misc 01771 system misc
+    mkdir /data/misc/adb 02750 system shell
+    mkdir /data/misc/bluedroid 0770 bluetooth net_bt_stack
+    mkdir /data/misc/bluetooth 0770 system system
+    mkdir /data/misc/keystore 0700 keystore keystore
+    mkdir /data/misc/keychain 0771 system system
+    mkdir /data/misc/sms 0770 system radio
+    mkdir /data/misc/vpn 0770 system vpn
+    mkdir /data/misc/systemkeys 0700 system system
+    # give system access to wpa_supplicant.conf for backup and restore
+    mkdir /data/misc/wifi 0770 wifi wifi
+    mkdir /data/misc/wifi/wpa_supplicant 0770 wifi wifi
+    mkdir /data/system 0775 system system
+    symlink /data/misc/wifi/wpa_supplicant /data/system/wpa_supplicant
+    mkdir /data/local 0771 shell shell
+
+    # For security reasons, /data/local/tmp should always be empty.
+    # Do not place files or directories in /data/local/tmp
+    mkdir /data/local/tmp 0771 shell shell
+    mkdir /data/data 0771 system system
+    mkdir /data/app-private 0771 system system
+    mkdir /data/app-asec 0700 root root
+    mkdir /data/app-lib 0771 system system
+    mkdir /data/app 0771 system system
+    mkdir /data/property 0700 root root
+    mkdir /data/ssh 0750 root shell
+    mkdir /data/ssh/empty 0700 root root
+
+    # add APlog dir
+    mkdir /data/local/log 0771 system system
+    mkdir /data/local/log/aplog 0777 system system
+    mkdir /data/local/log/bplog 0777 system system
+    mkdir /data/local/log/aplog/sec_debug 0777 system system
+
+    # create dalvik-cache, so as to enforce our permissions
+    mkdir /data/dalvik-cache 0771 system system
+
+    # create resource-cache and double-check the perms
+    mkdir /data/resource-cache 0771 system system
+    chown system system /data/resource-cache
+    chmod 0771 /data/resource-cache
+
+    # create the lost+found directories, so as to enforce our permissions
+    mkdir /data/lost+found 0770 root root
+
+    # create directory for DRM plug-ins - give drm the read/write access to
+    # the following directory.
+    mkdir /data/drm 0770 drm drm
+
+    # If there is no fs-post-data action in the init.<device>.rc file, you
+    # must uncomment this line, otherwise encrypted filesystems
+    # won't work.
+    # Set indication (checked by vold) that we have finished this action
+    #setprop vold.post_fs_data_done 1
+
+# Added by Yamaha Corporation.-----------------------------------------
+    chmod 0666 /dev/snd/pcmC0D0c
+    chmod 0666 /dev/snd/pcmC0D0p
+    chmod 0666 /dev/snd/controlC0
+    chmod 0666 /dev/snd/timer
+    chmod 0666 /dev/snd/hwC0D0
+    mkdir /data/ymc
+    chown media media /data/ymc
+# mkdir setup for Yamaha
+    mkdir /data/ymc/setup
+    chown system system /data/ymc/setup
+
+#-----------------------------------------------------------------------
+
+
+on boot
+# basic network init
+    ifup lo
+    hostname localhost
+    domainname localdomain
+
+#   chown system input /sys/bus/i2c/devices/4-000f/enable
+#   chown system input /sys/bus/i2c/devices/4-000f/poll
+    chown system input /sys/bus/i2c/devices/7-0039/enable_ps_sensor
+    chown system input /sys/bus/i2c/devices/7-0039/enable_als_sensor
+    chown system input /sys/bus/i2c/devices/7-0039/als_poll_delay
+    chown system input /sys/bus/i2c/devices/7-0039/pilt
+    chown system input /sys/bus/i2c/devices/7-0039/piht
+    chown system input /sys/bus/i2c/devices/7-0039/control
+    chown system input /sys/bus/i2c/devices/7-0039/hwver
+    chown system input /sys/kernel/nvm/psctrl
+    chown system input /sys/kernel/nvm/pscal
+    chown system system /sys/kernel/nvm/wsinfo
+
+    chown system input /sys/class/input/input4/enable
+    chown system input /sys/class/input/input4/delay
+    chown system input /sys/class/input/input4/wake
+    chown system input /sys/class/input/input5/enable
+    chown system input /sys/class/input/input5/delay
+    chown system input /sys/class/input/input5/wake
+    chown compass input /sys/class/input/input6/offsets
+    chown compass input /sys/class/input/input6/dynamic_matrix
+    chown system input /sys/class/input/input7/enable
+    chown system input /sys/class/input/input7/delay
+    chown system input /sys/class/input/input7/wake
+
+# set RLIMIT_NICE to allow priorities from 19 to -20
+    setrlimit 13 40 40
+
+# Memory management.  Basic kernel parameters, and allow the high
+# level system server to be able to adjust the kernel OOM driver
+# paramters to match how it is managing things.
+    write /proc/sys/vm/overcommit_memory 1
+    write /proc/sys/vm/min_free_order_shift 4
+    chown root system /sys/module/lowmemorykiller/parameters/adj
+    chmod 0664 /sys/module/lowmemorykiller/parameters/adj
+    chown root system /sys/module/lowmemorykiller/parameters/minfree
+    chmod 0664 /sys/module/lowmemorykiller/parameters/minfree
+
+    # Tweak background writeout
+    write /proc/sys/vm/dirty_expire_centisecs 200
+    write /proc/sys/vm/dirty_background_ratio  5
+
+    # Permissions for System Server and daemons.
+    chown radio system /sys/android_power/state
+    chown radio system /sys/android_power/request_state
+    chown radio system /sys/android_power/acquire_full_wake_lock
+    chown radio system /sys/android_power/acquire_partial_wake_lock
+    chown radio system /sys/android_power/release_wake_lock
+    chown system system /sys/power/autosleep
+    chown system system /sys/power/state
+    chown system system /sys/power/wakeup_count
+    chown radio system /sys/power/wake_lock
+    chown radio system /sys/power/wake_unlock
+    chmod 0660 /sys/power/state
+    chmod 0660 /sys/power/wake_lock
+    chmod 0660 /sys/power/wake_unlock
+    chmod 0660 /sys/devices/platform/smm_modem/usbctl
+    chown system system /sys/devices/platform/smm_modem/usbctl
+
+    chown system system /sys/devices/system/cpu/cpufreq/interactive/timer_rate
+    chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/timer_rate
+    chown system system /sys/devices/system/cpu/cpufreq/interactive/min_sample_time
+    chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/min_sample_time
+    chown system system /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq
+    chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq
+    chown system system /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load
+    chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load
+    chown system system /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay
+    chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay
+    chown system system /sys/devices/system/cpu/cpufreq/interactive/boost
+    chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/boost
+    chown system system /sys/devices/system/cpu/cpufreq/interactive/boostpulse
+    chown system system /sys/devices/system/cpu/cpufreq/interactive/input_boost
+    chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/input_boost
+
+    # Assume SMP uses shared cpufreq policy for all CPUs
+    chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+    chmod 0660 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+
+    chown system system /sys/class/timed_output/vibrator/enable
+    chown system system /sys/class/leds/keyboard-backlight/brightness
+    chown system system /sys/class/leds/lcd-backlight/brightness
+    chown system system /sys/class/leds/button-backlight/brightness
+    chown system system /sys/class/leds/jogball-backlight/brightness
+    chown system system /sys/class/leds/red/brightness
+    chown system system /sys/class/leds/green/brightness
+    chown system system /sys/class/leds/blue/brightness
+    chown system system /sys/class/leds/red/device/grpfreq
+    chown system system /sys/class/leds/red/device/grppwm
+    chown system system /sys/class/leds/red/device/blink
+    chown system system /sys/class/leds/red/brightness
+    chown system system /sys/class/leds/green/brightness
+    chown system system /sys/class/leds/blue/brightness
+    chown system system /sys/class/leds/red/device/grpfreq
+    chown system system /sys/class/leds/red/device/grppwm
+    chown system system /sys/class/leds/red/device/blink
+    chown system system /sys/class/timed_output/vibrator/enable
+    chown system system /sys/module/sco/parameters/disable_esco
+    chown system system /sys/kernel/ipv4/tcp_wmem_min
+    chown system system /sys/kernel/ipv4/tcp_wmem_def
+    chown system system /sys/kernel/ipv4/tcp_wmem_max
+    chown system system /sys/kernel/ipv4/tcp_rmem_min
+    chown system system /sys/kernel/ipv4/tcp_rmem_def
+    chown system system /sys/kernel/ipv4/tcp_rmem_max
+    chown root radio /proc/cmdline
+    chown system system /sys/devices/platform/stuttgart-gpio-keypad/disabled_keys
+    chown system system /sys/module/stuttgart_lcd/parameters/ce_control
+
+#add for gps
+# For GPIOs for REG_PU and nReset
+    chown root system /sys/devices/system/gpslenovo/regpu
+    chown root system /sys/devices/system/gpslenovo/reset
+
+# For NVRAM data of gps daemon
+    mkdir /data/gps 771 system system
+    chown gps system /data/gps
+
+# Define TCP buffer sizes for various networks
+#   ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
+    setprop net.tcp.buffersize.default 4096,87380,110208,4096,16384,110208
+    setprop net.tcp.buffersize.wifi    524288,1048576,2097152,262144,524288,1048576
+    setprop net.tcp.buffersize.lte     524288,1048576,2097152,262144,524288,1048576
+    setprop net.tcp.buffersize.umts    4094,87380,110208,4096,16384,110208
+    setprop net.tcp.buffersize.hspa    4094,87380,262144,4096,16384,262144
+    setprop net.tcp.buffersize.hsupa   4094,87380,262144,4096,16384,262144
+    setprop net.tcp.buffersize.hsdpa   4094,87380,262144,4096,16384,262144
+    setprop net.tcp.buffersize.hspap   4094,87380,1220608,4096,16384,1220608
+    setprop net.tcp.buffersize.edge    4093,26280,35040,4096,16384,35040
+    setprop net.tcp.buffersize.gprs    4092,8760,11680,4096,8760,11680
+    setprop net.tcp.buffersize.evdo    4094,87380,262144,4096,16384,262144
+
+# Set this property so surfaceflinger is not started by system_init
+    setprop system_init.startsurfaceflinger 0
+
+    class_start core
+    class_start main
+
+on nonencrypted
+    class_start late_start
+
+on charger
+    class_start charger
+
+on property:vold.decrypt=trigger_reset_main
+    class_reset main
+
+on property:vold.decrypt=trigger_load_persist_props
+    load_persist_props
+
+on property:vold.decrypt=trigger_post_fs_data
+    trigger post-fs-data
+
+on property:vold.decrypt=trigger_restart_min_framework
+    class_start main
+
+on property:vold.decrypt=trigger_restart_framework
+    class_start main
+    class_start late_start
+
+on property:vold.decrypt=trigger_shutdown_framework
+    class_reset late_start
+    class_reset main
+
+## Daemon processes to be run by init.
+##
+service ueventd /sbin/ueventd
+    class core
+    critical
+    seclabel u:r:ueventd:s0
+
+on property:selinux.reload_policy=1
+    restart ueventd
+    restart installd
+
+service console /system/bin/sh
+    class core
+    console
+    user shell
+    group log
+
+#on property:ro.debuggable=1
+#    start console
+
+# adbd is controlled via property triggers in init.<platform>.usb.rc
+service adbd /sbin/adbd
+    class core
+    socket adbd stream 660 system system
+    disabled
+    seclabel u:r:adbd:s0
+
+# adbd on at boot in emulator
+on property:ro.kernel.qemu=1
+    start adbd
+
+# Run service
+service gps-demon /system/bin/glgps -c /system/etc/gpsconfig.xml
+    socket gps seqpacket 0660 gps system
+    user gps
+    group system inet sdcard_rw
+    class main
+#--
+
+service testmode /system/bin/testmode
+    class main
+    oneshot
+

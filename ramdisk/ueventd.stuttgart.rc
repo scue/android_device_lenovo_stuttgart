@@ -1,0 +1,37 @@
+/dev/mali                 0666   system     system
+/dev/ion                  0666   system     system
+/dev/ump                  0666   system     graphics
+/dev/exynos-mem           0666   system     graphics
+/dev/s3c-mfc              0666   media      graphics
+/dev/s3c-mem              0660   system     system
+/dev/video0               0660   system     camera
+/dev/video1               0660   system     camera
+/dev/video2               0666   system     system
+/dev/video3               0660   system     system
+/dev/fimc_is              0660   system     camera
+/dev/video11              0666   system     system
+/dev/video12              0666   system     system
+/dev/video16              0660   system     system
+/dev/video20              0660   system     system
+/dev/fimg2d               0666   system     graphics
+/dev/i2c-2                0660   system     system
+/dev/CEC                  0660   system     system
+/dev/HPD                  0660   system     system
+/dev/pmem_gpu1            0660   system     graphics
+
+# ULP Audio
+/dev/srp                  0660   system     audio
+/dev/srp_ctrl             0660   system     audio
+
+# Sensors related
+/dev/mpu                  0660   system     system
+/dev/mpuirq               0660   system     system
+/dev/accelirq             0660   system     system
+/dev/compassirq           0660   system     system
+/dev/pressureirq          0660   system     system
+/dev/timerirq             0660   system     system
+/dev/block/mmcblk0        0600   system     system
+/dev/watchdog             0600   system     system
+
+#Add for GPS uart
+/dev/ttySAC2              0664   system     system

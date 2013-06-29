@@ -1,0 +1,136 @@
+// repository.txt - used for controlling user-defined values in the RIL
+
+// The same name must be used for each Request in the RequestTimeouts and RequestNumRetries groups.
+// The request name must also match the value used in the mapping table in repository.cpp.
+// <name>  = API request (please see complete list in rapid_ril/UTIL/ND/repository.cpp)
+// <value> = AT command timeout (value in ms)
+// If missing, default = "TimeoutAPIDefault" below (default is 10000ms)
+Group RequestTimeouts
+    EnterNetworkDepersonalization      20000
+    Dial                               90000
+    Hangup                             30000
+    HangupWaitingOrBackground          30000
+    HangupForegroundResumeBackground   30000
+    SwitchHoldingAndActive             30000
+    Conference                         30000
+    UDUB                               40000
+    SignalStrength                     10000
+    Operator                          100000
+    RadioPower                        120000
+    SendSms                           180000
+    SendSmsExpectMore                 180000    // network-dependent, IMC recommends 90 sec
+    SetupDefaultPDP                   300000
+    SendUSSD                          180000    // network-dependent, IMC recommends 90 sec
+    CancelUSSD                         90000    // network-dependent, IMC recommends 90 sec
+    GetCLIR                            60000
+    SetCLIR                            60000
+    QueryCallForwardStatus             90000    // network-dependent, IMC recommends 90 sec
+    SetCallForward                     90000    // network-dependent, IMC recommends 90 sec
+    QueryCallWaiting                   90000    // network-dependent, IMC recommends 90 sec
+    SetCallWaiting                     90000    // network-dependent, IMC recommends 90 sec
+    SmsAcknowledge                     60000
+    Answer                             30000
+    DeactivateDataCall                180000
+    QueryFacilityLock                  30000
+    SetFacilityLock                    30000
+    ChangeBarringPassword              30000
+    QueryNetworkSelectionMode         100000
+    SetNetworkSelectionAutomatic      300000
+    SetNetworkSelectionManual         300000
+    QueryAvailableNetworks            300000
+    SeperateConnection                 30000
+    QueryCLIP                          60000
+    SetBandMode                        60000
+    QueryAvailableBandMode             60000
+    StkHandleCallSetupRequestedFromSim 330000
+    SetPreferredNetworkType           300000
+    GetNeighboringCellIDs             300000
+    ReportSmsMemoryStatus              60000
+    GetIPAddress                       30000
+    GetDNS                             30000
+
+    //  Video Telephony API timeouts
+    HangupVT                           40000
+    DialVT                             90000
+
+
+Group OtherTimeouts
+    TimeoutCmdInit                      5000    // Value is in ms (if missing default = 5000ms)
+    TimeoutAPIDefault                   10000   // Value is in ms (if missing default = 10000ms)
+    TimeoutWaitForInit                  10000   // Value is in ms (if missing default = 10000ms)
+
+
+Group RILSettings
+    TimeoutThresholdForRetry            10000   // If AT timeout <= threshold, then retry command ONCE.
+                                                // Time is in ms.
+                                                // A value of 0 means no retries.
+                                                // (if missing default = 10000)
+
+
+//   -"OpenPortRetries" is the number of attempts RIL makes to open gsmttyX ports before radio
+//    reset is called.
+//    Default is 30 if this setting is omitted.
+//   -"OpenPortInterval" is the delay in ms between each open port attempt.
+//    Default is 1000 if this setting is omitted (not defined in this file).
+    OpenPortRetries                     30
+    OpenPortInterval                    1000    // Value is in ms
+
+
+// Settable values for the InitCmds group include:
+//   PreInitCmds,  PreReinitCmds,  PreUnlockCmds,  PreSmsInitCmds
+//  PostInitCmds, PostReinitCmds, PostUnlockCmds, PostSmsInitCmds
+Group InitCmds
+
+
+// Modem settings
+Group Modem
+    SupportedModem              Infineon6260
+    NetworkInterfaceNamePrefix        rmnet     // The number will be appended in RIL
+                                                // Number appended = Context ID - 1
+                                                // e.g. Context ID = 1, "rmnet0"
+
+//   DisableModemReset
+//   -If set to "0", then modem reset is actually executed (close ports, stop stmd, call ifxreset
+//    (ifxreset is not performed if the reset is initiated by the WatchdogThread), start stmd,
+//    open ports, restart RIL)
+//   -If set to "1", then just set global variable so future requests from Android are errored out
+//    with RIL_E_RADIO_NOT_AVAILABLE
+//   -If missing, then assume value is set to "0", and modem reset will be executed.
+
+    DisableModemReset           0
+
+
+//   DisableWatchdogThread
+//   -If set to "0", then watchdog thread is created and poll() is called on /dev/gsmtty1 port.
+//    If POLLHUP is returned from poll() call, then modem reset is called (see DisableModemReset
+//    above)
+//   -If set to "1", then watchdog thread is never created.  If there is an uncolicited modem
+//    reset (e.g. one initiated by the modem as described above), then it will not be received.
+//    Modem core dump processing by the RIL will also not work since that requires the watchdog
+//    thread.
+//   -If missing, then assume value is set to "0", and watchdog thread is created.
+
+    DisableWatchdogThread       0
+
+    DisableCoreDump             0
+
+//  CoreDumpTimeout
+//  -This is the Core Dump application timeout value in seconds.
+//   If missing, the value is set to 120 seconds.
+
+    CoreDumpTimeout             120  // value in seconds
+
+//    RadioResetDelay is the time to sleep in ms after calling reset ioctl to reset the modem
+//    If missing, default value is 2000 ms.
+//    Note: This is not called if "DisableModemReset" is set to "1".
+    RadioResetDelay             2000  // value in ms
+
+//    RadioResetStartStmdDelay is the time to sleep in ms after starting stmd during the reset
+//    sequence.  If missing, default value is 4000 ms.
+    RadioResetStartStmdDelay    4000  .. value in ms
+
+
+// Log levels
+Group Logging
+    LogLevel                    2    // 4: Critical, 3: Warning, 2: Info, 1: Verbose
+

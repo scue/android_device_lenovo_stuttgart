@@ -1,0 +1,4 @@
+
+/dev/block/mmcblk0p2 /system    ext4   ro,data=ordered,noauto_da_alloc wait
+/dev/block/mmcblk0p3 /data      ext4   noatime,data=orderd wait
+/dev/block/mmcblk0p5 /cache     ext4   noatime,data=orderd,noatuo_da_alloc wait

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ymc>
+<handsfree>
+<rootdir path="/ymc/param/voice_process"/>
+<param name="off">
+        <block type="Speaker-1MIC" file="1mic_off.dat"/>
+        <block type="Speaker-2MIC" file="2mic_off.dat"/>
+        <block type="Earpiece-1MIC" file="1mic_off.dat"/>
+        <block type="Earpiece-2MIC" file="2mic_off.dat"/>
+        <block type="Headphone-1MIC" file="1mic_off.dat"/>
+        <block type="Headphone-2MIC" file="2mic_off.dat"/>
+        <block type="Lineout1-1MIC" file="1mic_off.dat"/>
+        <block type="Lineout1-2MIC" file="2mic_off.dat"/>
+        <block type="Lineout2-1MIC" file="1mic_off.dat"/>
+        <block type="Lineout2-2MIC" file="2mic_off.dat"/>
+        <block type="Headset" file="1mic_off.dat"/>
+        <block type="Bluetooth" file="1mic_off.dat"/>
+</param>
+<param name="sample">
+        <block type="Speaker-1MIC" file="1mic_sample.dat"/>
+        <block type="Speaker-2MIC" file="2mic_sample.dat"/>
+        <block type="Earpiece-1MIC" file="1mic_sample.dat"/>
+        <block type="Earpiece-2MIC" file="2mic_sample.dat"/>
+        <block type="Headphone-1MIC" file="1mic_sample.dat"/>
+        <block type="Headphone-2MIC" file="2mic_sample.dat"/>
+        <block type="Lineout1-1MIC" file="1mic_sample.dat"/>
+        <block type="Lineout1-2MIC" file="2mic_sample.dat"/>
+        <block type="Lineout2-1MIC" file="1mic_sample.dat"/>
+        <block type="Lineout2-2MIC" file="2mic_sample.dat"/>
+        <block type="Headset" file="1mic_sample.dat"/>
+        <block type="Bluetooth" file="1mic_sample.dat"/>
+</param>
+</handsfree>
+</ymc>

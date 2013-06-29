@@ -1,0 +1,24 @@
+#
+# system.prop for stuttgart
+#
+#
+ro.build.recovery.title=Lenovo K860 恢复系统  乐Phone之家
+ro.build.recovery.url=bbs.lephone.cc
+ro.build.recovery.weibo=weibo.com/lephonecc
+ro.build.display.id=Lenovo_K860_CM10_linkscue
+ro.build.version.incremental=eng.scue.20130603.164847
+ro.productdef.simmode=onesim
+ro.sf.lcd_density=320
+ro.lcd_min_brightness=20
+ro.ss.enable=true
+audio.smartlevoice.enable=false
+ril.smartvoice.enable=true
+ro.telephony.ril_class=StuttgartRIL
+ro.telephony.default_network=0
+dalvik.vm.heapstartsize=16m
+dalvik.vm.heapgrowthlimit=64m
+dalvik.vm.heapsize=256m
+persist.sys.ui.hw=true
+# add by linkscue, begin, for dex local
+dalvik.vm.dexopt-data-only=1
+# add by linkscue, end.

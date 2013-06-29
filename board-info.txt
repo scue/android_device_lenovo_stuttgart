@@ -1,0 +1,2 @@
+require board=smdk4x12
+

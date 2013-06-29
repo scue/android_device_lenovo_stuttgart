@@ -1,0 +1,13 @@
+#tmp
+tmp*
+tmp/
+out*
+
+#bak
+*.bak
+*.swp
+*.swo
+*~
+
+#log
+log*.txt
