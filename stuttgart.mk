@@ -255,6 +255,9 @@ PRODUCT_COPY_FILES += \
     device/lenovo/stuttgart/configs/media_profiles.xml:system/etc/media_profiles.xml \
     device/lenovo/stuttgart/configs/media_codecs.xml:system/etc/media_codecs.xml
 
+PRODUCT_COPY_FILES += \
+	device/lenovo/stuttgart/configs/mkshrc:system/etc/mkshrc
+
 # RIL
 BOARD_PROVIDES_LIBRIL := true
 PRODUCT_PROPERTY_OVERRIDES += \
