@@ -34,7 +34,7 @@ PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
 # FRAMEWORKS_BASE_SUBDIRS += ../../$(LOCAL_PATH)/stuttgartril/
 
-#
+
 # Init files
 #
 
@@ -176,7 +176,7 @@ PRODUCT_COPY_FILES += \
    device/lenovo/stuttgart/alsa/pcm/surround71.conf:system/usr/share/alsa/pcm/surround71.conf
 
 # Vold and Storage
-# PRODUCT_COPY_FILES += \
+PRODUCT_COPY_FILES += \
     device/lenovo/stuttgart/configs/vold.fstab:system/etc/vold.fstab
 #PRODUCT_COPY_FILES += \
     device/lenovo/stuttgart/configs/vold.fstab:system/etc/vold.extra_sd_as_primary.fstab

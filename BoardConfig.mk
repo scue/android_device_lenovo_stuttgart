@@ -29,7 +29,6 @@ BOARD_USES_GENERIC_AUDIO := false
 # inherit from the proprietary version
 -include vendor/lenovo/stuttgart/BoardConfigVendor.mk
 TARGET_BOOTANIMATION_PRELOAD := true
-TARGET_ARCH := arm
 ARCH_ARM_HAVE_TLS_REGISTER := true
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
