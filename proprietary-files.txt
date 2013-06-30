@@ -4,7 +4,6 @@ bin/glgps
 bin/init.lenovo.sh
 bin/wtdd
 bin/hostapd
-bin/rild
 bin/btld
 bin/mts
 bin/alsa_ctl
@@ -45,7 +44,6 @@ lib/libhwconverter.so
 lib/libhwjpeg.so
 lib/libion.so
 lib/libIMCdownload.so
-lib/libril.so
 lib/librapid-ril-core.so
 lib/librapid-ril-util.so
 lib/libswscaler.so
