@@ -256,6 +256,7 @@ PRODUCT_COPY_FILES += \
     device/lenovo/stuttgart/configs/media_codecs.xml:system/etc/media_codecs.xml
 
 # RIL
+BOARD_PROVIDES_LIBRIL := true
 PRODUCT_PROPERTY_OVERRIDES += \
     mobiledata.interfaces=pdp0,wlan0,gprs,ppp0,rmnet0 \
     ro.ril.hsxpa=1 \
