@@ -270,7 +270,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.ril.gprsclass=10 \
     persist.sys.timezone=Asia/Shanghai \
     persist.sys.language=zh \
-    persist.sys.country=CN
+    persist.sys.country=CN \
+    ro.config.ringtone=Salt_water.ogg \
+    ro.config.notification_sound=Heaven_nearby.ogg \
+    ro.config.alarm_alert=Dreamland.ogg
 #    ro.telephony.ril_class=StuttgartRIL \
 # Filesystem management tools
 PRODUCT_PACKAGES += \
