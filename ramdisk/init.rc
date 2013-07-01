@@ -301,7 +301,7 @@ on post-fs-data
     mkdir /data/misc/wifi 0770 wifi wifi
     mkdir /data/misc/wifi/wpa_supplicant 0770 wifi wifi
     mkdir /data/system 0775 system system
-    symlink /data/misc/wifi/wpa_supplicant /data/system/wpa_supplicant
+    mkdir /data/system/wpa_supplicant 0771 wifi wifi
     mkdir /data/local 0771 shell shell
 
     # For security reasons, /data/local/tmp should always be empty.
