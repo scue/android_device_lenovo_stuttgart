@@ -264,6 +264,7 @@ PRODUCT_COPY_FILES += \
 # RIL
 BOARD_PROVIDES_LIBRIL := true
 PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.strictmode.disable=1 \
     mobiledata.interfaces=pdp0,wlan0,gprs,ppp0,rmnet0 \
     ro.ril.hsxpa=1 \
     ro.ril.gprsclass=10 \
