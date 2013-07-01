@@ -258,6 +258,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
 	device/lenovo/stuttgart/configs/mkshrc:system/etc/mkshrc
 
+PRODUCT_COPY_FILES += \
+	device/lenovo/stuttgart/prebuilt/hwcomposer.exynos4.so:system/lib/hw/hwcomposer.exynos4.so
+
 # RIL
 BOARD_PROVIDES_LIBRIL := true
 PRODUCT_PROPERTY_OVERRIDES += \
