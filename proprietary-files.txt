@@ -11,6 +11,7 @@ bin/alsa_ctl
 bin/alsa_aplay
 bin/alsa_amixer
 bin/stmd
+bin/testmode
 bin/nac_server
 bin/fusiond
 bin/supercmd
@@ -18,6 +19,7 @@ xbin/dbus-monitor
 xbin/dbus-send
 xbin/dhdutil
 xbin/wl
+xbin/tx_test
 etc/firmware/fw_bcmdhd_apsta.bin
 etc/firmware/fw_bcmdhd.bin
 etc/firmware/fw_bcmdhd_p2p.bin
@@ -30,6 +32,8 @@ etc/gps.conf
 lib/egl/libEGL_mali.so
 lib/egl/libGLESv1_CM_mali.so
 lib/egl/libGLESv2_mali.so
+lib/hw/audio.a2dp.default.so
+lib/hw/bplus.default.so
 lib/hw/camera.stuttgart.so
 lib/hw/gps.exynos4.so
 lib/hw/gralloc.stuttgart.so
@@ -50,6 +54,7 @@ lib/libril.so
 lib/librapid-ril-core.so
 lib/librapid-ril-util.so
 lib/libswscaler.so
+lib/libtmsr30.so
 lib/libLeImageLightness.so
 lib/libLeGraphicAlgorithm.so
 lib/libLeGaJavaInterface.so
@@ -135,6 +140,9 @@ lib/omx/libOMX.SEC.WMV.Decoder.so
 lib/libcameraservice.so
 lib/libaudioflinger.so
 etc/bluetooth/bcm4330.hcd
+etc/bluetooth/bt_stack.conf
+etc/bluetooth/bt_vendor.conf
+etc/bluetooth/iop_bt.db
 etc/LeGa/haarcascade_eye_tree_eyeglasses.xml
 etc/LeGa/haarcascade_frontalface_default.xml
 etc/LeGa/lbpcascade_frontalface.xml
