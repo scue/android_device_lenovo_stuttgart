@@ -25,6 +25,8 @@ etc/firmware/sdio-g-mfgtest.bin
 etc/wifi/bcmdhd.cal
 etc/wifi/wpa_supplicant.conf
 etc/asound.conf
+etc/apns-conf.xml
+etc/gps.conf
 lib/egl/libEGL_mali.so
 lib/egl/libGLESv1_CM_mali.so
 lib/egl/libGLESv2_mali.so
