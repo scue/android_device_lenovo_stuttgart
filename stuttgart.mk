@@ -259,6 +259,9 @@ PRODUCT_COPY_FILES += \
 	device/lenovo/stuttgart/configs/mkshrc:system/etc/mkshrc
 
 PRODUCT_COPY_FILES += \
+	device/lenovo/stuttgart/supercam/SCG_arm_hd.apk:system/app/SCG_arm_hd.apk
+
+PRODUCT_COPY_FILES += \
 	device/lenovo/stuttgart/prebuilt/hwcomposer.exynos4.so:system/lib/hw/hwcomposer.exynos4.so
 
 #PRODUCT_COPY_FILES += \

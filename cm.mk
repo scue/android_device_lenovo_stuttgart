@@ -2,7 +2,7 @@
 $(call inherit-product, vendor/cm/config/gsm.mk)
 
 # Set date
-NOW=$(shell date +"%Y-%m")
+NOW=$(shell date +"%Y%m%d")
 
 # Release name
 PRODUCT_RELEASE_NAME := stuttgart
