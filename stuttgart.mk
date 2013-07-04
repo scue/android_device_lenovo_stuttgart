@@ -69,18 +69,6 @@ PRODUCT_COPY_FILES += \
    device/lenovo/stuttgart/res/charger/battery_charge.png:root/res/images/charger/battery_charge.png \
    device/lenovo/stuttgart/res/charger/battery_fail.png:root/res/images/charger/battery_fail.png
 
-#camera
-#PRODUCT_COPY_FILES += \
-		      device/lenovo/stuttgart/supercam/Gallery2.apk:system/app/Gallery2.apk \
-		      device/lenovo/stuttgart/supercam/S3Camera.apk:system/app/S3Camera.apk \
-		      device/lenovo/stuttgart/supercam/libcapsjava.so:system/lib/libcapsjava.so
-
-#PRODUCT_COPY_FILES += \
-		      device/lenovo/stuttgart/supercam/Gallery2.apk:system/app/Gallery2.apk \
-		      device/lenovo/stuttgart/supercam/S3Camera.apk:system/app/S3Camera.apk \
-		      device/lenovo/stuttgart/supercam/libcapsjava.so:system/lib/libcapsjava.so
-
-
 PRODUCT_PACKAGE += \
 		   charger \
 		   charger_res_images
@@ -259,7 +247,28 @@ PRODUCT_COPY_FILES += \
 	device/lenovo/stuttgart/configs/mkshrc:system/etc/mkshrc
 
 PRODUCT_COPY_FILES += \
-	device/lenovo/stuttgart/supercam/SCG_arm_hd.apk:system/app/SCG_arm_hd.apk
+	device/lenovo/stuttgart/supercam/SCG_arm_hd.apk:system/app/SCG_arm_hd.apk \
+	device/lenovo/stuttgart/supercam/lib/libarcsoft_dlsd.so:system/lib/libarcsoft_dlsd.so \
+	device/lenovo/stuttgart/supercam/lib/libLeConvertDataToTexture.so:system/lib/libLeConvertDataToTexture.so \
+	device/lenovo/stuttgart/supercam/lib/libLeCSCJni.so:system/lib/libLeCSCJni.so \
+	device/lenovo/stuttgart/supercam/lib/libLeCSC.so:system/lib/libLeCSC.so \
+	device/lenovo/stuttgart/supercam/lib/libLeGaJavaInterface.so:system/lib/libLeGaJavaInterface.so \
+	device/lenovo/stuttgart/supercam/lib/libLeGraphicAlgorithm.so:system/lib/libLeGraphicAlgorithm.so \
+	device/lenovo/stuttgart/supercam/lib/libLeImageJI.so:system/lib/libLeImageJI.so \
+	device/lenovo/stuttgart/supercam/lib/libLeImage.so:system/lib/libLeImage.so \
+	device/lenovo/stuttgart/supercam/lib/liblenovo_liveeffect_library.so:system/lib/liblenovo_liveeffect_library.so \
+	device/lenovo/stuttgart/supercam/lib/liblenovo_nightpreview.so:system/lib/liblenovo_nightpreview.so \
+	device/lenovo/stuttgart/supercam/lib/liblenovo_nightscene.so:system/lib/liblenovo_nightscene.so \
+	device/lenovo/stuttgart/supercam/lib/libLeskia.so:system/lib/libLeskia.so \
+	device/lenovo/stuttgart/supercam/lib/liblocSDK3.so:system/lib/liblocSDK3.so \
+	device/lenovo/stuttgart/supercam/lib/libmorpho_cinema_graph.so:system/lib/libmorpho_cinema_graph.so \
+	device/lenovo/stuttgart/supercam/lib/libmorpho_groupshot.so:system/lib/libmorpho_groupshot.so \
+	device/lenovo/stuttgart/supercam/lib/libmorphoimageconverter.so:system/lib/libmorphoimageconverter.so \
+	device/lenovo/stuttgart/supercam/lib/libmorpho_jpeg_io.so:system/lib/libmorpho_jpeg_io.so \
+	device/lenovo/stuttgart/supercam/lib/libmorpho_memory_allocator.so:system/lib/libmorpho_memory_allocator.so \
+	device/lenovo/stuttgart/supercam/lib/libmorpho_object_remover_jni.so:system/lib/libmorpho_object_remover_jni.so \
+	device/lenovo/stuttgart/supercam/lib/libmorpho_panorama_gp.so:system/lib/libmorpho_panorama_gp.so \
+	device/lenovo/stuttgart/supercam/lib/libmorpho_SmartSelect.so:system/lib/libmorpho_SmartSelect.so
 
 PRODUCT_COPY_FILES += \
 	device/lenovo/stuttgart/prebuilt/hwcomposer.exynos4.so:system/lib/hw/hwcomposer.exynos4.so
