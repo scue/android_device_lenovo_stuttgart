@@ -361,4 +361,4 @@ TARGET_OMX_PATH := hardware/samsung/exynos/multimedia/openmax
 #$(call inherit-product, hardware/samsung/exynos4x12.mk)
 #$(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/device-bcm.mk)
 $(call inherit-product-if-exists, vendor/lenovo/stuttgart/stuttgart-vendor.mk)
-$(call inherit-product-if-exists, vendor/le/packages.mk)
+#$(call inherit-product-if-exists, vendor/le/packages.mk)

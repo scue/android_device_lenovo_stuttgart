@@ -29,7 +29,3 @@ ro.config.alarm_alert=Dreamland.ogg
 persist.sys.strictmode.disable=1
 # add by linkscue, end
 #
-ro.debuggable=1
-persist.service.adb.enable=1
-ro.cm.version=10.1-20130701-NIGHTLY-stuttgart
-ro.modversion=10.1-20130701-NIGHTLY-stuttgart
