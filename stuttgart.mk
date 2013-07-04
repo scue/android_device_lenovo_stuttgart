@@ -261,11 +261,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
 	device/lenovo/stuttgart/prebuilt/hwcomposer.exynos4.so:system/lib/hw/hwcomposer.exynos4.so
 
-PRODUCT_COPY_FILES += \
+#PRODUCT_COPY_FILES += \
 	device/lenovo/stuttgart/prebuilt/bootanimation.zip:system/media/bootanimation.zip
 
-PRODUCT_COPY_FILES += \
-	device/lenovo/stuttgart/prebuilt/apps/CMFileManager.apk:system/app/CMFileManager \
+#PRODUCT_COPY_FILES += \
+	device/lenovo/stuttgart/prebuilt/apps/CMFileManager.apk:system/app/CMFileManager.apk \
 	device/lenovo/stuttgart/prebuilt/apps/CMUpdater.apk:system/app/CMUpdater.apk \
 	device/lenovo/stuttgart/prebuilt/apps/CMWallpapers.apk:system/app/CMWallpapers.apk \
 	device/lenovo/stuttgart/prebuilt/apps/ThemeChooser.apk:system/app/ThemeChooser.apk \

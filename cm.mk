@@ -1,12 +1,22 @@
 # Specify phone tech before including full_phone
 $(call inherit-product, vendor/cm/config/gsm.mk)
 
+# Set date
+NOW=$(shell date +"%Y-%m")
+
 # Release name
 PRODUCT_RELEASE_NAME := stuttgart
 
 
 # Boot animation
-TARGET_BOOTANIMATION_NAME := vertical-720x1280
+#TARGET_BOOTANIMATION_NAME := vertical-720x1280
+TARGET_SCREEN_HEIGHT := 1280
+TARGET_SCREEN_WIDTH := 720
+
+#CM_RELEASE := true
+CM_BUILDTYPE := NIGHTLY
+CM_EXTRAVERSION := scue
+PRODUCT_VERSION_DEVICE_SPECIFIC := scue
 
 # Inherit some common CM stuff.
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
@@ -20,5 +30,8 @@ PRODUCT_NAME := cm_stuttgart
 PRODUCT_BRAND := Lenovo
 PRODUCT_MODEL := K860
 PRODUCT_MANUFACTURER := Lenovo
+
+#BUILD_ID := LINKSCUE-CM-$(NOW)
+
 # Set build fingerprint / ID / Product Name ect.
-# PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=K860 TARGET_DEVICE=stuttgart BUILD_FINGERPRINT="Lenovo/stuttgart/stuttgart:4.1.1/JRO03L/K860i_1_S_2_002_0005_121019:user/release-keys" PRIVATE_BUILD_DESC="stuttgart-user 4.1.1 JRO03L K860i_1_S_2_002_0005_121019 release-keys"
+#PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=$(PRODUCT_MODEL) TARGET_DEVICE=$(PRODUCT_DEVICE) BUILD_FINGERPRINT="LENOVO/full_stuttgart/stuttgart:4.2.2/JDQ39E/eng.scue.20130701.143818:user/release-keys" PRIVATE_BUILD_DESC="stuttgart-user 4.1.1 JRO03L K860i_1_S_2_002_0005_121019 release-keys"

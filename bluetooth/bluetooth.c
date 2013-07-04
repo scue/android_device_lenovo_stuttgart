@@ -28,9 +28,6 @@
 #include <cutils/properties.h>
 
 #include <bluetooth/bluetooth.h>
-#include <bluetooth/hci.h>
-#include <bluetooth/hci_lib.h>
-
 #include <bluedroid/bluetooth.h>
 #include "private/android_filesystem_config.h"
 #include "/media/scue/Enjoy/AndroidCode/cm10.1/device/lenovo/stuttgart/bluetooth/include/hci.h"

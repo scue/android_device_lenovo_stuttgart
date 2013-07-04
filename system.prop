@@ -2,10 +2,7 @@
 # system.prop for stuttgart
 #
 #
-ro.build.recovery.title=Lenovo K860 恢复系统  乐Phone之家
-ro.build.recovery.url=bbs.lephone.cc
-ro.build.recovery.weibo=weibo.com/lephonecc
-ro.build.display.id=Lenovo_K860_CM10_linkscue
+ro.build.display.id=lenovo_stuttgart_cm10.1_linkscue
 ro.productdef.simmode=onesim
 ro.sf.lcd_density=320
 ro.lcd_min_brightness=20
@@ -17,10 +14,22 @@ dalvik.vm.heapstartsize=16m
 dalvik.vm.heapgrowthlimit=64m
 dalvik.vm.heapsize=256m
 persist.sys.ui.hw=true
-
+#
 # add by linkscue, begin, for dex local
 dalvik.vm.dexopt-data-only=1
 # add by linkscue, end.
-
-# ro.build.version.incremental=eng.scue.20130603.164847
-# ro.telephony.ril_class=StuttgartRIL
+#
+# add by linkscue, begin, for media
+ro.config.ringtone=Salt_water.ogg
+ro.config.notification_sound=Heaven_nearby.ogg
+ro.config.alarm_alert=Dreamland.ogg
+# add by linkscue, end.
+#
+# add by linkscue, begin, for remove red border
+persist.sys.strictmode.disable=1
+# add by linkscue, end
+#
+ro.debuggable=1
+persist.service.adb.enable=1
+ro.cm.version=10.1-20130701-NIGHTLY-stuttgart
+ro.modversion=10.1-20130701-NIGHTLY-stuttgart
