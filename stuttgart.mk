@@ -202,19 +202,19 @@ PRODUCT_PACKAGES += \
 # HAL
 PRODUCT_PACKAGES += \
     lights.exynos4 \
-    camera.stuttgart
+    camera.stuttgart \
+	libhdmi \
+	libhdmiclient \
+    libTVOut
 #    libgralloc_ump \
 #    libhwconverter \
 #    libfimg \
 #    hwcomposer.exynos4 \
     libhwjpeg \
-    libhdmi \
     libfimc 
 #    libcec \
 #    libddc \
 #    libedid \
-#    libhdmiclient \
-#    libTVOut
 #    libtinyalsa \
 
 
@@ -256,11 +256,11 @@ PRODUCT_COPY_FILES += \
 	device/lenovo/stuttgart/supercam/lib/libLeGraphicAlgorithm.so:system/lib/libLeGraphicAlgorithm.so \
 	device/lenovo/stuttgart/supercam/lib/libLeImageJI.so:system/lib/libLeImageJI.so \
 	device/lenovo/stuttgart/supercam/lib/libLeImage.so:system/lib/libLeImage.so \
+	device/lenovo/stuttgart/supercam/lib/liblocSDK3.so:system/lib/liblocSDK3.so \
 	device/lenovo/stuttgart/supercam/lib/liblenovo_liveeffect_library.so:system/lib/liblenovo_liveeffect_library.so \
 	device/lenovo/stuttgart/supercam/lib/liblenovo_nightpreview.so:system/lib/liblenovo_nightpreview.so \
 	device/lenovo/stuttgart/supercam/lib/liblenovo_nightscene.so:system/lib/liblenovo_nightscene.so \
 	device/lenovo/stuttgart/supercam/lib/libLeskia.so:system/lib/libLeskia.so \
-	device/lenovo/stuttgart/supercam/lib/liblocSDK3.so:system/lib/liblocSDK3.so \
 	device/lenovo/stuttgart/supercam/lib/libmorpho_cinema_graph.so:system/lib/libmorpho_cinema_graph.so \
 	device/lenovo/stuttgart/supercam/lib/libmorpho_groupshot.so:system/lib/libmorpho_groupshot.so \
 	device/lenovo/stuttgart/supercam/lib/libmorphoimageconverter.so:system/lib/libmorphoimageconverter.so \
@@ -272,16 +272,6 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
 	device/lenovo/stuttgart/prebuilt/hwcomposer.exynos4.so:system/lib/hw/hwcomposer.exynos4.so
-
-#PRODUCT_COPY_FILES += \
-	device/lenovo/stuttgart/prebuilt/bootanimation.zip:system/media/bootanimation.zip
-
-#PRODUCT_COPY_FILES += \
-	device/lenovo/stuttgart/prebuilt/apps/CMFileManager.apk:system/app/CMFileManager.apk \
-	device/lenovo/stuttgart/prebuilt/apps/CMUpdater.apk:system/app/CMUpdater.apk \
-	device/lenovo/stuttgart/prebuilt/apps/CMWallpapers.apk:system/app/CMWallpapers.apk \
-	device/lenovo/stuttgart/prebuilt/apps/ThemeChooser.apk:system/app/ThemeChooser.apk \
-	device/lenovo/stuttgart/prebuilt/apps/ThemeManager.apk:system/app/ThemeManager.apk
 
 # RIL
 BOARD_PROVIDES_LIBRIL := true
@@ -296,7 +286,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.config.ringtone=Salt_water.ogg \
     ro.config.notification_sound=Heaven_nearby.ogg \
     ro.config.alarm_alert=Dreamland.ogg
-#    ro.telephony.ril_class=StuttgartRIL \
+
 # Filesystem management tools
 PRODUCT_PACKAGES += \
     static_busybox \
