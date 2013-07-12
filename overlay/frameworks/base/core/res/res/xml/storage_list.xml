@@ -2,7 +2,7 @@
 <StorageList
   xmlns:android="http://schemas.android.com/apk/res/android">
   <storage android:mountPoint="/storage/sdcard0"
-      android:storageDescription="@string/storage_usb"
+      android:storageDescription="@string/storage_internal"
       android:primary="true"
       android:emulated="false"
       android:mtpReserve="100"

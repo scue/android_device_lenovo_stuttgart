@@ -201,11 +201,13 @@ PRODUCT_PACKAGES += \
 
 # HAL
 PRODUCT_PACKAGES += \
-    lights.exynos4 \
-    camera.stuttgart \
+	lights.exynos4 \
+	camera.stuttgart \
 	libhdmi \
 	libhdmiclient \
-    libTVOut
+	libTVOut \
+	libasan_preload \
+	libsecril-client
 #    libgralloc_ump \
 #    libhwconverter \
 #    libfimg \
