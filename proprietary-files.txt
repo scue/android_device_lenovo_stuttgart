@@ -2,7 +2,6 @@ bin/IMCDownload
 bin/cksfv
 bin/glgps
 bin/rild
-bin/init.lenovo.sh
 bin/wtdd
 bin/hostapd
 bin/btld

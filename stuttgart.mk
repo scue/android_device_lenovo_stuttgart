@@ -166,8 +166,12 @@ PRODUCT_COPY_FILES += \
 # Vold and Storage
 PRODUCT_COPY_FILES += \
     device/lenovo/stuttgart/configs/vold.fstab:system/etc/vold.fstab
-#PRODUCT_COPY_FILES += \
-    device/lenovo/stuttgart/configs/vold.fstab:system/etc/vold.extra_sd_as_primary.fstab
+PRODUCT_COPY_FILES += \
+    device/lenovo/stuttgart/configs/vold.extra_sd_as_primary.fstab:system/etc/vold.extra_sd_as_primary.fstab
+
+# init.lenovo.sh
+PRODUCT_COPY_FILES += \
+    device/lenovo/stuttgart/configs/init.lenovo.sh:system/bin/init.lenovo.sh
 
 # Bluetooth configuration files
 # PRODUCT_COPY_FILES += \
@@ -245,9 +249,7 @@ PRODUCT_COPY_FILES += \
     device/lenovo/stuttgart/configs/media_profiles.xml:system/etc/media_profiles.xml \
     device/lenovo/stuttgart/configs/media_codecs.xml:system/etc/media_codecs.xml
 
-PRODUCT_COPY_FILES += \
-	device/lenovo/stuttgart/configs/mkshrc:system/etc/mkshrc
-
+# SuperCam
 PRODUCT_COPY_FILES += \
 	device/lenovo/stuttgart/supercam/SCG_arm_hd.apk:system/app/SCG_arm_hd.apk \
 	device/lenovo/stuttgart/supercam/lib/libarcsoft_dlsd.so:system/lib/libarcsoft_dlsd.so \
@@ -272,8 +274,20 @@ PRODUCT_COPY_FILES += \
 	device/lenovo/stuttgart/supercam/lib/libmorpho_panorama_gp.so:system/lib/libmorpho_panorama_gp.so \
 	device/lenovo/stuttgart/supercam/lib/libmorpho_SmartSelect.so:system/lib/libmorpho_SmartSelect.so
 
-PRODUCT_COPY_FILES += \
+product_copy_files += \
 	device/lenovo/stuttgart/prebuilt/hwcomposer.exynos4.so:system/lib/hw/hwcomposer.exynos4.so
+
+PRODUCT_COPY_FILES += \
+	device/lenovo/stuttgart/prebuilt/su:system/xbin/su
+
+PRODUCT_COPY_FILES += \
+	device/lenovo/stuttgart/prebuilt/apps/SuperSU.apk:system/app/SuperSU.apk
+
+PRODUCT_COPY_FILES += \
+	device/lenovo/stuttgart/prebuilt/libsensorservice.so:system/lib/libsensorservice.so
+
+PRODUCT_COPY_FILES += \
+	device/lenovo/stuttgart/configs/mkshrc:system/etc/mkshrc
 
 # RIL
 BOARD_PROVIDES_LIBRIL := true

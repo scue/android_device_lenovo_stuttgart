@@ -69,6 +69,8 @@ BOARD_KERNEL_CMDLINE :=
 BOARD_KERNEL_BASE := 0x10000000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_CUSTOM_BOOTIMG_MK := device/lenovo/k860/shbootimg.mk
+#TARGET_KERNEL_SOURCE        := kernel/samsung/stuttgart
+#TARGET_KERNEL_CONFIG	    := stuttgart_android_defconfig
 
 TARGET_SPECIFIC_HEADER_PATH := device/lenovo/stuttgart/overlay/include
 # fix this up by examining /proc/mtd on a running device
@@ -174,13 +176,14 @@ BOARD_HAS_NO_MISC_PARTITION := true
 BOARD_HAS_NO_SELECT_BUTTON := true
 
 # Releasetools
-#TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := ./device/lenovo/stuttgart/releasetools/ota_from_target_files
-#TARGET_RELEASETOOL_IMG_FROM_TARGET_SCRIPT := ./device/lenovo/stuttgart/releasetools/img_from_target_files
+TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := ./device/lenovo/stuttgart/releasetools/ota_from_target_files
+TARGET_RELEASETOOL_IMG_FROM_TARGET_SCRIPT := ./device/lenovo/stuttgart/releasetools/img_from_target_files
 
 # Charging mode
 BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/power_supply/battery/batt_lp_charging
 BOARD_BATTERY_DEVICE_NAME := "battery"
 BOARD_CHARGER_RES := device/lenovo/stuttgart/res/charger
+
 # assert
 TARGET_OTA_ASSERT_DEVICE := stuttgart,K860,K860i
 #BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
