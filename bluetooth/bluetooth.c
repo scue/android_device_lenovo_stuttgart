@@ -30,8 +30,8 @@
 #include <bluetooth/bluetooth.h>
 #include <bluedroid/bluetooth.h>
 #include "private/android_filesystem_config.h"
-#include "/media/scue/Enjoy/AndroidCode/cm10.1/device/lenovo/stuttgart/bluetooth/include/hci.h"
-#include "/media/scue/Enjoy/AndroidCode/cm10.1/device/lenovo/stuttgart/bluetooth/include/hci_lib.h"
+#include "../../../device/lenovo/stuttgart/bluetooth/include/hci.h"
+#include "../../../device/lenovo/stuttgart/bluetooth/include/hci_lib.h"
 /* signal to trigger on/off action depending on internal/external state.
  * It is required by soft on/off and bt on/off when fm is already on.
  * WARNING SIGUSR1 is used for kernel driver io signalling! */
