@@ -26,9 +26,9 @@ for p in ~/.bin; do
 done
 
 # for busybox
-for n in $(busybox --list)
+for n in $(/usr/local/bin/busybox --list)
 do 
-    eval alias $n=\'busybox $n\'
+    eval alias $n=\'/system/xbin/busybox $n\'
 done
 
 unset p

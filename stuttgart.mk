@@ -211,7 +211,8 @@ PRODUCT_PACKAGES += \
 	libhdmiclient \
 	libTVOut \
 	libasan_preload \
-	libsecril-client
+	libsecril-client \
+	hwcomposer.exynos4
 #    libgralloc_ump \
 #    libhwconverter \
 #    libfimg \
@@ -275,7 +276,7 @@ PRODUCT_COPY_FILES += \
 	device/lenovo/stuttgart/supercam/lib/libmorpho_SmartSelect.so:system/lib/libmorpho_SmartSelect.so
 
 product_copy_files += \
-	device/lenovo/stuttgart/prebuilt/hwcomposer.exynos4.so:system/lib/hw/hwcomposer.exynos4.so
+	device/lenovo/stuttgart/bluetooth/libbt-vendor.so:system/lib/libbt-vendor.so
 
 PRODUCT_COPY_FILES += \
 	device/lenovo/stuttgart/prebuilt/su:system/xbin/su

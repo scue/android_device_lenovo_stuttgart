@@ -159,6 +159,7 @@ BRCM_BT_USE_BTL_IF := true
 BRCM_BTL_INCLUDE_A2DP := true
 
 TARGET_CUSTOM_BLUEDROID := ../../../device/lenovo/stuttgart/bluetooth/bluetooth.c
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/lenovo/stuttgart/bluetooth/include
 
 
 #DDC 
@@ -182,7 +183,7 @@ TARGET_RELEASETOOL_IMG_FROM_TARGET_SCRIPT := ./device/lenovo/stuttgart/releaseto
 # Charging mode
 BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/power_supply/battery/batt_lp_charging
 BOARD_BATTERY_DEVICE_NAME := "battery"
-BOARD_CHARGER_RES := device/lenovo/stuttgart/res/charger
+#BOARD_CHARGER_RES := device/lenovo/stuttgart/res/charger
 
 # assert
 TARGET_OTA_ASSERT_DEVICE := stuttgart,K860,K860i
