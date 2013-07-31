@@ -68,7 +68,7 @@ BOARD_USES_DEPRECATED_TOOLCHAIN := true
 BOARD_KERNEL_CMDLINE := 
 BOARD_KERNEL_BASE := 0x10000000
 BOARD_KERNEL_PAGESIZE := 2048
-BOARD_CUSTOM_BOOTIMG_MK := device/lenovo/k860/shbootimg.mk
+BOARD_CUSTOM_BOOTIMG_MK := device/lenovo/stuttgart/shbootimg.mk
 #TARGET_KERNEL_SOURCE        := kernel/samsung/stuttgart
 #TARGET_KERNEL_CONFIG	    := stuttgart_android_defconfig
 
