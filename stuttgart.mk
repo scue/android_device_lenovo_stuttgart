@@ -277,10 +277,10 @@ PRODUCT_COPY_FILES += \
 product_copy_files += \
 	device/lenovo/stuttgart/bluetooth/libbt-vendor.so:system/lib/libbt-vendor.so
 
-PRODUCT_COPY_FILES += \
+#PRODUCT_COPY_FILES += \
 	device/lenovo/stuttgart/prebuilt/su:system/xbin/su
 
-PRODUCT_COPY_FILES += \
+#PRODUCT_COPY_FILES += \
 	device/lenovo/stuttgart/prebuilt/apps/SuperSU.apk:system/app/SuperSU.apk
 
 PRODUCT_COPY_FILES += \
