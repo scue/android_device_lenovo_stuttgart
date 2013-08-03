@@ -209,7 +209,6 @@ PRODUCT_PACKAGES += \
 	camera.stuttgart \
 	libhdmi \
 	libhdmiclient \
-	libTVOut \
 	libasan_preload \
 	libsecril-client
 #    libgralloc_ump \
