@@ -266,6 +266,9 @@ PRODUCT_COPY_FILES += \
     device/lenovo/stuttgart/configs/media_profiles.xml:system/etc/media_profiles.xml \
     device/lenovo/stuttgart/configs/media_codecs.xml:system/etc/media_codecs.xml
 
+PRODUCT_COPY_FILES += \
+    device/lenovo/stuttgart/bluetooth/libbt-vendor.so:system/lib/libbt-vendor.so
+
 # SuperCam
 PRODUCT_COPY_FILES += \
 	device/lenovo/stuttgart/supercam/SCG_arm_hd.apk:system/app/SCG_arm_hd.apk \
