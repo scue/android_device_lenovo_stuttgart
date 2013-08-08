@@ -96,7 +96,8 @@ TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_EGL_CFG := device/lenovo/stuttgart/configs/egl.cfg
 USE_OPENGL_RENDERER := true
 BOARD_USES_SKIAHWJPEG := true
-COMMON_GLOBAL_CFLAGS += -DSEC_HWJPEG_G2D -DGL_EXT_discard_framebuffer
+COMMON_GLOBAL_CFLAGS += -DSEC_HWJPEG_G2D
+#COMMON_GLOBAL_CFLAGS += -DSEC_HWJPEG_G2D -DGL_EXT_discard_framebuffer
 #BOARD_USES_HDMI := true #mark del
 # Enable WEBGL in WebKit
 ENABLE_WEBGL := true

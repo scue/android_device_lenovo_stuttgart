@@ -14,6 +14,11 @@ dalvik.vm.heapstartsize=16m
 dalvik.vm.heapgrowthlimit=64m
 dalvik.vm.heapsize=256m
 persist.sys.ui.hw=true
+# 
+# add by linkscue, begin, for rild
+rild.libpath=/system/lib/libreference-ril.so
+rild.libargs=-d /dev/ttyS0
+# add by linkscue, end.
 #
 # add by linkscue, begin, for dex local
 dalvik.vm.dexopt-data-only=1
