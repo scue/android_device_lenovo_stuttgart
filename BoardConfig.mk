@@ -32,18 +32,22 @@ TARGET_BOOTANIMATION_PRELOAD := true
 ARCH_ARM_HAVE_TLS_REGISTER := true
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
+TARGET_CPU_SMP := true
 TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_ARCH_VARIANT_CPU := cortex-a9
+TARGET_CPU_VARIANT := cortex-a9
 ARCH_ARM_HAVE_NEON := true
 ARCH_ARM_HAVE_TLS_REGISTER := true
-EXYNOS4X12_ENHANCEMENTS := true
-EXYNOS4_ENHANCEMENTS := true
-TARGET_CPU_SMP := true
+TARGET_GLOBAL_CFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp #mark add
+TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp #mark add
 #COMMON_GLOBAL_CFLAGS += -D__ARM_USE_PLD -D__ARM_CACHE_LINE_SIZE=64
 TARGET_UBOOT_RAMDISK := true
 TARGET_UBOOT_RAMDISK_LOADADDR := 0x40800000
 BOARD_LEGACY_NL80211_STA_EVENTS := true
+
+EXYNOS4X12_ENHANCEMENTS := true
+EXYNOS4_ENHANCEMENTS := true
 
 ifdef EXYNOS4X12_ENHANCEMENTS
 COMMON_GLOBAL_CFLAGS += -DEXYNOS4210_ENHANCEMENTS
@@ -53,6 +57,7 @@ COMMON_GLOBAL_CFLAGS += -DSURFACEFLINGER_FORCE_SCREEN_RELEASE
 COMMON_GLOBAL_CFLAGS += -DDISABLE_HW_ID_MATCH_CHECK
 endif
 
+#BOARD_VENDOR := samsung #mark cm10.2 add
 TARGET_BOARD_PLATFORM := exynos4
 TARGET_SOC := exynos4x12
 TARGET_BOOTLOADER_BOARD_NAME := stuttgart
@@ -72,9 +77,10 @@ BOARD_CUSTOM_BOOTIMG_MK := device/lenovo/stuttgart/shbootimg.mk
 #TARGET_KERNEL_SOURCE        := kernel/samsung/stuttgart
 #TARGET_KERNEL_CONFIG	    := stuttgart_android_defconfig
 
+# head file
 TARGET_SPECIFIC_HEADER_PATH := device/lenovo/stuttgart/overlay/include
+
 # fix this up by examining /proc/mtd on a running device
-BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_USES_UBOOT := true
 TARGET_PREBUILT_KERNEL := device/lenovo/stuttgart/kernel
 
@@ -90,35 +96,20 @@ TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_EGL_CFG := device/lenovo/stuttgart/configs/egl.cfg
 USE_OPENGL_RENDERER := true
 BOARD_USES_SKIAHWJPEG := true
-COMMON_GLOBAL_CFLAGS += -DSEC_HWJPEG_G2D
-BOARD_USES_HDMI := true
+COMMON_GLOBAL_CFLAGS += -DSEC_HWJPEG_G2D -DGL_EXT_discard_framebuffer
+#BOARD_USES_HDMI := true #mark del
 # Enable WEBGL in WebKit
 ENABLE_WEBGL := true
 BOARD_USE_SKIA_LCDTEXT := true
 
-# Audio
-#BOARD_USES_LIBMEDIA_WITH_AUDIOPARAMETER := true
-#BOARD_USE_YAMAHAPLAYER := true
-#BOARD_USE_SAMSUNG_SEPARATEDSTREAM := true
-#BOARD_HAS_SAMSUNG_VOLUME_BUG := true
-# HWComposer
-BOARD_USES_HWCOMPOSER := true
-BOARD_USES_FIMGAPI := true
-BOARD_USE_SAMSUNG_COLORFORMAT := true
-BOARD_FIX_NATIVE_COLOR_FORMAT := true
-# Camera
-BOARD_USES_PROPRIETARY_LIBCAMERA := true
-BOARD_USES_PROPRIETARY_LIBFIMC := true
-COMMON_GLOBAL_CFLAGS += -DSAMSUNG_CAMERA_HARDWARE
-COMMON_GLOBAL_CFLAGS += -DSTUTTGART_CAMERA
-#BOARD_STUTTGART_CAMERA := true
-COMMON_GLOBAL_CFLAGS += -DICS_AUDIO_BLOB -DSTUTTGART_FM
-COMMON_GLOBAL_CFLAGS += -DICS_CAMERA_BLOB
+# FIMG Acceleration
+#BOARD_USES_SKIA_FIMGAPI := true #mark add
 
-# Enable JIT
-WITH_JIT := true
+# TVOut & HDMI
+#BOARD_USE_SECTVOUT := true
+#BOARD_USES_SKTEXTBOX := true
 
-# OMX
+# OMX /* 硬件解码相关 */
 BOARD_HAVE_CODEC_SUPPORT := SAMSUNG_CODEC_SUPPORT
 COMMON_GLOBAL_CFLAGS += -DSAMSUNG_CODEC_SUPPORT
 BOARD_USES_PROPRIETARY_OMX := SAMSUNG
@@ -129,36 +120,64 @@ BOARD_USE_METADATABUFFERTYPE := true
 BOARD_USES_MFC_FPS := true
 BOARD_USE_S3D_SUPPORT := true
 BOARD_USE_CSC_FIMC := false
-# RIL
+
+# RIL /* Radio Interface Layer */
 BOARD_MOBILEDATA_INTERFACE_NAME := "rmnet0"
 
-# Wifi related defines
-BOARD_WPA_SUPPLICANT_DRIVER := NL80211
-WPA_SUPPLICANT_VERSION      := VER_0_8_X
+# Wifi /* Wifi模块相关 */
+BOARD_WLAN_DEVICE                := bcmdhd
+BOARD_WLAN_DEVICE_REV            := bcm4334
+WPA_SUPPLICANT_VERSION           := VER_0_8_X
+BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
-BOARD_HOSTAPD_DRIVER        := NL80211
-BOARD_HOSTAPD_PRIVATE_LIB   := lib_driver_cmd_bcmdhd
-BOARD_WLAN_DEVICE           := bcmdhd
-WIFI_DRIVER_MODULE_NAME     := "bcmdhd"
-WIFI_DRIVER_MODULE_ARG      := "firmware_path=/system/etc/firmware/fw_bcmdhd.bin nvram_path=/system/etc/wifi/bcmdhd.cal iface_name=wlan0"
-WIFI_DRIVER_MODULE_APARG    := "firmware_path=/system/etc/firmware/fw_bcmdhd_apsta.bin nvram_path=/system/etc/wifi/bcmdhd.cal iface_name=wlan0"
-WIFI_DRIVER_FW_PATH_PARAM   := "/sys/module/bcmdhd/parameters/firmware_path"
-WIFI_DRIVER_MODULE_PATH     := "/system/lib/modules/bcmdhd.ko"
-WIFI_DRIVER_FW_PATH_STA     := "/system/etc/firmware/fw_bcmdhd.bin"
-WIFI_DRIVER_FW_PATH_P2P     := "/system/etc/firmware/fw_bcmdhd_p2p.bin"
-WIFI_DRIVER_FW_PATH_AP      := "/system/etc/firmware/fw_bcmdhd_apsta.bin"
+BOARD_HOSTAPD_DRIVER             := NL80211
+BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_bcmdhd
+WIFI_DRIVER_MODULE_PATH          := "/system/lib/modules/dhd.ko"
+WIFI_DRIVER_FW_PATH_PARAM        := "/sys/module/dhd/parameters/firmware_path"
+WIFI_DRIVER_FW_PATH_STA          := "/system/etc/wifi/bcmdhd_sta.bin"
+WIFI_DRIVER_FW_PATH_AP           := "/system/etc/wifi/bcmdhd_apsta.bin"
+WIFI_DRIVER_FW_PATH_P2P          := "/system/etc/wifi/bcmdhd_p2p.bin"
+WIFI_DRIVER_MODULE_NAME          := "dhd"
+#WIFI_DRIVER_MODULE_ARG           := "firmware_path=/system/etc/wifi/bcmdhd_sta.bin nvram_path=/system/etc/wifi/nvram_net.txt iface_name=wlan0"
+#WIFI_DRIVER_MODULE_APARG        := "firmware_path=/system/etc/wifi/bcmdhd_apsta.bin nvram_path=/system/etc/wifi/nvram_net.txt iface_name=wlan0"
+WIFI_BAND                        := 802_11_ABG
+BOARD_HAVE_SAMSUNG_WIFI          := true
+
+# Audio
+#BOARD_USES_LIBMEDIA_WITH_AUDIOPARAMETER := true
+#BOARD_USE_YAMAHAPLAYER := true
+#BOARD_USE_SAMSUNG_SEPARATEDSTREAM := true
+#BOARD_HAS_SAMSUNG_VOLUME_BUG := true
+
+# HWComposer /* hwcomposer.exynos4.so */
+BOARD_USES_HWCOMPOSER := true
+BOARD_USES_FIMGAPI := true
+BOARD_USE_SAMSUNG_COLORFORMAT := true
+BOARD_FIX_NATIVE_COLOR_FORMAT := true
+
+# Camera
+BOARD_USES_PROPRIETARY_LIBCAMERA := true
+BOARD_USES_PROPRIETARY_LIBFIMC := true
+COMMON_GLOBAL_CFLAGS += -DSAMSUNG_CAMERA_HARDWARE
+COMMON_GLOBAL_CFLAGS += -DSTUTTGART_CAMERA
+COMMON_GLOBAL_CFLAGS += -DICS_AUDIO_BLOB #mark cm10.1 add
+COMMON_GLOBAL_CFLAGS += -DSTUTTGART_FM
+COMMON_GLOBAL_CFLAGS += -DICS_CAMERA_BLOB
+#BOARD_USES_PROPRIETARY_LIBCAMERA := true
+BOARD_USES_PROPRIETARY_LIBFIMC := true
+
+# Enable JIT
+WITH_JIT := true
+
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 TARGET_NEEDS_BLUETOOTH_INIT_DELAY := true
-
 BT_ALT_STACK := true
 BRCM_BT_USE_BTL_IF := true
 BRCM_BTL_INCLUDE_A2DP := true
-
 TARGET_CUSTOM_BLUEDROID := ../../../device/lenovo/stuttgart/bluetooth/bluetooth.c
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/lenovo/stuttgart/bluetooth/include
-
 
 #DDC 
 BOARD_HDMI_DDC_CH := DDC_CH_I2C_7
@@ -167,15 +186,14 @@ BOARD_HDMI_DDC_CH := DDC_CH_I2C_7
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/s3c-usbgadget/gadget/lun%d/file"
 
 # Recovery
+#BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/smdk4412-common/recovery/recovery_keys.c
+BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/smdk4412-common/recovery/graphics.c
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
 BOARD_UMS_LUNFILE := "/sys/class/android_usb/android0/f_mass_storage/lun0/file"
 BOARD_USES_MMCUTILS := true
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_HAS_NO_MISC_PARTITION := true
 BOARD_HAS_NO_SELECT_BUTTON := true
-
-# ROOT
-SUPERUSER_EMBEDDED := true
 
 # Releasetools
 #TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := ./device/lenovo/stuttgart/releasetools/ota_from_target_files
@@ -191,8 +209,6 @@ TARGET_OTA_ASSERT_DEVICE := stuttgart,K860,K860i
 #BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 BOARD_VOLD_DISC_HAS_MULTIPLE_MAJORS := true
 
-BOARD_WLAN_DEVICE_REV := bcm4329
-WIFI_BAND             := 802_11_ABG
 -include hardware/broadcom/wlan/bcmdhd/firmware/bcm4329/device-bcm.mk
 BOARD_VOLD_MAX_PARTITIONS := 29
 -include vendor/lenovo/stuttgart/BoardConfigVendor.mk

@@ -32,18 +32,30 @@ PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
 #Fix can not hang the Calls
 
-# FRAMEWORKS_BASE_SUBDIRS += ../../$(LOCAL_PATH)/stuttgartril/
+#FRAMEWORKS_BASE_SUBDIRS += ../../$(LOCAL_PATH)/stuttgartril/
 
 
 # Init files
-#
+PRODUCT_COPY_FILES := \
+    device/lenovo/stuttgart/rootdir/gpio:root/gpio \
+    device/lenovo/stuttgart/rootdir/busybox:root/sbin/busybox \
+    device/lenovo/stuttgart/rootdir/fstab.stuttgart:root/fstab.stuttgart \
+    device/lenovo/stuttgart/rootdir/init.rc:root/init.rc \
+    device/lenovo/stuttgart/rootdir/lpm.rc:root/lpm.rc \
+    device/lenovo/stuttgart/rootdir/init.stuttgart.rc:root/init.stuttgart.rc \
+    device/lenovo/stuttgart/rootdir/init.stuttgart.usb.rc:root/init.stuttgart.usb.rc \
+    device/lenovo/stuttgart/rootdir/init.testmode.rc:root/init.testmode.rc \
+    device/lenovo/stuttgart/rootdir/init.cp_update.rc:root/init.cp_update.rc \
+    device/lenovo/stuttgart/rootdir/init.trace.rc:root/init.trace.rc \
+    device/lenovo/stuttgart/rootdir/ueventd.stuttgart.rc:root/ueventd.stuttgart.rc \
+    device/lenovo/stuttgart/rootdir/ueventd.stuttgart.rc:recovery/root/ueventd.stuttgart.rc
 
 # busybox
-PRODUCT_COPY_FILES := \
+#PRODUCT_COPY_FILES := \
     device/lenovo/stuttgart/ramdisk/busybox:root/sbin/busybox
 
 # ramdisk
-PRODUCT_COPY_FILES := \
+#PRODUCT_COPY_FILES := \
    device/lenovo/stuttgart/ramdisk/fstab.stuttgart:root/fstab.stuttgart \
    device/lenovo/stuttgart/ramdisk/lpm.rc:root/lpm.rc \
    device/lenovo/stuttgart/ramdisk/lpm.rc:recovery/root/lpm.rc \
@@ -59,15 +71,15 @@ PRODUCT_COPY_FILES := \
    device/lenovo/stuttgart/ramdisk/ueventd.stuttgart.rc:root/ueventd.stuttgart.rc 
 
 # charger
-PRODUCT_COPY_FILES += \
-   device/lenovo/stuttgart/res/charger/battery_0.png:root/res/images/charger/battery_0.png \
-   device/lenovo/stuttgart/res/charger/battery_1.png:root/res/images/charger/battery_1.png \
-   device/lenovo/stuttgart/res/charger/battery_2.png:root/res/images/charger/battery_2.png \
-   device/lenovo/stuttgart/res/charger/battery_3.png:root/res/images/charger/battery_3.png \
-   device/lenovo/stuttgart/res/charger/battery_4.png:root/res/images/charger/battery_4.png \
-   device/lenovo/stuttgart/res/charger/battery_5.png:root/res/images/charger/battery_5.png \
-   device/lenovo/stuttgart/res/charger/battery_charge.png:root/res/images/charger/battery_charge.png \
-   device/lenovo/stuttgart/res/charger/battery_fail.png:root/res/images/charger/battery_fail.png
+#PRODUCT_COPY_FILES += \
+	device/lenovo/stuttgart/res/charger/battery_0.png:root/res/images/charger/battery_0.png \
+	device/lenovo/stuttgart/res/charger/battery_1.png:root/res/images/charger/battery_1.png \
+	device/lenovo/stuttgart/res/charger/battery_2.png:root/res/images/charger/battery_2.png \
+	device/lenovo/stuttgart/res/charger/battery_3.png:root/res/images/charger/battery_3.png \
+	device/lenovo/stuttgart/res/charger/battery_4.png:root/res/images/charger/battery_4.png \
+	device/lenovo/stuttgart/res/charger/battery_5.png:root/res/images/charger/battery_5.png \
+	device/lenovo/stuttgart/res/charger/battery_charge.png:root/res/images/charger/battery_charge.png \
+	device/lenovo/stuttgart/res/charger/battery_fail.png:root/res/images/charger/battery_fail.png
 
 PRODUCT_PACKAGE += \
 		   charger \
@@ -143,25 +155,25 @@ PRODUCT_COPY_FILES += \
 
 # Audio etc
 PRODUCT_COPY_FILES += \
-   device/lenovo/stuttgart/configs/asound.conf:system/etc/asound.conf \
-   device/lenovo/stuttgart/configs/audio_policy.conf:system/etc/audio_policy.conf \
-   device/lenovo/stuttgart/alsa/alsa.conf:system/usr/share/alsa/alsa.conf \
-   device/lenovo/stuttgart/alsa/cards/aliases.conf:system/usr/share/alsa/cards/aliases.conf \
-   device/lenovo/stuttgart/alsa/pcm/center_lfe.conf:system/usr/share/alsa/pcm/center_lfe.conf \
-   device/lenovo/stuttgart/alsa/pcm/default.conf:system/usr/share/alsa/pcm/default.conf \
-   device/lenovo/stuttgart/alsa/pcm/dmix.conf:system/usr/share/alsa/pcm/dmix.conf \
-   device/lenovo/stuttgart/alsa/pcm/dpl.conf:system/usr/share/alsa/pcm/dpl.conf \
-   device/lenovo/stuttgart/alsa/pcm/dsnoop.conf:system/usr/share/alsa/pcm/dsnoop.conf \
-   device/lenovo/stuttgart/alsa/pcm/front.conf:system/usr/share/alsa/pcm/front.conf \
-   device/lenovo/stuttgart/alsa/pcm/iec958.conf:system/usr/share/alsa/pcm/iec958.conf \
-   device/lenovo/stuttgart/alsa/pcm/modem.conf:system/usr/share/alsa/pcm/modem.conf \
-   device/lenovo/stuttgart/alsa/pcm/rear.conf:system/usr/share/alsa/pcm/rear.conf \
-   device/lenovo/stuttgart/alsa/pcm/side.conf:system/usr/share/alsa/pcm/side.conf \
-   device/lenovo/stuttgart/alsa/pcm/surround40.conf:system/usr/share/alsa/pcm/surround40.conf \
-   device/lenovo/stuttgart/alsa/pcm/surround41.conf:system/usr/share/alsa/pcm/surround41.conf \
-   device/lenovo/stuttgart/alsa/pcm/surround50.conf:system/usr/share/alsa/pcm/surround50.conf \
-   device/lenovo/stuttgart/alsa/pcm/surround51.conf:system/usr/share/alsa/pcm/surround51.conf \
-   device/lenovo/stuttgart/alsa/pcm/surround71.conf:system/usr/share/alsa/pcm/surround71.conf
+	device/lenovo/stuttgart/configs/asound.conf:system/etc/asound.conf \
+	device/lenovo/stuttgart/configs/audio_policy.conf:system/etc/audio_policy.conf \
+	device/lenovo/stuttgart/alsa/alsa.conf:system/usr/share/alsa/alsa.conf \
+	device/lenovo/stuttgart/alsa/cards/aliases.conf:system/usr/share/alsa/cards/aliases.conf \
+	device/lenovo/stuttgart/alsa/pcm/center_lfe.conf:system/usr/share/alsa/pcm/center_lfe.conf \
+	device/lenovo/stuttgart/alsa/pcm/default.conf:system/usr/share/alsa/pcm/default.conf \
+	device/lenovo/stuttgart/alsa/pcm/dmix.conf:system/usr/share/alsa/pcm/dmix.conf \
+	device/lenovo/stuttgart/alsa/pcm/dpl.conf:system/usr/share/alsa/pcm/dpl.conf \
+	device/lenovo/stuttgart/alsa/pcm/dsnoop.conf:system/usr/share/alsa/pcm/dsnoop.conf \
+	device/lenovo/stuttgart/alsa/pcm/front.conf:system/usr/share/alsa/pcm/front.conf \
+	device/lenovo/stuttgart/alsa/pcm/iec958.conf:system/usr/share/alsa/pcm/iec958.conf \
+	device/lenovo/stuttgart/alsa/pcm/modem.conf:system/usr/share/alsa/pcm/modem.conf \
+	device/lenovo/stuttgart/alsa/pcm/rear.conf:system/usr/share/alsa/pcm/rear.conf \
+	device/lenovo/stuttgart/alsa/pcm/side.conf:system/usr/share/alsa/pcm/side.conf \
+	device/lenovo/stuttgart/alsa/pcm/surround40.conf:system/usr/share/alsa/pcm/surround40.conf \
+	device/lenovo/stuttgart/alsa/pcm/surround41.conf:system/usr/share/alsa/pcm/surround41.conf \
+	device/lenovo/stuttgart/alsa/pcm/surround50.conf:system/usr/share/alsa/pcm/surround50.conf \
+	device/lenovo/stuttgart/alsa/pcm/surround51.conf:system/usr/share/alsa/pcm/surround51.conf \
+	device/lenovo/stuttgart/alsa/pcm/surround71.conf:system/usr/share/alsa/pcm/surround71.conf
 
 # Vold and Storage
 PRODUCT_COPY_FILES += \
@@ -178,8 +190,8 @@ PRODUCT_COPY_FILES += \
     system/bluetooth/data/main.conf:system/etc/bluetooth/main.conf
 
 PRODUCT_PACKAGES += \
-		    hcitool \
-		    charger
+	hcitool \
+	charger
 
 # Wifi
 PRODUCT_COPY_FILES += \
@@ -194,27 +206,29 @@ PRODUCT_COPY_FILES += \
     device/lenovo/stuttgart/configs/gpsconfig.xml:system/etc/gpsconfig.xml 
 
 # Packages
+	PRODUCT_PACKAGES += \
+	com.android.future.usb.accessory \
+	Torch 
 PRODUCT_PACKAGES += \
-    com.android.future.usb.accessory \
-    Torch 
-PRODUCT_PACKAGES += \
-    audio.a2dp.default \
-    audio.primary.smdk4x12 \
-    audio.usb.default \
-    Camera
+	audio.a2dp.default \
+	audio.primary.smdk4x12 \
+	audio.usb.default \
+	Camera
 
 # HAL
 PRODUCT_PACKAGES += \
 	lights.exynos4 \
 	camera.stuttgart \
-	libhdmi \
-	libhdmiclient \
 	libasan_preload \
+	hwcomposer.exynos4 \
 	libsecril-client
 #    libgralloc_ump \
 #    libhwconverter \
 #    libfimg \
 #    hwcomposer.exynos4 \
+	libhdmi \
+	libhdmiclient \
+	libTVOut \
     libhwjpeg \
     libfimc 
 #    libcec \
@@ -230,6 +244,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libsecmfcdecapi \
     libsecmfcencapi
+
+# wlan
+PRODUCT_PACKAGES += \
+	libnetcmdiface
 
 # OMX
 PRODUCT_PACKAGES += \
@@ -273,8 +291,8 @@ PRODUCT_COPY_FILES += \
 	device/lenovo/stuttgart/supercam/lib/libmorpho_panorama_gp.so:system/lib/libmorpho_panorama_gp.so \
 	device/lenovo/stuttgart/supercam/lib/libmorpho_SmartSelect.so:system/lib/libmorpho_SmartSelect.so
 
-product_copy_files += \
-	device/lenovo/stuttgart/bluetooth/libbt-vendor.so:system/lib/libbt-vendor.so
+#product_copy_files += \
+	device/lenovo/stuttgart/prebuilt/hwcomposer.exynos4.so:system/lib/hw/hwcomposer.exynos4.so
 
 #PRODUCT_COPY_FILES += \
 	device/lenovo/stuttgart/prebuilt/su:system/xbin/su
@@ -282,7 +300,7 @@ product_copy_files += \
 #PRODUCT_COPY_FILES += \
 	device/lenovo/stuttgart/prebuilt/apps/SuperSU.apk:system/app/SuperSU.apk
 
-PRODUCT_COPY_FILES += \
+#PRODUCT_COPY_FILES += \
 	device/lenovo/stuttgart/prebuilt/libsensorservice.so:system/lib/libsensorservice.so
 
 PRODUCT_COPY_FILES += \
@@ -360,7 +378,7 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 
 # Set default USB interface
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    persist.sys.usb.config=mass_storage,adb \
+    persist.sys.usb.config=mass_storage \
     ro.build.display.id=lephone.cc_linkscue_cm10.1 
 ADDITIONAL_DEFAULT_PROPERTIES += \
     ro.secure=0 \
