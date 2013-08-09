@@ -219,6 +219,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 	lights.exynos4 \
 	camera.stuttgart \
+	libhdmi \
+	libhdmiclient \
 	libasan_preload \
 	hwcomposer.exynos4 \
 	libsecril-client
