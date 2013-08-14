@@ -57,7 +57,7 @@
     <string name="vibrator_warning">不推荐使用超过 %1$d 的数值</string>
 
     <!-- Radio Preference -->
-    <string name="category_radio_title">无线电</string>
+    <string name="category_radio_title">通讯</string>
     <string name="hspa_title_head">HSPA</string>
     <string name="hspa_summary_head">启用 HSDPA/HSUPA</string>
 
@@ -81,5 +81,7 @@
     <string name="spen_subcat_title">S-Pen</string>
     <string name="spen_power_save_title_head">省电模式</string>
     <string name="spen_power_save_summary_head">设备使用S-Pen时禁用触摸笔</string>
+	<!-- for lenovo k860/k860i -->
+	<string name="category_lenovo_title">K860(i)</string>
 
 </resources>
