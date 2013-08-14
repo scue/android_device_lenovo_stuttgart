@@ -169,6 +169,9 @@ BOARD_USES_PROPRIETARY_LIBFIMC := true
 # Enable JIT
 WITH_JIT := true
 
+# fix maps
+BOARD_USE_LEGACY_SENSORS_FUSION := false
+
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
