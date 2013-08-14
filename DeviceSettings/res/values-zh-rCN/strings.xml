@@ -81,7 +81,10 @@
     <string name="spen_subcat_title">S-Pen</string>
     <string name="spen_power_save_title_head">省电模式</string>
     <string name="spen_power_save_summary_head">设备使用S-Pen时禁用触摸笔</string>
-	<!-- for lenovo k860/k860i -->
-	<string name="category_lenovo_title">K860(i)</string>
+
+    <!-- for lenovo k860/k860i -->
+    <string name="category_lenovo_title">K860(i)</string>
+    <string name="gapps_title_head">谷歌服务包</string>
+    <string name="gapps_summary_head">安装/卸载 谷歌服务包</string>
 
 </resources>

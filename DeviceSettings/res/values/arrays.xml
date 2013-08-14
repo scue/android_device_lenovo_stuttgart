@@ -103,4 +103,16 @@
         <item>22</item>
         <item>23</item>
     </string-array>
+
+	<string-array name="gapps_entries">
+	    <item>Do Nothing</item>
+        <item>Install Gapps</item>
+        <item>Remove Gapps</item>
+    </string-array>
+
+    <string-array name="gapps_entries_values" translatable="false">
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+    </string-array>
 </resources>

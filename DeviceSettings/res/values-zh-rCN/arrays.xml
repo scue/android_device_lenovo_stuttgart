@@ -58,4 +58,9 @@
         <item>5 秒</item>
         <item>6 秒</item>
     </string-array>
+    <string-array name="gapps_entries">
+	    <item>无动作</item>
+        <item>安装谷歌服务包</item>
+        <item>卸载谷歌服务包</item>
+    </string-array>
 </resources>

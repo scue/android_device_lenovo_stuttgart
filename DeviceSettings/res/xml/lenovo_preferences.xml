@@ -2,11 +2,11 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- Hspa modes -->
     <com.cyanogenmod.settings.device.Hspa
-                android:key="hspa"
-                android:title="@string/hspa_title_head"
-                android:summary="@string/hspa_summary_head"
-                android:entries="@array/hspa_entries"
-                        android:entryValues="@array/hspa_entries_values"
-                        android:defaultValue="23" />
+                android:key="lenovo"
+                android:title="@string/gapps_title_head"
+                android:summary="@string/gapps_summary_head"
+                android:entries="@array/gapps_entries"
+                        android:entryValues="@array/gapps_entries_values"
+                        android:defaultValue="21" />
 
 </PreferenceScreen>

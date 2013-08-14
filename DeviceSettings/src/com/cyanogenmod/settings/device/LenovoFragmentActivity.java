@@ -33,42 +33,33 @@ import com.cyanogenmod.settings.device.R;
 
 public class LenovoFragmentActivity extends PreferenceFragment {
 
-    private static final String PREF_ENABLED = "1";
-    private static final String TAG = "DeviceSettings_Radio";
-
-    private static boolean sHspa;
-    private Hspa mHspa;
-
+    private static final String TAG = "DeviceSettings_LENOVO";
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        addPreferencesFromResource(R.xml.lenovo_preferences);
+        addPreferencesFromResource(R.xml.lenovo_preferences);   //创建一个设置界面
 
         PreferenceScreen prefSet = getPreferenceScreen();
         Resources res = getResources();
-        sHspa = res.getBoolean(R.bool.has_hspa);
-
-        mHspa = (Hspa) findPreference(DeviceSettings.KEY_HSPA);
-        mHspa.setEnabled(sHspa);
     }
 
-    @Override
-    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+//    @Override
+//    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+//
+//        String boxValue;
+//        String key = preference.getKey();
+//
+//        Log.w(TAG, "key: " + key);
+//
+//        return true;
+//    }
 
-        String boxValue;
-        String key = preference.getKey();
+//    public static boolean isSupported(String FILE) {
+//        return Utils.fileExists(FILE);
+//    }
 
-        Log.w(TAG, "key: " + key);
-
-        return true;
-    }
-
-    public static boolean isSupported(String FILE) {
-        return Utils.fileExists(FILE);
-    }
-
-    public static void restore(Context context) {
-        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
-    }
+//    public static void restore(Context context) {
+//        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
+//    }
 }
