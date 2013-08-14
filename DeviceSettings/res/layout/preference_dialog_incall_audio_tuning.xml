@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013 The CyanogenMod Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:paddingBottom="20dip">
+
+        <TextView android:id="@+id/incall_earpiece_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/incall_earpiece_audio_title_head"
+                android:paddingTop="10dip"
+                android:paddingLeft="20dip"
+                android:paddingRight="20dip" />
+        <TextView android:id="@+id/earpiece_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+		android:layout_toRightOf="@id/incall_earpiece_text"
+                android:paddingTop="10dip"
+                android:paddingLeft="20dip"
+                android:paddingRight="20dip" />
+
+        <SeekBar android:id="@+id/earpiece_seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+		android:layout_below="@id/incall_earpiece_text"
+                android:paddingTop="2dip"
+                android:paddingLeft="20dip"
+                android:paddingRight="20dip" />
+
+        <TextView android:id="@+id/incall_headphone_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/incall_headphone_audio_title_head"
+		android:layout_below="@id/earpiece_seekbar"
+                android:paddingTop="10dip"
+                android:paddingLeft="20dip"
+                android:paddingRight="20dip" />
+        <TextView android:id="@+id/headphone_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+		android:layout_toRightOf="@id/incall_headphone_text"
+		android:layout_below="@id/earpiece_seekbar"
+                android:paddingTop="10dip"
+                android:paddingLeft="20dip"
+                android:paddingRight="20dip" />
+
+        <SeekBar android:id="@+id/headphone_seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/incall_headphone_text"
+                android:paddingTop="2dip"
+                android:paddingLeft="20dip"
+                android:paddingRight="20dip" />
+
+        <TextView android:id="@+id/incall_speaker_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/incall_speaker_audio_title_head"
+		android:layout_below="@id/headphone_seekbar"
+                android:paddingTop="10dip"
+                android:paddingLeft="20dip"
+                android:paddingRight="20dip" />
+        <TextView android:id="@+id/speaker_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+		android:layout_toRightOf="@id/incall_speaker_text"
+		android:layout_below="@id/headphone_seekbar"
+                android:paddingTop="10dip"
+                android:paddingLeft="20dip"
+                android:paddingRight="20dip" />
+
+        <SeekBar android:id="@+id/speaker_seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/incall_speaker_text"
+                android:paddingTop="2dip"
+                android:paddingLeft="20dip"
+                android:paddingRight="20dip" />
+
+        <TextView android:id="@+id/incall_bt_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/incall_bt_audio_title_head"
+		android:layout_below="@id/speaker_seekbar"
+                android:paddingTop="10dip"
+                android:paddingLeft="20dip"
+                android:paddingRight="20dip" />
+        <TextView android:id="@+id/bt_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+		android:layout_toRightOf="@id/incall_bt_text"
+		android:layout_below="@id/speaker_seekbar"
+                android:paddingTop="10dip"
+                android:paddingLeft="20dip"
+                android:paddingRight="20dip" />
+
+        <SeekBar android:id="@+id/bt_seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/incall_bt_text"
+                android:paddingTop="2dip"
+                android:paddingLeft="20dip"
+                android:paddingRight="20dip" />
+
+        <TextView
+                android:id="@+id/incall_textWarn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/bt_seekbar"
+                android:paddingTop="8dip"
+                android:gravity="center"
+                android:text="@string/incall_warning"
+                android:textSize="15dp" />
+
+    </RelativeLayout>
+</ScrollView>

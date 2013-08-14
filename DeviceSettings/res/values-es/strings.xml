@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2012-2013 The CyanogenMod Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+ -->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Ajustes avanzados</string>
+    <string name="defaults_button">Restablecer</string>
+    <string name="category_screen_title">Pantalla</string>
+    <string name="screen_colors_title">Colores</string>
+    <string name="cabc_title_head">Brillo adaptativo</string>
+    <string name="cabc_summary_head">Activar el control de brillo adaptado al contenido</string>
+    <string name="mdnie_scenario_title_head">Escenario</string>
+    <string name="mdnie_scenario_summary_head">Establecer escenario mDNIe</string>
+    <string name="mdnie_mode_title_head">Modo</string>
+    <string name="mdnie_mode_summary_head">Establecer modo mDNIe</string>
+    <string name="mdnie_negative_title_head">Modo Negativo</string>
+    <string name="mdnie_negative_summary_head">Habilitar/deshabilitar colores invertidos</string>
+    <string name="led_subcat_title">Notificación LED</string>
+    <string name="led_fade_title_head">Fundido LED</string>
+    <string name="led_fade_summary_head">Habilitar fundido suave en vez de parpadeo intenso</string>
+    <string name="touchkey_subcat_title">Teclas táctiles</string>
+    <string name="touchkey_light_title_head">Retroiluminación</string>
+    <string name="touchkey_light_summary_off">Habilitar retroiluminación</string>
+    <string name="touchkey_light_summary_on">Deshabilitar retroiluminación</string>
+    <string name="touchkey_timeout_title_head">Tiempo de espera de retroiluminación</string>
+    <string name="touchkey_timeout_summary_head">Tiempo tras pulsar una tecla antes de apagar la retroiluminación</string>
+    <string name="category_haptic_title">Háptica</string>
+    <string name="vibrator_title">Vibración</string>
+    <string name="vibrator_tuning_title">Intensidad de vibración</string>
+    <string name="vibrator_tuning_summary_head">Establecer la intensidad de vibración</string>
+    <string name="vibrator_warning">No son recomendables valores mayores de %1$d</string>
+    <string name="category_radio_title">Radio</string>
+    <string name="hspa_title_head">HSPA</string>
+    <string name="hspa_summary_head">Habilitar HSDPA/HSUPA</string>
+    <string name="category_audio_title">Sonido</string>
+    <string name="dockaudio_subcat_title">Base</string>
+    <string name="use_dock_audio_title_head">Usar sonido USB</string>
+    <string name="use_dock_audio_summary_head">Utilizar la salida de audio de la base</string>
+    <string name="incallaudio_subcat_title">Volumen de llamada</string>
+    <string name="incall_earpiece_audio_title_head">Auricular</string>
+    <string name="incall_headphone_audio_title_head">Auriculares</string>
+    <string name="incall_speaker_audio_title_head">Altavoz</string>
+    <string name="incall_bt_audio_title_head">Bluetooth</string>
+    <string name="incall_warning">No son recomendables valores mayores de %1$d</string>
+    <string name="audioout_subcat_title">Volumen en reproducción</string>
+    <string name="audioout_headphone_audio_title_head">Auriculares</string>
+    <string name="audioout_speaker_audio_title_head">Altavoz</string>
+    <string name="audioout_warning">No son recomendables valores mayores de %1$d</string>
+    <string name="spen_subcat_title">S-Pen</string>
+    <string name="spen_power_save_title_head">Ahorro de energía</string>
+    <string name="spen_power_save_summary_head">Desactivar el digitalizador del stylus cuando el S-Pen esté en el dispositivo</string>
+</resources>
