@@ -50,28 +50,8 @@ PRODUCT_COPY_FILES := \
     device/lenovo/stuttgart/rootdir/ueventd.stuttgart.rc:root/ueventd.stuttgart.rc \
     device/lenovo/stuttgart/rootdir/ueventd.stuttgart.rc:recovery/root/ueventd.stuttgart.rc
 
-# busybox
-#PRODUCT_COPY_FILES := \
-    device/lenovo/stuttgart/ramdisk/busybox:root/sbin/busybox
-
-# ramdisk
-#PRODUCT_COPY_FILES := \
-   device/lenovo/stuttgart/ramdisk/fstab.stuttgart:root/fstab.stuttgart \
-   device/lenovo/stuttgart/ramdisk/lpm.rc:root/lpm.rc \
-   device/lenovo/stuttgart/ramdisk/lpm.rc:recovery/root/lpm.rc \
-   device/lenovo/stuttgart/ramdisk/init.cp_update.rc:root/init.cp_update.rc \
-   device/lenovo/stuttgart/ramdisk/init.stuttgart.rc:root/init.stuttgart.rc \
-   device/lenovo/stuttgart/ramdisk/init.stuttgart.usb.rc:root/init.stuttgart.usb.rc \
-   device/lenovo/stuttgart/ramdisk/init.testmode.rc:root/init.testmode.rc \
-   device/lenovo/stuttgart/ramdisk/ueventd.rc:root/ueventd.rc \
-   device/lenovo/stuttgart/ramdisk/init.rc:root/init.rc \
-   device/lenovo/stuttgart/ramdisk/initlogo.rle:recovery/root/initlogo.rle \
-   device/lenovo/stuttgart/ramdisk/initlogo.rle:root/initlogo.rle \
-   device/lenovo/stuttgart/prebuilt/gpio:root/sbin/gpio \
-   device/lenovo/stuttgart/ramdisk/ueventd.stuttgart.rc:root/ueventd.stuttgart.rc 
-
 # charger
-#PRODUCT_COPY_FILES += \
+PRODUCT_COPY_FILES += \
 	device/lenovo/stuttgart/res/charger/battery_0.png:root/res/images/charger/battery_0.png \
 	device/lenovo/stuttgart/res/charger/battery_1.png:root/res/images/charger/battery_1.png \
 	device/lenovo/stuttgart/res/charger/battery_2.png:root/res/images/charger/battery_2.png \
@@ -91,7 +71,6 @@ PRODUCT_COPY_FILES += \
 	device/lenovo/stuttgart/firmware/fw_bcmdhd.bin:system/etc/firmware/fw_bcmdhd.bin \
 	device/lenovo/stuttgart/firmware/fw_bcmdhd_p2p.bin:system/etc/firmware/fw_bcmdhd_p2p.bin \
 	device/lenovo/stuttgart/firmware/sdio-g-mfgtest.bin:system/etc/firmware/sdio-g-mfgtest.bin
-
 
 # rril
 PRODUCT_COPY_FILES += \
@@ -272,7 +251,7 @@ PRODUCT_COPY_FILES += \
     device/lenovo/stuttgart/bluetooth/libbt-vendor.so:system/lib/libbt-vendor.so
 
 # SuperCam
-PRODUCT_COPY_FILES += \
+#PRODUCT_COPY_FILES += \
 	device/lenovo/stuttgart/supercam/SCG_arm_hd.apk:system/app/SCG_arm_hd.apk \
 	device/lenovo/stuttgart/supercam/lib/libarcsoft_dlsd.so:system/lib/libarcsoft_dlsd.so \
 	device/lenovo/stuttgart/supercam/lib/libLeConvertDataToTexture.so:system/lib/libLeConvertDataToTexture.so \

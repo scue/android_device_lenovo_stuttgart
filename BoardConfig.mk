@@ -203,7 +203,7 @@ BOARD_HAS_NO_SELECT_BUTTON := true
 #TARGET_RELEASETOOL_IMG_FROM_TARGET_SCRIPT := ./device/lenovo/stuttgart/releasetools/img_from_target_files
 
 # Charging mode
-BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/power_supply/battery/batt_lp_charging
+BOARD_CHARGING_MODE_BOOTING_LPM := /sys/devices/platform/s3c2440-i2c.0/i2c-0/0-0035/power_supply/max8971-charger/online
 BOARD_BATTERY_DEVICE_NAME := "battery"
 #BOARD_CHARGER_RES := device/lenovo/stuttgart/res/charger
 
