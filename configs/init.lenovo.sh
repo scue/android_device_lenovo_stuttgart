@@ -26,8 +26,8 @@ busybox chmod ug+s /system/xbin/su
 busybox chown system:system /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
 busybox chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
 
-#for preload ime/maps
-preload_app_sh=/preload/app/preload_app.sh
+#for preload SuperCam & other
+preload_app_sh=/preload/LeApps/leapp_init.sh
 if [[ -f "$preload_app_sh" ]]; then
     busybox chmod 755 $preload_app_sh && $preload_app_sh
 fi
