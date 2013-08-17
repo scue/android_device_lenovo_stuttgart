@@ -40,7 +40,6 @@ lib/hw/lights.stuttgart.so
 lib/hw/sensors.exynos4.so
 lib/hw/audio_policy.stuttgart.so
 lib/hw/audio.primary.stuttgart.so
-lib/hw/hwcomposer.exynos4.so
 lib/libMali.so
 lib/libUMP.so
 lib/libfimc.so
@@ -54,9 +53,14 @@ lib/libril.so
 lib/librapid-ril-core.so
 lib/librapid-ril-util.so
 lib/libswscaler.so
-lib/libsurfaceflinger.so
-lib/libsurfaceflinger_ddmconnection.so
 lib/libtmsr30.so
+lib/libLe3d.so
+lib/libLeGaJavaInterface.so
+lib/libLeGraphicAlgorithm.so
+lib/libLeImageLightness.so
+lib/liblenovo_liveeffect_library.so
+lib/liblenovo-xdelta.so
+lib/libLeskia.so
 usr/idc/atmel-touchscreen.idc
 usr/idc/ft5x0x_ts.idc
 usr/idc/pixcir-i2c-ts.idc
