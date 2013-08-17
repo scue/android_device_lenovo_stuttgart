@@ -33,46 +33,43 @@ import com.cyanogenmod.settings.device.R;
 
 public class LenovoFragmentActivity extends PreferenceFragment {
 
-    private static final String TAG = "DeviceSettings_LENOVO";
+    private static final String PREF_ENABLED = "1";
+    private static final String TAG = "DeviceSettings_Radio";
+    private Gapps gapps;
+    private Sdcard sdcard;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        addPreferencesFromResource(R.xml.lenovo_preferences);   //创建一个设置界面
+        addPreferencesFromResource(R.xml.lenovo_preferences);
 
         PreferenceScreen prefSet = getPreferenceScreen();
-/*        Resources res = getResources();
         Resources res = getResources();
-        Resources res = getResources();
-        Resources res = getResources();
-        Resources res = getResources();
-        Resources res = getResources();
-        Resources res = getResources();
-        Resources res = getResources();
-        Resources res = getResources();
-        Resources res = getResources();
-        Resources res = getResources();
-        Resources res = getResources();
-        Resources res = getResources();
-        Resources res = getResources();*/
+
+        gapps = (Gapps)findPreference(DeviceSettings.KEY_GAPPS );
+        gapps.setEnabled(true);
+        
+        sdcard = (Sdcard)findPreference(DeviceSettings.KEY_SDCARD);
+        sdcard.setEnabled(true);
     }
 
-//    @Override
-//    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-//
-//        String boxValue;
-//        String key = preference.getKey();
-//
-//        Log.w(TAG, "key: " + key);
-//
-//        return true;
-//    }
+    @Override
+    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
 
-//    public static boolean isSupported(String FILE) {
-//        return Utils.fileExists(FILE);
-//    }
+        String boxValue;
+        String key = preference.getKey();
 
-//    public static void restore(Context context) {
-//        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
-//    }
+        Log.w(TAG, "key: " + key);
+
+        return true;
+    }
+
+    public static boolean isSupported(String FILE) {
+        return Utils.fileExists(FILE);
+    }
+
+    public static void restore(Context context) {
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
+    }
 }

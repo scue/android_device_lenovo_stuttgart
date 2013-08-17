@@ -115,4 +115,16 @@
         <item>22</item>
         <item>23</item>
     </string-array>
+
+	<string-array name="fstab_entries">
+	    <item>Do Nothing</item>
+        <item>Default Internal SDCard</item>
+        <item>Default External SDCard</item>
+    </string-array>
+
+    <string-array name="fstab_entries_values" translatable="false">
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+    </string-array>
 </resources>

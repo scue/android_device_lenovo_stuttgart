@@ -20,6 +20,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.util.AttributeSet;
+import android.widget.Toast;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
@@ -62,6 +63,7 @@ public class Hspa extends ListPreference implements OnPreferenceChangeListener {
         Intent i = new Intent("com.cyanogenmod.SamsungServiceMode.EXECUTE");
         i.putExtra("sub_type", 20); // HSPA Setting
         i.putExtra("data", value);
+//        Toast.makeText(context, (String)value, 10).show();
         context.sendBroadcast(i);
     }
 }

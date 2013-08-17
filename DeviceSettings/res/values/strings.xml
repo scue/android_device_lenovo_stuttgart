@@ -86,6 +86,7 @@
     <string name="category_lenovo_title">K860(i)</string>
     <string name="gapps_title_head">Gapps</string>
     <string name="gapps_summary_head">Install/Remove Google Mobile service</string>
-    
+    <string name="fstab_title_head">SD Card</string>
+    <string name="fstab_summary_head">Exchange internal/external sdcard</string>
 
 </resources>

@@ -44,10 +44,11 @@ public class DeviceSettings extends FragmentActivity {
     public static final String KEY_TOUCHKEY_LIGHT = "touchkey_light";
     public static final String KEY_TOUCHKEY_TIMEOUT = "touchkey_timeout";
     public static final String KEY_HSPA = "hspa";
-    public static final String KEY_LENOVO="lenovo";
+    public static final String KEY_GAPPS = "gapps";
     public static final String KEY_USE_DOCK_AUDIO = "dock_audio";
     public static final String KEY_CATEGORY_SPEN = "category_spen";
     public static final String KEY_SPEN_POWER_SAVING_MODE = "spen_power_saving";
+    public static final String KEY_SDCARD = "fstab";
 
     ViewPager mViewPager;
     TabsAdapter mTabsAdapter;
@@ -67,8 +68,6 @@ public class DeviceSettings extends FragmentActivity {
         bar.setDisplayHomeAsUpEnabled(true);
 
         mTabsAdapter = new TabsAdapter(this, mViewPager);
-        mTabsAdapter.addTab(bar.newTab().setText(R.string.category_lenovo_title),
-                LenovoFragmentActivity.class, null);
         mTabsAdapter.addTab(bar.newTab().setText(R.string.category_radio_title),
                 RadioFragmentActivity.class, null);
         mTabsAdapter.addTab(bar.newTab().setText(R.string.category_screen_title),
@@ -77,7 +76,9 @@ public class DeviceSettings extends FragmentActivity {
                 HapticFragmentActivity.class, null);
         mTabsAdapter.addTab(bar.newTab().setText(R.string.category_audio_title),
                 AudioFragmentActivity.class, null);
-
+        mTabsAdapter.addTab(bar.newTab().setText(R.string.category_lenovo_title),
+                LenovoFragmentActivity.class, null);
+        
         if (savedInstanceState != null) {
             bar.setSelectedNavigationItem(savedInstanceState.getInt("tab", 0));
         }
