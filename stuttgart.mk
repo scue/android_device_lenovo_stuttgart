@@ -185,9 +185,11 @@ PRODUCT_COPY_FILES += \
     device/lenovo/stuttgart/configs/gpsconfig.xml:system/etc/gpsconfig.xml 
 
 # Packages
-	PRODUCT_PACKAGES += \
+PRODUCT_PACKAGES += \
 	com.android.future.usb.accessory \
+	DeviceSettings \
 	Torch 
+
 PRODUCT_PACKAGES += \
 	audio.a2dp.default \
 	audio.primary.smdk4x12 \

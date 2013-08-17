@@ -86,6 +86,14 @@
     <string name="category_lenovo_title">联想</string>
     <string name="gapps_title_head">谷歌服务包</string>
     <string name="gapps_summary_head">安装或卸载谷歌服务包</string>
+    <string name="gapps_do_nothing">设置未改变</string>
+    <string name="gapps_install_success">安装成功</string>
+    <string name="gapps_remove_success">卸载成功</string>
     <string name="fstab_title_head">切换默认SD卡位置</string>
     <string name="fstab_summary_head">切换内置/外置SD卡作为默认SD卡</string>
+    <string name="fstab_do_nothing">设置未改变</string>
+    <string name="fstab_internal_success">切换至内置SD卡成功</string>
+    <string name="fstab_external_success">切换至外置SD卡成功</string>
+    <string name="toast_reboot_tip">你需要重启使之生效</string>
+
 </resources>

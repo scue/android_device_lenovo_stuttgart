@@ -86,7 +86,14 @@
     <string name="category_lenovo_title">K860(i)</string>
     <string name="gapps_title_head">Gapps</string>
     <string name="gapps_summary_head">Install/Remove Google Mobile service</string>
+    <string name="gapps_do_nothing">Profile no change</string>
+    <string name="gapps_install_success">Gapps install success</string>
+    <string name="gapps_remove_success">Gapps remove success</string>
     <string name="fstab_title_head">SD Card</string>
     <string name="fstab_summary_head">Exchange internal/external sdcard</string>
+    <string name="fstab_do_nothing">Profile no change</string>
+    <string name="fstab_internal_success">change to internal success</string>
+    <string name="fstab_external_success">change to external success</string>
+    <string name="toast_reboot_tip">maybe you need to reboot to take it effect</string>
 
 </resources>

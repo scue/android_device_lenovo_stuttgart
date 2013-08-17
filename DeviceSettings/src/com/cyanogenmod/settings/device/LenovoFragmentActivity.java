@@ -31,6 +31,8 @@ import android.util.Log;
 
 import com.cyanogenmod.settings.device.R;
 
+import java.io.File;
+
 public class LenovoFragmentActivity extends PreferenceFragment {
 
     private static final String PREF_ENABLED = "1";
@@ -46,12 +48,12 @@ public class LenovoFragmentActivity extends PreferenceFragment {
 
         PreferenceScreen prefSet = getPreferenceScreen();
         Resources res = getResources();
-
+        
         gapps = (Gapps)findPreference(DeviceSettings.KEY_GAPPS );
-        gapps.setEnabled(true);
+        gapps.setEnabled((new File("/preload/gms/gms_install_d.sh")).exists());
         
         sdcard = (Sdcard)findPreference(DeviceSettings.KEY_SDCARD);
-        sdcard.setEnabled(true);
+        sdcard.setEnabled((new File("/system/etc/vold.primary.fstab").exists()));
     }
 
     @Override
