@@ -156,8 +156,8 @@ PRODUCT_COPY_FILES += \
 
 # Vold and Storage
 PRODUCT_COPY_FILES += \
-    device/lenovo/stuttgart/configs/vold.fstab:system/etc/vold.fstab
-PRODUCT_COPY_FILES += \
+    device/lenovo/stuttgart/configs/vold.fstab:system/etc/vold.fstab \
+    device/lenovo/stuttgart/configs/vold.fstab:system/etc/vold.primary.fstab \
     device/lenovo/stuttgart/configs/vold.extra_sd_as_primary.fstab:system/etc/vold.extra_sd_as_primary.fstab
 
 # init.lenovo.sh
