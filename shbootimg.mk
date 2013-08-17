@@ -17,7 +17,7 @@
 LOCAL_PATH := $(call my-dir)
 
 $(INSTALLED_BOOTIMAGE_TARGET): $(MKBOOTIMG) $(INTERNAL_BOOTIMAGE_FILES) $(MKIMAGE)
-	$(call pretty,"Target K860 boot image: $@")
+	$(call pretty,"Target Stuttgart boot image: $@")
 	$(hide) $(MKIMAGE) -A ARM -O Linux -T ramdisk -C none -a 0x40800000 -e 0x40800000 -n ramdisk -d $(INSTALLED_RAMDISK_TARGET) $(INSTALLED_RAMDISK_TARGET).uboot
 	$(hide) $(MKBOOTIMG) --kernel $(INSTALLED_KERNEL_TARGET) --ramdisk $(INSTALLED_RAMDISK_TARGET).uboot $(addprefix --second ,$(INSTALLED_2NDBOOTLOADER_TARGET)) \
 		--cmdline "$(strip $(BOARD_KERNEL_CMDLINE))" --base $(strip $(BOARD_KERNEL_BASE)) --pagesize $(strip $(BOARD_KERNEL_PAGESIZE)) --output $@
@@ -27,9 +27,9 @@ $(INSTALLED_BOOTIMAGE_TARGET): $(MKBOOTIMG) $(INTERNAL_BOOTIMAGE_FILES) $(MKIMAG
 $(INSTALLED_RECOVERYIMAGE_TARGET): $(MKBOOTIMG) $(MKIMAGE) \
 		$(recovery_ramdisk) \
 		$(recovery_kernel)
-	@echo -e ${CL_CYN}"----- Making K860 recovery image ------"${CL_RST}
+	@echo -e ${CL_CYN}"----- Making Stuttgart recovery image ------"${CL_RST}
 	$(MKIMAGE) -A ARM -O Linux -T ramdisk -C none -a 0x40800000 -e 0x40800000 -n ramdisk -d $(recovery_ramdisk) $(recovery_ramdisk).uboot
 	$(MKBOOTIMG) --kernel $(recovery_kernel) --ramdisk $(recovery_ramdisk).uboot $(addprefix --second ,$(INSTALLED_2NDBOOTLOADER_TARGET)) \
 		--cmdline "$(strip $(BOARD_KERNEL_CMDLINE))" --base $(strip $(BOARD_KERNEL_BASE)) --pagesize $(strip $(BOARD_KERNEL_PAGESIZE)) --output $@
-	@echo -e ${CL_CYN}"Made K860 recovery image: $@"${CL_RST}
+	@echo -e ${CL_CYN}"Made Stuttgart recovery image: $@"${CL_RST}
 	$(hide) $(call assert-max-image-size,$@,$(BOARD_RECOVERYIMAGE_PARTITION_SIZE),raw)

@@ -28,7 +28,7 @@ $(call inherit-product, device/lenovo/stuttgart/full_stuttgart.mk)
 PRODUCT_DEVICE := stuttgart
 PRODUCT_NAME := cm_stuttgart
 PRODUCT_BRAND := Lenovo
-PRODUCT_MODEL := K860
+PRODUCT_MODEL := Stuttgart
 PRODUCT_MANUFACTURER := Lenovo
 
 #BUILD_ID := LINKSCUE-CM-$(NOW)

@@ -201,8 +201,8 @@ PRODUCT_PACKAGES += \
 	libhdmi \
 	libhdmiclient \
 	libasan_preload \
-	hwcomposer.exynos4 \
-	libsecril-client
+	hwcomposer.exynos4
+#	libsecril-client
 #    libgralloc_ump \
 #    libhwconverter \
 #    libfimg \

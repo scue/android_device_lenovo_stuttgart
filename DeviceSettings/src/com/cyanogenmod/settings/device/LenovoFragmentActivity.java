@@ -41,7 +41,20 @@ public class LenovoFragmentActivity extends PreferenceFragment {
         addPreferencesFromResource(R.xml.lenovo_preferences);   //创建一个设置界面
 
         PreferenceScreen prefSet = getPreferenceScreen();
+/*        Resources res = getResources();
         Resources res = getResources();
+        Resources res = getResources();
+        Resources res = getResources();
+        Resources res = getResources();
+        Resources res = getResources();
+        Resources res = getResources();
+        Resources res = getResources();
+        Resources res = getResources();
+        Resources res = getResources();
+        Resources res = getResources();
+        Resources res = getResources();
+        Resources res = getResources();
+        Resources res = getResources();*/
     }
 
 //    @Override
