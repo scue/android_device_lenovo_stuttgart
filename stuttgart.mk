@@ -39,6 +39,7 @@ PRODUCT_AAPT_PREF_CONFIG := xhdpi
 PRODUCT_COPY_FILES := \
     device/lenovo/stuttgart/rootdir/gpio:root/gpio \
     device/lenovo/stuttgart/rootdir/busybox:root/sbin/busybox \
+    device/lenovo/stuttgart/rootdir/busybox:recovery/root/sbin/busybox \
     device/lenovo/stuttgart/rootdir/fstab.stuttgart:root/fstab.stuttgart \
     device/lenovo/stuttgart/rootdir/init.rc:root/init.rc \
     device/lenovo/stuttgart/rootdir/lpm.rc:root/lpm.rc \
