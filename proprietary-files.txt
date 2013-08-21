@@ -61,6 +61,8 @@ lib/libLeImageLightness.so
 lib/liblenovo_liveeffect_library.so
 lib/liblenovo-xdelta.so
 lib/libLeskia.so
+lib/libsurfaceflinger.so
+lib/libsurfaceflinger_ddmconnection.so
 usr/idc/atmel-touchscreen.idc
 usr/idc/ft5x0x_ts.idc
 usr/idc/pixcir-i2c-ts.idc
