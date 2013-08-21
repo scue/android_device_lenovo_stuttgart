@@ -2,7 +2,6 @@
 # system.prop for stuttgart
 #
 #
-ro.build.display.id=lenovo_stuttgart_cm10.1_linkscue
 ro.productdef.simmode=onesim
 ro.sf.lcd_density=320
 ro.lcd_min_brightness=20
