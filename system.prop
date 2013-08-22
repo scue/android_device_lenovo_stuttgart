@@ -33,3 +33,6 @@ ro.config.alarm_alert=Dreamland.ogg
 persist.sys.strictmode.disable=1
 # add by linkscue, end
 #
+# for increase vold copy speed, start
+ro.vold.umsdirtyratio=50
+# end, thanks 秋叶随风ivan: http://weibo.com/hqiwu

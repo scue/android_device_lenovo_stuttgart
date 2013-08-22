@@ -56,9 +56,7 @@ lib/libswscaler.so
 lib/libtmsr30.so
 lib/libLe3d.so
 lib/libLeGaJavaInterface.so
-lib/libLeGraphicAlgorithm.so
 lib/libLeImageLightness.so
-lib/liblenovo_liveeffect_library.so
 lib/liblenovo-xdelta.so
 lib/libLeskia.so
 lib/libsurfaceflinger.so
