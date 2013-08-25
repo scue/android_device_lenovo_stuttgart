@@ -22,14 +22,6 @@ rm -r /data/lost+found
 busybox chmod 755 /system/xbin/su
 busybox chmod ug+s /system/xbin/su
 
-#fix cpu governor 
-busybox chown system:system /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
-busybox chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
-
-#fix I/O Scheduler
-buysbox chown system:system /sys/block/mmcblk0/queue/scheduler
-buysbox chmod 0664 /sys/block/mmcblk0/queue/scheduler
-
 #for preload SuperCam & other
 preload_app_sh=/preload/LeApps/leapp_init.sh
 if [[ -f "$preload_app_sh" ]]; then
