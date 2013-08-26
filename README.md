@@ -59,7 +59,7 @@ Build Guide:
         breakfast stuttgart
         cd device/lenovo/stuttgart/
         mkdir tmp/
-        cp /path/to/stack_system_dir tmp/system # NOTE: please replace '/path/to/stack_system_dir'
+        ln -s /path/to/stack_system_dir tmp/system # NOTE: please replace '/path/to/stack_system_dir'
         ./extract-files.sh
         croot
         brunch stuttgart > out.txt 2>&1 &
