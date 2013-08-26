@@ -11,7 +11,7 @@ Audio
 Graphic
 gps
 
-What DOESNT Work:
+What DOESNOT Work:
 bluetooth heasset
 wifi p2p
 
@@ -25,7 +25,11 @@ Build Guide:
 
 **2. build env:** 
 
-        sudo apt-get install git-core gnupg flex bison python rar original-awk gawk p7zip-full gperf libsdl1.2-dev libesd0-dev squashfs-tools build-essential zip curl libncurses5-dev zlib1g-dev pngcrush schedtool libc6-dev x11proto-core-dev libx11-dev libgl1-mesa-dev mingw32 tofrodos python-markdown libxml2-utils g++-multilib lib32z1-dev ia32-libs lib32ncurses5-dev lib32readline-gplv2-dev gcc-multilib g++-multilib ctags xsltproc
+        sudo apt-get install git-core gnupg flex bison python rar original-awk gawk p7zip-full gperf \
+        libsdl1.2-dev libesd0-dev squashfs-tools build-essential zip curl libncurses5-dev zlib1g-dev \
+        pngcrush schedtool libc6-dev x11proto-core-dev libx11-dev libgl1-mesa-dev mingw32 tofrodos \
+        python-markdown libxml2-utils g++-multilib lib32z1-dev ia32-libs lib32ncurses5-dev \
+        lib32readline-gplv2-dev gcc-multilib g++-multilib ctags xsltproc
 
 **3. sync cm-10.1 source:**
 
@@ -53,6 +57,11 @@ Build Guide:
 
         . build/envsetup.sh
         breakfast stuttgart
+        cd device/lenovo/stuttgart/
+        mkdir tmp/
+        cp /path/to/stack_system_dir tmp/system # NOTE: please replace '/path/to/stack_system_dir'
+        ./extract-files.sh
+        croot
         brunch stuttgart > out.txt 2>&1 &
         tail -f out.txt
 
