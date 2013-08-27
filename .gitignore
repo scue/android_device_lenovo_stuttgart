@@ -12,3 +12,6 @@ out*
 
 #log
 log*.txt
+
+#preload
+preload.img
