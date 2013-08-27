@@ -71,4 +71,11 @@ if [[ -f $local_dir/$szbname.zip ]]; then
     echo "md5sum of zip:"
     cat $local_dir/$szbname.zip.md5sum
 fi
+
+# move
+mv $szbname $OUT/$szbname
+mv $szbname.zip $OUT/$szbname.zip
+mv $szbname.md5sum $OUT/$szbname.zip.md5sum
+
+# goback
 cd - >/dev/null
