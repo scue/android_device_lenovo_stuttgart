@@ -31,42 +31,39 @@ Build Guide:
         python-markdown libxml2-utils g++-multilib lib32z1-dev ia32-libs lib32ncurses5-dev \
         lib32readline-gplv2-dev gcc-multilib g++-multilib ctags xsltproc
 
-**3. sync cm-10.1 source:**
+**3. sync mokee-4.2.2 source:**
 
         mkdir -p ~/bin/
-        mkdir -p ~/cm10.1/
+        mkdir -p ~/mokee4.2/
         curl https://dl-ssl.google.com/dl/googlesource/git-repo/repo > ~/bin/repo
         chmod a+x ~/bin/repo
         export PATH=${PATH}:~/bin
-        cd ~/cm10.1/
-        repo init -u git://github.com/CyanogenMod/android.git -b cm-10.1
+        cd ~/mokee4.2/
+        repo init -u https://github.com/MoKee/android.git -b jb-mr1_mkt
         repo sync -j4
 
 **4. get prebuilt:**
 
-        cd ~/cm10.1/vendor/cm/
+        cd ~/mokee4.2/vendor/mk/
         ./get-prebuilts
 
 **5. get this repo source:**
     
-        cd ~/cm10.1/
+        cd ~/mokee4.2/
         git clone git@github.com:scue/android_device_lenovo_stuttgart.git device/lenovo/stuttgart
-        (cd device/lenovo/stuttgart && git checkout cm-10.1)
+        (cd device/lenovo/stuttgart && git checkout mk_jb-mr1)
 
 **6. build for stuttgart:**
 
-        . build/envsetup.sh
-        breakfast stuttgart
         cd device/lenovo/stuttgart/
         mkdir tmp/
         ln -s /path/to/stack_system_dir tmp/system # NOTE: please replace '/path/to/stack_system_dir'
         ./extract-files.sh
         croot
-        brunch stuttgart > out.txt 2>&1 &
-        tail -f out.txt
+        ./mk stuttgart
 
 **7. pack to a szb file(after built successfully):**
 
         cd device/lenovo/stuttgart/tools/
-        ./repackszb.sh
+        ./repackszb.sh stuttgart_mokee_r0.szb
 
