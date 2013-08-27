@@ -149,14 +149,6 @@ etc/bluetooth/bcm4330.hcd
 etc/bluetooth/bt_stack.conf
 etc/bluetooth/bt_vendor.conf
 etc/bluetooth/iop_bt.db
-etc/LeGa/haarcascade_eye_tree_eyeglasses.xml
-etc/LeGa/haarcascade_frontalface_default.xml
-etc/LeGa/lbpcascade_frontalface.xml
-etc/LeGa/lbpknn_child.xml
-etc/LeGa/lbpknn_gender.xml
-etc/LeGa/lbpsvm_child.xml
-etc/LeGa/lbpsvm_gender.xml
-etc/LeGa/LeGaConfig.xml
 media/audio/alarms/Afternoon_tea.ogg
 media/audio/alarms/Church_bells.ogg
 media/audio/alarms/Di_Di.ogg
