@@ -6,7 +6,7 @@
 #         USAGE:$ . build/envsetup.sh
 #               $ breakfast stuttgart
 #               $ cd device/lenovo/stuttgart/tools/
-#               $ ./repackszb.sh 
+#               $ ./repackszb.sh [szbname]
 # 
 #   DESCRIPTION: 
 # 
@@ -23,7 +23,11 @@
 local_dir=$(dirname $(readlink -f $0))
 
 #release
-szbname=stuttgart_cm10.1_release.szb
+if [[ "$1" != "" ]]; then
+    szbname="$1"
+else
+    szbname=stuttgart_cm10.1_release.szb
+fi
 
 #images
 bootloader=$local_dir/uboot.bin
@@ -38,7 +42,6 @@ if [[ ! -f $preload ]]; then
 fi
 
 # info
-echo "branch=$branch"
 echo "local_dir=$local_dir"
 echo "cpimage=$cpimage"
 
@@ -75,7 +78,7 @@ fi
 # move
 mv $szbname $OUT/$szbname
 mv $szbname.zip $OUT/$szbname.zip
-mv $szbname.md5sum $OUT/$szbname.zip.md5sum
+mv $szbname.zip.md5sum $OUT/$szbname.zip.md5sum
 
 # goback
 cd - >/dev/null
