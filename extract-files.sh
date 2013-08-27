@@ -31,7 +31,7 @@ if [[ "$(ls "$tmp_system")" == "" ]]; then
 fi
 # add by linkscue, end
 
-BASE=../../../vendor/lenovo/stuttgart/proprietary
+BASE=${PWD%/device/lenovo/stuttgart}/vendor/lenovo/stuttgart/proprietary
 rm -rf $BASE/*
 
 for FILE in `egrep -v '(^#|^$)' proprietary-files.txt`; do
