@@ -278,17 +278,13 @@ PRODUCT_COPY_FILES += \
 	device/lenovo/stuttgart/supercam/lib/libmorpho_panorama_gp.so:system/lib/libmorpho_panorama_gp.so \
 	device/lenovo/stuttgart/supercam/lib/libmorpho_SmartSelect.so:system/lib/libmorpho_SmartSelect.so
 
-#product_copy_files += \
-	device/lenovo/stuttgart/prebuilt/hwcomposer.exynos4.so:system/lib/hw/hwcomposer.exynos4.so
-
-#PRODUCT_COPY_FILES += \
-	device/lenovo/stuttgart/prebuilt/su:system/xbin/su
-
-#PRODUCT_COPY_FILES += \
-	device/lenovo/stuttgart/prebuilt/apps/SuperSU.apk:system/app/SuperSU.apk
-
-#PRODUCT_COPY_FILES += \
-	device/lenovo/stuttgart/prebuilt/libsensorservice.so:system/lib/libsensorservice.so
+PRODUCT_COPY_FILES += \
+device/lenovo/stuttgart/supercam/LeGA/lbpsvm_child.xml:system/LeGA/lbpsvm_child.xml \
+device/lenovo/stuttgart/supercam/LeGA/lbpsvm_gender.xml:system/LeGA/lbpsvm_gender.xml \
+device/lenovo/stuttgart/supercam/LeGA/LeGaConfig.xml:system/LeGA/LeGaConfig.xml \
+device/lenovo/stuttgart/supercam/LeGA/RFFprec_501.bmd:system/LeGA/RFFprec_501.bmd \
+device/lenovo/stuttgart/supercam/LeGA/RFFspeed_501.bmd:system/LeGA/RFFspeed_501.bmd \
+device/lenovo/stuttgart/supercam/LeGA/RFFstd_501.bmd:system/LeGA/RFFstd_501.bmd
 
 PRODUCT_COPY_FILES += \
 	device/lenovo/stuttgart/configs/mkshrc:system/etc/mkshrc
