@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<opencv_storage>
+<GenderSVM>
+  <Th1>8.5000002384185791e-001</Th1>
+  <Th2>4.4999998807907104e-001</Th2>
+  <OutFlag>1</OutFlag></GenderSVM>
+<GenderKNN>
+  <Th>0.</Th>
+  <k>10</k>
+  <coef>2.</coef>
+  <WeightType>0</WeightType></GenderKNN>
+<ChildSVM>
+  <Th1>8.5000002384185791e-001</Th1>
+  <Th2>8.5000002384185791e-001</Th2>
+  <OutFlag>1</OutFlag></ChildSVM>
+<ChildKNN>
+  <Th>0.</Th>
+  <k>10</k>
+  <coef>2.</coef>
+  <WeightType>0</WeightType></ChildKNN>
+<DrawFaceRect>0</DrawFaceRect>
+<FaceWidth>100</FaceWidth>
+<FaceHeight>100</FaceHeight>
+<LBPType>3</LBPType>
+<ClassifierType>0</ClassifierType>
+</opencv_storage>
