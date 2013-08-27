@@ -1,0 +1,30 @@
+#!/bin/bash - 
+#===============================================================================
+#
+#          FILE: repackpreload
+# 
+#         USAGE: ./repackpreload [image] [dir]
+# 
+#   DESCRIPTION: 
+# 
+#       OPTIONS: ---
+#  REQUIREMENTS: ---
+#          BUGS: ---
+#         NOTES: ---
+#        AUTHOR: linkscue (scue), linkscue@gmail.com
+#  ORGANIZATION: 
+#       CREATED: 2013年08月27日 09时42分00秒 HKT
+#      REVISION:  ---
+#===============================================================================
+
+local_dir=$(dirname $(readlink -f $0))
+
+if [[ $# != 2 ]]; then
+    echo "repackpreload \$IMAGE \$DIR"
+    exit 1
+fi
+
+IMAGE=$1
+DIR=$2
+SIZE=$[199*1024*1024]
+$local_dir/make_ext4fs_ics -s -l $SIZE -a preload $IMAGE $DIR/
