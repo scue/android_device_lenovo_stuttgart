@@ -14,7 +14,7 @@ $(call inherit-product, vendor/mk/config/common_full_phone.mk)
 # Inherit device configuration
 $(call inherit-product, device/lenovo/stuttgart/full_stuttgart.mk)
 
-## Device identifier. This must come after all inclusions
+# Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := stuttgart
 PRODUCT_NAME := mk_stuttgart
 PRODUCT_BRAND := Lenovo
