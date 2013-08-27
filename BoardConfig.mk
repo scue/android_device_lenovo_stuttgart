@@ -70,7 +70,7 @@ TARGET_NO_RADIOIMAGE := true
 TARGET_PROVIDES_INIT_RC := true
 TARGET_PROVIDES_INIT := true
 TARGET_PROVIDES_INIT_TARGET_RC := true
-TARGET_RECOVERY_INITRC := device/lenovo/stuttgart/recovery.rc
+TARGET_RECOVERY_INITRC := device/lenovo/stuttgart/recovery/recovery.rc
 BOARD_USES_DEPRECATED_TOOLCHAIN := true
 BOARD_KERNEL_CMDLINE := 
 BOARD_KERNEL_BASE := 0x10000000
@@ -191,13 +191,11 @@ BOARD_HDMI_DDC_CH := DDC_CH_I2C_7
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/s3c-usbgadget/gadget/lun%d/file"
 
 # Recovery
-#BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/smdk4412-common/recovery/recovery_keys.c
 BOARD_CUSTOM_GRAPHICS := ../../../device/lenovo/stuttgart/recovery/griphics.c
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
 BOARD_UMS_LUNFILE := "/sys/devices/platform/s3c-usbgadget/gadget/lun%d/file"
 BOARD_USES_MMCUTILS := true
 BOARD_HAS_LARGE_FILESYSTEM := true
-BOARD_HAS_NO_MISC_PARTITION := true
 BOARD_HAS_NO_SELECT_BUTTON := true
 
 # Releasetools
