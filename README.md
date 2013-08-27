@@ -65,3 +65,8 @@ Build Guide:
         brunch stuttgart > out.txt 2>&1 &
         tail -f out.txt
 
+**7. pack to a szb file(after built successfully):**
+
+        cd device/lenovo/stuttgart/tools/
+        ./repackszb.sh
+
