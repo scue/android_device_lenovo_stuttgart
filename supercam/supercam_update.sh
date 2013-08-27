@@ -52,7 +52,7 @@ if [[ "$1" == info ]]; then
     echo ""
     echo ">>> LeGA/:"
     for n in $(ls LeGA/); do
-        echo "device/lenovo/stuttgart/supercam/LeGA/$n:system/LeGA/$n \\"
+        echo "device/lenovo/stuttgart/supercam/LeGA/$n:system/etc/LeGa/$n \\"
     done
     echo ""
     echo "<<< add the output above to stuttgart.mk, if you need."

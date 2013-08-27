@@ -279,12 +279,12 @@ PRODUCT_COPY_FILES += \
 	device/lenovo/stuttgart/supercam/lib/libmorpho_SmartSelect.so:system/lib/libmorpho_SmartSelect.so
 
 PRODUCT_COPY_FILES += \
-device/lenovo/stuttgart/supercam/LeGA/lbpsvm_child.xml:system/LeGA/lbpsvm_child.xml \
-device/lenovo/stuttgart/supercam/LeGA/lbpsvm_gender.xml:system/LeGA/lbpsvm_gender.xml \
-device/lenovo/stuttgart/supercam/LeGA/LeGaConfig.xml:system/LeGA/LeGaConfig.xml \
-device/lenovo/stuttgart/supercam/LeGA/RFFprec_501.bmd:system/LeGA/RFFprec_501.bmd \
-device/lenovo/stuttgart/supercam/LeGA/RFFspeed_501.bmd:system/LeGA/RFFspeed_501.bmd \
-device/lenovo/stuttgart/supercam/LeGA/RFFstd_501.bmd:system/LeGA/RFFstd_501.bmd
+	device/lenovo/stuttgart/supercam/LeGA/lbpsvm_child.xml:system/etc/LeGa/lbpsvm_child.xml \
+	device/lenovo/stuttgart/supercam/LeGA/lbpsvm_gender.xml:system/etc/LeGa/lbpsvm_gender.xml \
+	device/lenovo/stuttgart/supercam/LeGA/LeGaConfig.xml:system/etc/LeGa/LeGaConfig.xml \
+	device/lenovo/stuttgart/supercam/LeGA/RFFprec_501.bmd:system/etc/LeGa/RFFprec_501.bmd \
+	device/lenovo/stuttgart/supercam/LeGA/RFFspeed_501.bmd:system/etc/LeGa/RFFspeed_501.bmd \
+	device/lenovo/stuttgart/supercam/LeGA/RFFstd_501.bmd:system/etc/LeGa/RFFstd_501.bmd
 
 PRODUCT_COPY_FILES += \
 	device/lenovo/stuttgart/configs/mkshrc:system/etc/mkshrc
