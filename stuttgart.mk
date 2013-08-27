@@ -362,7 +362,7 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 # Set default USB interface
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mass_storage \
-    ro.build.display.id=lephone.cc_linkscue_cm10.1 
+    ro.build.display.id=lephone.cc_linkscue_mk4.2.2
 ADDITIONAL_DEFAULT_PROPERTIES += \
     ro.secure=0 \
     ro.allow.mock.location=1 \
