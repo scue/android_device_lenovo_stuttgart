@@ -198,27 +198,26 @@ PRODUCT_PACKAGES += \
 	Camera
 
 # HAL
-PRODUCT_PACKAGES += \
-	lights.exynos4 \
-	camera.stuttgart \
-	libhdmi \
-	libhdmiclient \
-	libasan_preload \
-	hwcomposer.exynos4
+#PRODUCT_PACKAGES += \
+#	libhdmi \
+#	libhdmiclient \
+#	libasan_preload
+#	lights.exynos4 \
 #	libsecril-client
-#    libgralloc_ump \
-#    libhwconverter \
-#    libfimg \
-#    hwcomposer.exynos4 \
-	libhdmi \
-	libhdmiclient \
-	libTVOut \
-    libhwjpeg \
-    libfimc 
-#    libcec \
-#    libddc \
-#    libedid \
-#    libtinyalsa \
+#	libgralloc_ump \
+#	libhwconverter \
+#	libfimg \
+#	camera.stuttgart \
+#	hwcomposer.exynos4 \
+#	libhdmi \
+#	libhdmiclient \
+#	libTVOut \
+#	libhwjpeg \
+#	libfimc \
+#	libcec \
+#	libddc \
+#	libedid \
+#	libtinyalsa \
 
 
 # MFC API
