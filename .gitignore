@@ -1,9 +1,7 @@
 #tmp
 tmp*
 tmp/
-out*
 *back.xml
-*.orig
 
 #bak
 *.bak

@@ -34,12 +34,7 @@ bootloader=$local_dir/uboot.bin
 bootimage=$OUT/boot.img
 systemimage=$OUT/system.img
 cpimage=$local_dir/cpimage.img
-preload=$(readlink -f ..)/preload.img
-
-if [[ ! -f $preload ]]; then
-    echo "make preload.img .."
-    (cd $(dirname $preload); ./tools/preloadtools/repackpreload $preload preload/)
-fi
+preload=$OUT/preload.img
 
 # info
 echo "local_dir=$local_dir"

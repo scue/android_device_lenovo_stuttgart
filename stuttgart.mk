@@ -171,7 +171,7 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
 	hcitool \
-	charger
+	preload
 
 # Wifi
 PRODUCT_COPY_FILES += \
@@ -198,26 +198,27 @@ PRODUCT_PACKAGES += \
 	Camera
 
 # HAL
-#PRODUCT_PACKAGES += \
-#	libhdmi \
-#	libhdmiclient \
-#	libasan_preload
-#	lights.exynos4 \
+PRODUCT_PACKAGES += \
+	lights.exynos4 \
+	camera.stuttgart \
+	libhdmi \
+	libhdmiclient \
+	libasan_preload \
+	hwcomposer.exynos4
 #	libsecril-client
-#	libgralloc_ump \
-#	libhwconverter \
-#	libfimg \
-#	camera.stuttgart \
-#	hwcomposer.exynos4 \
-#	libhdmi \
-#	libhdmiclient \
-#	libTVOut \
-#	libhwjpeg \
-#	libfimc \
-#	libcec \
-#	libddc \
-#	libedid \
-#	libtinyalsa \
+#    libgralloc_ump \
+#    libhwconverter \
+#    libfimg \
+#    hwcomposer.exynos4 \
+	libhdmi \
+	libhdmiclient \
+	libTVOut \
+    libhwjpeg \
+    libfimc 
+#    libcec \
+#    libddc \
+#    libedid \
+#    libtinyalsa \
 
 
 # MFC API
@@ -361,7 +362,7 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 # Set default USB interface
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mass_storage \
-    ro.build.display.id=lephone.cc_linkscue_mk4.2.2
+    ro.build.display.id=lephone.cc_linkscue_cm10.1 
 ADDITIONAL_DEFAULT_PROPERTIES += \
     ro.secure=0 \
     ro.allow.mock.location=1 \
