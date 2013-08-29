@@ -171,7 +171,7 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
 	hcitool \
-	charger
+	preload
 
 # Wifi
 PRODUCT_COPY_FILES += \
