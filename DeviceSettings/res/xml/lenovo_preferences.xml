@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- Lenovo modes -->
+    <PreferenceCategory android:title="@string/category_google_title" >
     <com.cyanogenmod.settings.device.Gapps
                 android:key="gapps"
                 android:title="@string/gapps_title_head"
@@ -8,12 +9,30 @@
                 android:entries="@array/gapps_entries"
                         android:entryValues="@array/gapps_entries_values"
                         android:defaultValue="21" />
-    <com.cyanogenmod.settings.device.Sdcard
-                android:key="fstab"
-                android:title="@string/fstab_title_head"
-                android:summary="@string/fstab_summary_head"
-                android:entries="@array/fstab_entries"
-                        android:entryValues="@array/fstab_entries_values"
-                        android:defaultValue="24" />
+    </PreferenceCategory>
+    
+    <PreferenceCategory android:title="@string/category_sdcard_title" >
+        <com.cyanogenmod.settings.device.Sdcard
+            android:defaultValue="24"
+            android:entries="@array/fstab_entries"
+            android:entryValues="@array/fstab_entries_values"
+            android:key="fstab"
+            android:summary="@string/fstab_summary_head"
+            android:title="@string/fstab_title_head" />
+    </PreferenceCategory>
+    
+    <PreferenceCategory android:title="@string/category_mac_title" >
+        <EditTextPreference
+            android:defaultValue="1c:b0:94:bc:12:c0"
+            android:dialogTitle="@string/mac_edit_dialog_title"
+            android:hint="1c:b0:94:bc:12:c0"
+            android:key="mac_edit"
+            android:summary="@string/mac_edit_summary"
+            android:title="@string/mac_edit_title" />
+        <CheckBoxPreference
+            android:key="mac_lock"
+            android:summary="@string/mac_lock_summary2"
+            android:title="@string/mac_lock_title" />
+    </PreferenceCategory>
 
 </PreferenceScreen>

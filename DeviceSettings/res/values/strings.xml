@@ -84,6 +84,9 @@
     
     <!-- Lenovo -->
     <string name="category_lenovo_title">K860(i)</string>
+    <string name="category_google_title">Google</string>
+    <string name="category_sdcard_title">Sdcard</string>
+    <string name="category_mac_title">MAC</string>
     <string name="gapps_title_head">Gapps</string>
     <string name="gapps_summary_head">Install/Remove Google Mobile service</string>
     <string name="gapps_do_nothing">Profile no change</string>
@@ -95,5 +98,12 @@
     <string name="fstab_internal_success">change to internal success</string>
     <string name="fstab_external_success">change to external success</string>
     <string name="toast_reboot_tip">maybe you need to reboot to take it effect</string>
+    <string name="mac_edit_title">Change Mac Address</string>
+    <string name="mac_edit_dialog_title">Input A Mac Address:</string>
+    <string name="mac_edit_summary">Input a mac address what you want</string>
+    <string name="mac_lock_title">Lock Mac Address</string>
+    <string name="mac_lock_summary1">Mac address is locked</string>
+    <string name="mac_lock_summary2">Mac address is not locked</string>
+    <string name="toast_mac_change_tip">After change mac address, please lock it to take effect</string>
 
 </resources>

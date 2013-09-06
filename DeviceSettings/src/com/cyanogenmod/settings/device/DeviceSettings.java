@@ -45,6 +45,8 @@ public class DeviceSettings extends FragmentActivity {
     public static final String KEY_TOUCHKEY_TIMEOUT = "touchkey_timeout";
     public static final String KEY_HSPA = "hspa";
     public static final String KEY_GAPPS = "gapps";
+    public static final String KEY_MAC_EDIT = "mac_edit";
+    public static final String KEY_MAC_LOCK = "mac_lock";
     public static final String KEY_USE_DOCK_AUDIO = "dock_audio";
     public static final String KEY_CATEGORY_SPEN = "category_spen";
     public static final String KEY_SPEN_POWER_SAVING_MODE = "spen_power_saving";

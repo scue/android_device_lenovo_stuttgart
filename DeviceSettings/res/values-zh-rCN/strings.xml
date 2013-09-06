@@ -84,6 +84,9 @@
 
     <!-- Lenovo -->
     <string name="category_lenovo_title">联想</string>
+    <string name="category_google_title">Google</string>
+    <string name="category_sdcard_title">Sdcard</string>
+    <string name="category_mac_title">MAC</string>
     <string name="gapps_title_head">谷歌服务包</string>
     <string name="gapps_summary_head">安装或卸载谷歌服务包</string>
     <string name="gapps_do_nothing">设置未改变</string>
@@ -95,5 +98,12 @@
     <string name="fstab_internal_success">切换至内置SD卡成功</string>
     <string name="fstab_external_success">切换至外置SD卡成功</string>
     <string name="toast_reboot_tip">你需要重启使之生效</string>
+    <string name="mac_edit_title">MAC修改</string>
+    <string name="mac_edit_dialog_title">输入一个MAC地址:</string>
+    <string name="mac_edit_summary">请输入一个MAC地址</string>
+    <string name="mac_lock_title">MAC锁定</string>
+    <string name="mac_lock_summary1">MAC地址已锁定</string>
+    <string name="mac_lock_summary2">MAC地址未锁定</string>
+    <string name="toast_mac_change_tip">修改之后请锁定MAC地址，使之生效</string>
 
 </resources>
