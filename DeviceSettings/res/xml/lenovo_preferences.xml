@@ -23,9 +23,9 @@
     
     <PreferenceCategory android:title="@string/category_mac_title" >
         <EditTextPreference
-            android:defaultValue="1c:b0:94:bc:12:c0"
+            android:defaultValue="00:12:fe:c5:12:40"
             android:dialogTitle="@string/mac_edit_dialog_title"
-            android:hint="1c:b0:94:bc:12:c0"
+            android:hint="00:12:fe:c5:12:40"
             android:key="mac_edit"
             android:summary="@string/mac_edit_summary"
             android:title="@string/mac_edit_title" />

@@ -81,9 +81,15 @@ public class LenovoFragmentActivity extends PreferenceFragment {
             if (((CheckBoxPreference)preference).isChecked()) {
 //                Toast.makeText(getActivity(), "您锁定了MAC地址 "+mac_edit.getText(), 10).show();
                 mac_lock.setSummary(R.string.mac_lock_summary1);
-                RootCmd.execRootCmdSilent("chmod 664 "+mac_addr_location);
-                RootCmd.execRootCmdSilent("echo "+mac_edit.getText()+" > "+mac_addr_location);
-                RootCmd.execRootCmdSilent("chmod 444 "+mac_addr_location);
+                String cmd1="chmod 664 "+mac_addr_location;
+                String cmd2="echo "+mac_edit.getText()+" > "+mac_addr_location;
+                String cmd3="chmod 444 "+mac_addr_location;
+                RootCmd.execRootCmdSilent(cmd1);
+                RootCmd.execRootCmdSilent(cmd2);
+                RootCmd.execRootCmdSilent(cmd3);
+//                Toast.makeText(getActivity(),cmd1, 10).show();
+//                Toast.makeText(getActivity(),cmd2, 10).show();
+//                Toast.makeText(getActivity(),cmd3, 10).show();
             } else {
 //                Toast.makeText(getActivity(), "您解锁了MAC地址"+mac_edit.getText(), 10).show();
                 mac_lock.setSummary(R.string.mac_lock_summary2);
