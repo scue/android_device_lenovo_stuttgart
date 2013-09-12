@@ -36,4 +36,14 @@ done
 unset p
 unset n
 
+# for local porfile
+if [[ -e /sdcard/local_profile ]];then
+    . /sdcard/local_profile
+fi
+
+# for bash
+if [[ "$(which bash)" != "" ]];then
+    bash
+fi
+
 : place customisations above this line
