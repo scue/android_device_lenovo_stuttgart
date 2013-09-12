@@ -56,19 +56,19 @@ public class Gapps extends ListPreference implements OnPreferenceChangeListener 
 
     public boolean onPreferenceChange(Preference preference, Object newValue) { //当它有变化时，它的操作
         if (((String)newValue).compareTo("21") == 0 ) {
-            Toast.makeText(mCtx, R.string.gapps_do_nothing, 10).show();
+            Toast.makeText(mCtx, R.string.gapps_do_nothing, Toast.LENGTH_SHORT).show();
         }
         if (((String)newValue).compareTo("22") == 0 ) {
-            String intsall_f = "/preload/gms/gms_install_d.sh";
-            Toast.makeText(mCtx, RootCmd.execRootCmdSilent(intsall_f), 10).show();
-            Toast.makeText(mCtx, R.string.toast_reboot_tip, 10).show();
-            Toast.makeText(mCtx, R.string.gapps_install_success, 10).show();
+            String intsall_f = "sh /preload/gms/gms_install_d.sh";
+            Toast.makeText(mCtx, RootCmd.execRootCmdSilent(intsall_f), Toast.LENGTH_SHORT).show();
+            Toast.makeText(mCtx, R.string.toast_reboot_tip, Toast.LENGTH_SHORT).show();
+            Toast.makeText(mCtx, R.string.gapps_install_success, Toast.LENGTH_SHORT).show();
         }
         if (((String)newValue).compareTo("23") == 0 ) {
-            String remove_f = "/preload/gms/gms_remove_d.sh";
-            Toast.makeText(mCtx, RootCmd.execRootCmdSilent(remove_f), 10).show();
-            Toast.makeText(mCtx, R.string.toast_reboot_tip, 10).show();
-            Toast.makeText(mCtx, R.string.gapps_remove_success, 10).show();
+            String remove_f = "sh /preload/gms/gms_remove_d.sh";
+            Toast.makeText(mCtx, RootCmd.execRootCmdSilent(remove_f), Toast.LENGTH_SHORT).show();
+            Toast.makeText(mCtx, R.string.toast_reboot_tip, Toast.LENGTH_SHORT).show();
+            Toast.makeText(mCtx, R.string.gapps_remove_success, Toast.LENGTH_SHORT).show();
         }
         return true;
     }

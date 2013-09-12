@@ -46,21 +46,21 @@ public class Sdcard extends ListPreference implements OnPreferenceChangeListener
         String sysrw = "mount -o remount,rw /system";
         String sysro = "mount -o remount,ro /system";
         if (((String)newValue).compareTo("24") == 0 ) {
-            Toast.makeText(mCtx, R.string.fstab_do_nothing, 10).show();
+            Toast.makeText(mCtx, R.string.fstab_do_nothing, Toast.LENGTH_SHORT).show();
         }
         if (((String)newValue).compareTo("25") == 0 ) {
             RootCmd.execRootCmdSilent(sysrw);
             RootCmd.execRootCmdSilent("cp "+fstab_primary+" "+fstab_file);
             RootCmd.execRootCmdSilent(sysro);
-            Toast.makeText(mCtx, R.string.toast_reboot_tip, 10).show();
-            Toast.makeText(mCtx, R.string.fstab_internal_success, 10).show();
+            Toast.makeText(mCtx, R.string.toast_reboot_tip, Toast.LENGTH_SHORT).show();
+            Toast.makeText(mCtx, R.string.fstab_internal_success, Toast.LENGTH_SHORT).show();
         }
         if (((String)newValue).compareTo("26") == 0 ) {
             RootCmd.execRootCmdSilent(sysrw);
             RootCmd.execRootCmdSilent("cp "+fstab_extra+" "+fstab_file);
             RootCmd.execRootCmdSilent(sysro);
-            Toast.makeText(mCtx, R.string.toast_reboot_tip, 10).show();
-            Toast.makeText(mCtx, R.string.fstab_external_success, 10).show();
+            Toast.makeText(mCtx, R.string.toast_reboot_tip, Toast.LENGTH_SHORT).show();
+            Toast.makeText(mCtx, R.string.fstab_external_success, Toast.LENGTH_SHORT).show();
         }
         return true;
     }
