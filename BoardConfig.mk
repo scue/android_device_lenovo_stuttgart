@@ -1,28 +1,3 @@
-#
-# Copyright (C) 2012 The CyanogenMod Project
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#      http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
-#
-# This file sets variables that control the way modules are built
-# thorughout the system. It should not be used to conditionally
-# disable makefiles (the proper mechanism to control what gets
-# included in a build is to use PRODUCT_PACKAGES in a product
-# definition file).
-#
-
-# This variable is set first, so it can be overridden
-# by BoardConfigVendor.mk
 USE_CAMERA_STUB := true
 BOARD_USES_GENERIC_AUDIO := false
 
@@ -69,7 +44,7 @@ TARGET_PROVIDES_INIT := true
 TARGET_PROVIDES_INIT_TARGET_RC := true
 TARGET_RECOVERY_INITRC := device/lenovo/stuttgart/recovery/recovery.rc
 BOARD_USES_DEPRECATED_TOOLCHAIN := true
-BOARD_KERNEL_CMDLINE := 
+BOARD_KERNEL_CMDLINE :=
 BOARD_KERNEL_BASE := 0x10000000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_CUSTOM_BOOTIMG_MK := device/lenovo/stuttgart/shbootimg.mk
@@ -182,7 +157,7 @@ BRCM_BTL_INCLUDE_A2DP := true
 TARGET_CUSTOM_BLUEDROID := ../../../device/lenovo/stuttgart/bluetooth/bluetooth.c
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/lenovo/stuttgart/bluetooth/include
 
-#DDC 
+#DDC
 BOARD_HDMI_DDC_CH := DDC_CH_I2C_7
 
 # Vold
@@ -196,14 +171,9 @@ BOARD_USES_MMCUTILS := true
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_HAS_NO_SELECT_BUTTON := true
 
-# Releasetools
-#TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := ./device/lenovo/stuttgart/releasetools/ota_from_target_files
-#TARGET_RELEASETOOL_IMG_FROM_TARGET_SCRIPT := ./device/lenovo/stuttgart/releasetools/img_from_target_files
-
-# Charging mode
-BOARD_CHARGING_MODE_BOOTING_LPM := /sys/devices/platform/s3c2440-i2c.0/i2c-0/0-0035/power_supply/usb-charger/online
-BOARD_BATTERY_DEVICE_NAME := "battery"
-#BOARD_CHARGER_RES := device/lenovo/stuttgart/res/charger
+#
+# TODO: Charging mode
+#
 
 # assert
 TARGET_OTA_ASSERT_DEVICE := stuttgart,K860,K860i

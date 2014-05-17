@@ -14,14 +14,24 @@
 # limitations under the License.
 #
 
-DEVICE_PACKAGE_OVERLAYS += device/lenovo/stuttgart/overlay
+DEVICE_PACKAGE_OVERLAYS += $(LOCAL_BASEDIR)/overlay
+LOCAL_BASEDIR=device/lenovo/stuttgart
 
+# overlay
+DEVICE_PACKAGE_OVERLAYS += $(LOCAL_BASEDIR)/overlay
+
+# UTC
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
+# languages
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
+
+# Gps
+PRODUCT_COPY_FILES += \
+    $(LOCAL_BASEDIR)/configs/gpsconfig.xml:system/etc/gpsconfig.xml
 
 # This device is xhdpi.  However the platform doesn't
 # currently contain all of the bitmaps at xhdpi density so
@@ -29,111 +39,85 @@ $(call inherit-product, device/common/gps/gps_us_supl.mk)
 # if the xhdpi doesn't exist.
 PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
-
-#Fix can not hang the Calls
-
-#FRAMEWORKS_BASE_SUBDIRS += ../../$(LOCAL_PATH)/stuttgartril/
-
-
-# Init files
+# Boot: root dir
 PRODUCT_COPY_FILES := \
-    device/lenovo/stuttgart/rootdir/gpio:root/gpio \
-    device/lenovo/stuttgart/rootdir/busybox:root/sbin/busybox \
-    device/lenovo/stuttgart/rootdir/busybox:recovery/root/sbin/busybox \
-    device/lenovo/stuttgart/rootdir/fstab.stuttgart:root/fstab.stuttgart \
-    device/lenovo/stuttgart/rootdir/init.rc:root/init.rc \
-    device/lenovo/stuttgart/rootdir/lpm.rc:root/lpm.rc \
-    device/lenovo/stuttgart/rootdir/init.stuttgart.rc:root/init.stuttgart.rc \
-    device/lenovo/stuttgart/rootdir/init.stuttgart.usb.rc:root/init.stuttgart.usb.rc \
-    device/lenovo/stuttgart/rootdir/init.testmode.rc:root/init.testmode.rc \
-    device/lenovo/stuttgart/rootdir/init.cp_update.rc:root/init.cp_update.rc \
-    device/lenovo/stuttgart/rootdir/init.trace.rc:root/init.trace.rc \
-    device/lenovo/stuttgart/rootdir/ueventd.stuttgart.rc:root/ueventd.stuttgart.rc \
-    device/lenovo/stuttgart/rootdir/ueventd.stuttgart.rc:recovery/root/ueventd.stuttgart.rc
+    $(LOCAL_BASEDIR)/rootdir/gpio:root/sbin/gpio \
+    $(LOCAL_BASEDIR)/rootdir/busybox:root/sbin/busybox \
+    $(LOCAL_BASEDIR)/rootdir/init.rc:root/init.rc \
+    $(LOCAL_BASEDIR)/rootdir/init.stuttgart.rc:root/init.stuttgart.rc \
+    $(LOCAL_BASEDIR)/rootdir/init.stuttgart.usb.rc:root/init.stuttgart.usb.rc \
+    $(LOCAL_BASEDIR)/rootdir/init.testmode.rc:root/init.testmode.rc \
+    $(LOCAL_BASEDIR)/rootdir/init.cp_update.rc:root/init.cp_update.rc \
+    $(LOCAL_BASEDIR)/rootdir/init.trace.rc:root/init.trace.rc \
+    $(LOCAL_BASEDIR)/rootdir/ueventd.stuttgart.rc:root/ueventd.stuttgart.rc
 
-# charger
+# Boot: vendor firmware
 PRODUCT_COPY_FILES += \
-	device/lenovo/stuttgart/res/charger/battery_0.png:root/res/images/charger/battery_0.png \
-	device/lenovo/stuttgart/res/charger/battery_1.png:root/res/images/charger/battery_1.png \
-	device/lenovo/stuttgart/res/charger/battery_2.png:root/res/images/charger/battery_2.png \
-	device/lenovo/stuttgart/res/charger/battery_3.png:root/res/images/charger/battery_3.png \
-	device/lenovo/stuttgart/res/charger/battery_4.png:root/res/images/charger/battery_4.png \
-	device/lenovo/stuttgart/res/charger/battery_5.png:root/res/images/charger/battery_5.png \
-	device/lenovo/stuttgart/res/charger/battery_charge.png:root/res/images/charger/battery_charge.png \
-	device/lenovo/stuttgart/res/charger/battery_fail.png:root/res/images/charger/battery_fail.png
+    $(LOCAL_BASEDIR)/rootdir/vendor/firmware/fimc_is_fw.bin:root/vendor/firmware/fimc_is_fw.bin \
+    $(LOCAL_BASEDIR)/rootdir/vendor/firmware/mfc_fw.bin:root/vendor/firmware/mfc_fw.bin \
+    $(LOCAL_BASEDIR)/rootdir/vendor/firmware/setfile.bin:root/vendor/firmware/setfile.bin \
+    $(LOCAL_BASEDIR)/rootdir/vendor/firmware/setfile_S5K3H7.bin:root/vendor/firmware/setfile_S5K3H7.bin
 
-PRODUCT_PACKAGE += \
-		   charger \
-		   charger_res_images
-
-# firmware
+# Boot: yma
 PRODUCT_COPY_FILES += \
-	device/lenovo/stuttgart/firmware/fw_bcmdhd_apsta.bin:system/etc/firmware/fw_bcmdhd_apsta.bin \
-	device/lenovo/stuttgart/firmware/fw_bcmdhd.bin:system/etc/firmware/fw_bcmdhd.bin \
-	device/lenovo/stuttgart/firmware/fw_bcmdhd_p2p.bin:system/etc/firmware/fw_bcmdhd_p2p.bin \
-	device/lenovo/stuttgart/firmware/sdio-g-mfgtest.bin:system/etc/firmware/sdio-g-mfgtest.bin
+    $(LOCAL_BASEDIR)/rootdir/ymc/param/0_2MIC_HS_NB.dat:root/ymc/param/0_2MIC_HS_NB.dat \
+    $(LOCAL_BASEDIR)/rootdir/ymc/param/0_2MICNSOFF_HS_NB.dat:root/ymc/param/0_2MICNSOFF_HS_NB.dat \
+    $(LOCAL_BASEDIR)/rootdir/ymc/param/1_1MIC_HF_NB.dat:root/ymc/param/1_1MIC_HF_NB.dat \
+    $(LOCAL_BASEDIR)/rootdir/ymc/param/2_2MIC_REC_WB.dat:root/ymc/param/2_2MIC_REC_WB.dat \
+    $(LOCAL_BASEDIR)/rootdir/ymc/param/3_1MIC_REC_NB.dat:root/ymc/param/3_1MIC_REC_NB.dat \
+    $(LOCAL_BASEDIR)/rootdir/ymc/param/3_1MIC_REC_WB.dat:root/ymc/param/3_1MIC_REC_WB.dat \
+    $(LOCAL_BASEDIR)/rootdir/ymc/param/4_1MIC_HES_NB.dat:root/ymc/param/4_1MIC_HES_NB.dat \
+    $(LOCAL_BASEDIR)/rootdir/ymc/param/agc_off.dat:root/ymc/param/agc_off.dat \
+    $(LOCAL_BASEDIR)/rootdir/ymc/param/dng_off.dat:root/ymc/param/dng_off.dat \
+    $(LOCAL_BASEDIR)/rootdir/ymc/param/dsp_off.dat:root/ymc/param/dsp_off.dat \
+    $(LOCAL_BASEDIR)/rootdir/ymc/param/dsp_through.dat:root/ymc/param/dsp_through.dat \
+    $(LOCAL_BASEDIR)/rootdir/ymc/param/handsfree_1.dat:root/ymc/param/handsfree_1.dat \
+    $(LOCAL_BASEDIR)/rootdir/ymc/param/handsfree_2.dat:root/ymc/param/handsfree_2.dat \
+    $(LOCAL_BASEDIR)/rootdir/ymc/param/handsfree_off.dat:root/ymc/param/handsfree_off.dat \
+    $(LOCAL_BASEDIR)/rootdir/ymc/param/Lenovo_S3_HP_effect.dat:root/ymc/param/Lenovo_S3_HP_effect.dat \
+    $(LOCAL_BASEDIR)/rootdir/ymc/param/Lenovo_S3_SP_effect.dat:root/ymc/param/Lenovo_S3_SP_effect.dat \
+    $(LOCAL_BASEDIR)/rootdir/ymc/param/YMach2_0_HS_2MIC_NB_adc_agc.dat:root/ymc/param/YMach2_0_HS_2MIC_NB_adc_agc.dat \
+    $(LOCAL_BASEDIR)/rootdir/ymc/param/YMach2_0_HS_2MIC_NB_dng.dat:root/ymc/param/YMach2_0_HS_2MIC_NB_dng.dat \
+    $(LOCAL_BASEDIR)/rootdir/ymc/param/YMach2_0_HS_2MIC_NB_pdm_agc.dat:root/ymc/param/YMach2_0_HS_2MIC_NB_pdm_agc.dat \
+    $(LOCAL_BASEDIR)/rootdir/ymc/param/YMach2_1_HF_1MIC_NB_adc_agc.dat:root/ymc/param/YMach2_1_HF_1MIC_NB_adc_agc.dat \
+    $(LOCAL_BASEDIR)/rootdir/ymc/param/YMach2_1_HF_1MIC_NB_dng.dat:root/ymc/param/YMach2_1_HF_1MIC_NB_dng.dat \
+    $(LOCAL_BASEDIR)/rootdir/ymc/param/YMach2_1_HF_1MIC_NB_pdm_agc.dat:root/ymc/param/YMach2_1_HF_1MIC_NB_pdm_agc.dat \
+    $(LOCAL_BASEDIR)/rootdir/ymc/param/YMach2_2_REC_2MIC_WB_adc_agc.dat:root/ymc/param/YMach2_2_REC_2MIC_WB_adc_agc.dat \
+    $(LOCAL_BASEDIR)/rootdir/ymc/param/YMach2_2_REC_2MIC_WB_dng.dat:root/ymc/param/YMach2_2_REC_2MIC_WB_dng.dat \
+    $(LOCAL_BASEDIR)/rootdir/ymc/param/YMach2_2_REC_2MIC_WB_pdm_agc.dat:root/ymc/param/YMach2_2_REC_2MIC_WB_pdm_agc.dat \
+    $(LOCAL_BASEDIR)/rootdir/ymc/param/YMach2_3_REC_1MIC_NB_adc_agc.dat:root/ymc/param/YMach2_3_REC_1MIC_NB_adc_agc.dat \
+    $(LOCAL_BASEDIR)/rootdir/ymc/param/YMach2_3_REC_1MIC_NB_dng.dat:root/ymc/param/YMach2_3_REC_1MIC_NB_dng.dat \
+    $(LOCAL_BASEDIR)/rootdir/ymc/param/YMach2_3_REC_1MIC_NB_pdm_agc.dat:root/ymc/param/YMach2_3_REC_1MIC_NB_pdm_agc.dat \
+    $(LOCAL_BASEDIR)/rootdir/ymc/param/YMach2_4_HES_1MIC_NB_adc_agc.dat:root/ymc/param/YMach2_4_HES_1MIC_NB_adc_agc.dat \
+    $(LOCAL_BASEDIR)/rootdir/ymc/param/YMach2_4_HES_1MIC_NB_dng.dat:root/ymc/param/YMach2_4_HES_1MIC_NB_dng.dat \
+    $(LOCAL_BASEDIR)/rootdir/ymc/param/YMach2_4_HES_1MIC_NB_pdm_agc.dat:root/ymc/param/YMach2_4_HES_1MIC_NB_pdm_agc.dat \
+    $(LOCAL_BASEDIR)/rootdir/ymc/param/post_process/output/dsp_through.dat:root/ymc/param/post_process/output/dsp_through.dat \
+    $(LOCAL_BASEDIR)/rootdir/ymc/param/post_process/output/HP_Dance.dat:root/ymc/param/post_process/output/HP_Dance.dat \
+    $(LOCAL_BASEDIR)/rootdir/ymc/param/post_process/output/HP_JazzBar.dat:root/ymc/param/post_process/output/HP_JazzBar.dat \
+    $(LOCAL_BASEDIR)/rootdir/ymc/param/post_process/output/HP_Pop.dat:root/ymc/param/post_process/output/HP_Pop.dat \
+    $(LOCAL_BASEDIR)/rootdir/ymc/param/post_process/output/output.xml:root/ymc/param/post_process/output/output.xml \
+    $(LOCAL_BASEDIR)/rootdir/ymc/param/post_process/output/SP_Dance.dat:root/ymc/param/post_process/output/SP_Dance.dat \
+    $(LOCAL_BASEDIR)/rootdir/ymc/param/post_process/output/SP_JazzBar.dat:root/ymc/param/post_process/output/SP_JazzBar.dat \
+    $(LOCAL_BASEDIR)/rootdir/ymc/param/post_process/output/SP_Pop.dat:root/ymc/param/post_process/output/SP_Pop.dat \
+    $(LOCAL_BASEDIR)/rootdir/ymc/param/voice_process/1mic_off.dat:root/ymc/param/voice_process/1mic_off.dat \
+    $(LOCAL_BASEDIR)/rootdir/ymc/param/voice_process/1mic_sample.dat:root/ymc/param/voice_process/1mic_sample.dat \
+    $(LOCAL_BASEDIR)/rootdir/ymc/param/voice_process/2mic_off.dat:root/ymc/param/voice_process/2mic_off.dat \
+    $(LOCAL_BASEDIR)/rootdir/ymc/param/voice_process/2mic_sample.dat:root/ymc/param/voice_process/2mic_sample.dat \
+    $(LOCAL_BASEDIR)/rootdir/ymc/param/voice_process/voice_process.xml:root/ymc/param/voice_process/voice_process.xml
 
-# rril
+# Boot: default properties
+ADDITIONAL_DEFAULT_PROPERTIES += \
+    ro.secure=0 \
+    ro.allow.mock.location=1 \
+    ro.adb.secure=0 \
+    ro.debuggable=1
+
+# System: rril
 PRODUCT_COPY_FILES += \
-	device/lenovo/stuttgart/rril/repository.txt:system/etc/rril/repository.txt \
-	device/lenovo/stuttgart/rril/stmd.conf:system/etc/rril/stmd.conf
+	$(LOCAL_BASEDIR)/rril/repository.txt:system/etc/rril/repository.txt \
+	$(LOCAL_BASEDIR)/rril/stmd.conf:system/etc/rril/stmd.conf
 
-
-#YMC AUDIO
-PRODUCT_COPY_FILES += \
-    device/lenovo/stuttgart/ymc/param/0_2MIC_HS_NB.dat:root/ymc/param/0_2MIC_HS_NB.dat \
-    device/lenovo/stuttgart/ymc/param/0_2MICNSOFF_HS_NB.dat:root/ymc/param/0_2MICNSOFF_HS_NB.dat \
-    device/lenovo/stuttgart/ymc/param/1_1MIC_HF_NB.dat:root/ymc/param/1_1MIC_HF_NB.dat \
-    device/lenovo/stuttgart/ymc/param/2_2MIC_REC_WB.dat:root/ymc/param/2_2MIC_REC_WB.dat \
-    device/lenovo/stuttgart/ymc/param/3_1MIC_REC_NB.dat:root/ymc/param/3_1MIC_REC_NB.dat \
-    device/lenovo/stuttgart/ymc/param/3_1MIC_REC_WB.dat:root/ymc/param/3_1MIC_REC_WB.dat \
-    device/lenovo/stuttgart/ymc/param/4_1MIC_HES_NB.dat:root/ymc/param/4_1MIC_HES_NB.dat \
-    device/lenovo/stuttgart/ymc/param/agc_off.dat:root/ymc/param/agc_off.dat \
-    device/lenovo/stuttgart/ymc/param/dng_off.dat:root/ymc/param/dng_off.dat \
-    device/lenovo/stuttgart/ymc/param/dsp_off.dat:root/ymc/param/dsp_off.dat \
-    device/lenovo/stuttgart/ymc/param/dsp_through.dat:root/ymc/param/dsp_through.dat \
-    device/lenovo/stuttgart/ymc/param/handsfree_1.dat:root/ymc/param/handsfree_1.dat \
-    device/lenovo/stuttgart/ymc/param/handsfree_2.dat:root/ymc/param/handsfree_2.dat \
-    device/lenovo/stuttgart/ymc/param/handsfree_off.dat:root/ymc/param/handsfree_off.dat \
-    device/lenovo/stuttgart/ymc/param/Lenovo_S3_HP_effect.dat:root/ymc/param/Lenovo_S3_HP_effect.dat \
-    device/lenovo/stuttgart/ymc/param/Lenovo_S3_SP_effect.dat:root/ymc/param/Lenovo_S3_SP_effect.dat \
-    device/lenovo/stuttgart/ymc/param/YMach2_0_HS_2MIC_NB_adc_agc.dat:root/ymc/param/YMach2_0_HS_2MIC_NB_adc_agc.dat \
-    device/lenovo/stuttgart/ymc/param/YMach2_0_HS_2MIC_NB_dng.dat:root/ymc/param/YMach2_0_HS_2MIC_NB_dng.dat \
-    device/lenovo/stuttgart/ymc/param/YMach2_0_HS_2MIC_NB_pdm_agc.dat:root/ymc/param/YMach2_0_HS_2MIC_NB_pdm_agc.dat \
-    device/lenovo/stuttgart/ymc/param/YMach2_1_HF_1MIC_NB_adc_agc.dat:root/ymc/param/YMach2_1_HF_1MIC_NB_adc_agc.dat \
-    device/lenovo/stuttgart/ymc/param/YMach2_1_HF_1MIC_NB_dng.dat:root/ymc/param/YMach2_1_HF_1MIC_NB_dng.dat \
-    device/lenovo/stuttgart/ymc/param/YMach2_1_HF_1MIC_NB_pdm_agc.dat:root/ymc/param/YMach2_1_HF_1MIC_NB_pdm_agc.dat \
-    device/lenovo/stuttgart/ymc/param/YMach2_2_REC_2MIC_WB_adc_agc.dat:root/ymc/param/YMach2_2_REC_2MIC_WB_adc_agc.dat \
-    device/lenovo/stuttgart/ymc/param/YMach2_2_REC_2MIC_WB_dng.dat:root/ymc/param/YMach2_2_REC_2MIC_WB_dng.dat \
-    device/lenovo/stuttgart/ymc/param/YMach2_2_REC_2MIC_WB_pdm_agc.dat:root/ymc/param/YMach2_2_REC_2MIC_WB_pdm_agc.dat \
-    device/lenovo/stuttgart/ymc/param/YMach2_3_REC_1MIC_NB_adc_agc.dat:root/ymc/param/YMach2_3_REC_1MIC_NB_adc_agc.dat \
-    device/lenovo/stuttgart/ymc/param/YMach2_3_REC_1MIC_NB_dng.dat:root/ymc/param/YMach2_3_REC_1MIC_NB_dng.dat \
-    device/lenovo/stuttgart/ymc/param/YMach2_3_REC_1MIC_NB_pdm_agc.dat:root/ymc/param/YMach2_3_REC_1MIC_NB_pdm_agc.dat \
-    device/lenovo/stuttgart/ymc/param/YMach2_4_HES_1MIC_NB_adc_agc.dat:root/ymc/param/YMach2_4_HES_1MIC_NB_adc_agc.dat \
-    device/lenovo/stuttgart/ymc/param/YMach2_4_HES_1MIC_NB_dng.dat:root/ymc/param/YMach2_4_HES_1MIC_NB_dng.dat \
-    device/lenovo/stuttgart/ymc/param/YMach2_4_HES_1MIC_NB_pdm_agc.dat:root/ymc/param/YMach2_4_HES_1MIC_NB_pdm_agc.dat \
-    device/lenovo/stuttgart/ymc/param/post_process/output/dsp_through.dat:root/ymc/param/post_process/output/dsp_through.dat \
-    device/lenovo/stuttgart/ymc/param/post_process/output/HP_Dance.dat:root/ymc/param/post_process/output/HP_Dance.dat \
-    device/lenovo/stuttgart/ymc/param/post_process/output/HP_JazzBar.dat:root/ymc/param/post_process/output/HP_JazzBar.dat \
-    device/lenovo/stuttgart/ymc/param/post_process/output/HP_Pop.dat:root/ymc/param/post_process/output/HP_Pop.dat \
-    device/lenovo/stuttgart/ymc/param/post_process/output/output.xml:root/ymc/param/post_process/output/output.xml \
-    device/lenovo/stuttgart/ymc/param/post_process/output/SP_Dance.dat:root/ymc/param/post_process/output/SP_Dance.dat \
-    device/lenovo/stuttgart/ymc/param/post_process/output/SP_JazzBar.dat:root/ymc/param/post_process/output/SP_JazzBar.dat \
-    device/lenovo/stuttgart/ymc/param/post_process/output/SP_Pop.dat:root/ymc/param/post_process/output/SP_Pop.dat \
-    device/lenovo/stuttgart/ymc/param/voice_process/1mic_off.dat:root/ymc/param/voice_process/1mic_off.dat \
-    device/lenovo/stuttgart/ymc/param/voice_process/1mic_sample.dat:root/ymc/param/voice_process/1mic_sample.dat \
-    device/lenovo/stuttgart/ymc/param/voice_process/2mic_off.dat:root/ymc/param/voice_process/2mic_off.dat \
-    device/lenovo/stuttgart/ymc/param/voice_process/2mic_sample.dat:root/ymc/param/voice_process/2mic_sample.dat \
-    device/lenovo/stuttgart/ymc/param/voice_process/voice_process.xml:root/ymc/param/voice_process/voice_process.xml
-
-# vendor firmware
-PRODUCT_COPY_FILES += \
-    device/lenovo/stuttgart/vendor/firmware/fimc_is_fw.bin:root/vendor/firmware/fimc_is_fw.bin \
-    device/lenovo/stuttgart/vendor/firmware/mfc_fw.bin:root/vendor/firmware/mfc_fw.bin \
-    device/lenovo/stuttgart/vendor/firmware/setfile.bin:root/vendor/firmware/setfile.bin \
-    device/lenovo/stuttgart/vendor/firmware/setfile_S5K3H7.bin:root/vendor/firmware/setfile_S5K3H7.bin
-
-# Audio etc
+# System: Audio
 PRODUCT_COPY_FILES += \
 	device/lenovo/stuttgart/configs/asound.conf:system/etc/asound.conf \
 	device/lenovo/stuttgart/configs/audio_policy.conf:system/etc/audio_policy.conf \
@@ -155,73 +139,37 @@ PRODUCT_COPY_FILES += \
 	device/lenovo/stuttgart/alsa/pcm/surround51.conf:system/usr/share/alsa/pcm/surround51.conf \
 	device/lenovo/stuttgart/alsa/pcm/surround71.conf:system/usr/share/alsa/pcm/surround71.conf
 
-# Vold and Storage
+# System: vold
 PRODUCT_COPY_FILES += \
-    device/lenovo/stuttgart/configs/vold.fstab:system/etc/vold.fstab \
-    device/lenovo/stuttgart/configs/vold.fstab:system/etc/vold.primary.fstab \
-    device/lenovo/stuttgart/configs/vold.extra_sd_as_primary.fstab:system/etc/vold.extra_sd_as_primary.fstab
+    $(LOCAL_BASEDIR)/configs/vold.fstab:system/etc/vold.fstab
 
-# init.lenovo.sh
+# System: Wifi
 PRODUCT_COPY_FILES += \
-    device/lenovo/stuttgart/configs/init.lenovo.sh:system/bin/init.lenovo.sh
-
-# Bluetooth configuration files
-# PRODUCT_COPY_FILES += \
-    system/bluetooth/data/main.conf:system/etc/bluetooth/main.conf
-
-PRODUCT_PACKAGES += \
-	hcitool \
-	preload
-
-# Wifi
-PRODUCT_COPY_FILES += \
-    device/lenovo/stuttgart/configs/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
+    $(LOCAL_BASEDIR)/configs/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
 
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0 \
     wifi.supplicant_scan_interval=15
 
-# Gps
-PRODUCT_COPY_FILES += \
-    device/lenovo/stuttgart/configs/gpsconfig.xml:system/etc/gpsconfig.xml 
+#
+# PACKAGE
+#
+# TODO: preload
+PRODUCT_PACKAGES += \
+	hcitool
 
-# Packages
+# TODO: DeviceSettings
 PRODUCT_PACKAGES += \
 	com.android.future.usb.accessory \
-	DeviceSettings \
-	Torch 
+	Torch
 
 PRODUCT_PACKAGES += \
 	audio.a2dp.default \
 	audio.primary.smdk4x12 \
 	audio.usb.default \
+	libaudiohw_legacy \
 	Camera
 
-# HAL
-PRODUCT_PACKAGES += \
-	lights.exynos4 \
-	camera.stuttgart \
-	libhdmi \
-	libhdmiclient \
-	libasan_preload \
-	hwcomposer.exynos4
-#	libsecril-client
-#    libgralloc_ump \
-#    libhwconverter \
-#    libfimg \
-#    hwcomposer.exynos4 \
-	libhdmi \
-	libhdmiclient \
-	libTVOut \
-    libhwjpeg \
-    libfimc 
-#    libcec \
-#    libddc \
-#    libedid \
-#    libtinyalsa \
-
-
-# MFC API
 PRODUCT_PACKAGES += \
     sdcard
 
@@ -229,7 +177,26 @@ PRODUCT_PACKAGES += \
     libsecmfcdecapi \
     libsecmfcencapi
 
-# wlan
+# Live Wallpapers
+PRODUCT_PACKAGES += \
+    Galaxy4 \
+    HoloSpiralWallpaper \
+    LiveWallpapers \
+    LiveWallpapersPicker \
+    MagicSmokeWallpapers \
+    NoiseField \
+    PhaseBeam \
+    VisualizationWallpapers \
+    librs_jni
+
+# FS management tools
+PRODUCT_PACKAGES += \
+    static_busybox \
+    make_ext4fs \
+    e2fsck \
+    setup_fs
+
+# WLAN
 PRODUCT_PACKAGES += \
 	libnetcmdiface
 
@@ -247,50 +214,25 @@ PRODUCT_PACKAGES += \
 #   libOMX.SEC.VP8.Decoder
 
 PRODUCT_COPY_FILES += \
-    device/lenovo/stuttgart/configs/media_profiles.xml:system/etc/media_profiles.xml \
-    device/lenovo/stuttgart/configs/media_codecs.xml:system/etc/media_codecs.xml
+    $(LOCAL_BASEDIR)/configs/media_profiles.xml:system/etc/media_profiles.xml \
+    $(LOCAL_BASEDIR)/configs/media_codecs.xml:system/etc/media_codecs.xml
 
+# Bluetooth
 PRODUCT_COPY_FILES += \
-    device/lenovo/stuttgart/bluetooth/libbt-vendor.so:system/lib/libbt-vendor.so
+    $(LOCAL_BASEDIR)/bluetooth/libbt-vendor.so:system/lib/libbt-vendor.so
 
-# SuperCam
-#PRODUCT_COPY_FILES += \
-	device/lenovo/stuttgart/supercam/SCG_arm_hd.apk:system/app/SCG_arm_hd.apk \
-	device/lenovo/stuttgart/supercam/lib/libarcsoft_dlsd.so:system/lib/libarcsoft_dlsd.so \
-	device/lenovo/stuttgart/supercam/lib/libLeConvertDataToTexture.so:system/lib/libLeConvertDataToTexture.so \
-	device/lenovo/stuttgart/supercam/lib/libLeCSCJni.so:system/lib/libLeCSCJni.so \
-	device/lenovo/stuttgart/supercam/lib/libLeCSC.so:system/lib/libLeCSC.so \
-	device/lenovo/stuttgart/supercam/lib/libLeGaJavaInterface.so:system/lib/libLeGaJavaInterface.so \
-	device/lenovo/stuttgart/supercam/lib/libLeGraphicAlgorithm.so:system/lib/libLeGraphicAlgorithm.so \
-	device/lenovo/stuttgart/supercam/lib/libLeImageJI.so:system/lib/libLeImageJI.so \
-	device/lenovo/stuttgart/supercam/lib/libLeImage.so:system/lib/libLeImage.so \
-	device/lenovo/stuttgart/supercam/lib/liblocSDK3.so:system/lib/liblocSDK3.so \
-	device/lenovo/stuttgart/supercam/lib/liblenovo_liveeffect_library.so:system/lib/liblenovo_liveeffect_library.so \
-	device/lenovo/stuttgart/supercam/lib/liblenovo_nightpreview.so:system/lib/liblenovo_nightpreview.so \
-	device/lenovo/stuttgart/supercam/lib/liblenovo_nightscene.so:system/lib/liblenovo_nightscene.so \
-	device/lenovo/stuttgart/supercam/lib/libLeskia.so:system/lib/libLeskia.so \
-	device/lenovo/stuttgart/supercam/lib/libmorpho_cinema_graph.so:system/lib/libmorpho_cinema_graph.so \
-	device/lenovo/stuttgart/supercam/lib/libmorpho_groupshot.so:system/lib/libmorpho_groupshot.so \
-	device/lenovo/stuttgart/supercam/lib/libmorphoimageconverter.so:system/lib/libmorphoimageconverter.so \
-	device/lenovo/stuttgart/supercam/lib/libmorpho_jpeg_io.so:system/lib/libmorpho_jpeg_io.so \
-	device/lenovo/stuttgart/supercam/lib/libmorpho_memory_allocator.so:system/lib/libmorpho_memory_allocator.so \
-	device/lenovo/stuttgart/supercam/lib/libmorpho_object_remover_jni.so:system/lib/libmorpho_object_remover_jni.so \
-	device/lenovo/stuttgart/supercam/lib/libmorpho_panorama_gp.so:system/lib/libmorpho_panorama_gp.so \
-	device/lenovo/stuttgart/supercam/lib/libmorpho_SmartSelect.so:system/lib/libmorpho_SmartSelect.so
+#
+# TODO: SuperCAM
+#
 
-PRODUCT_COPY_FILES += \
-	device/lenovo/stuttgart/supercam/LeGA/lbpsvm_child.xml:system/etc/LeGa/lbpsvm_child.xml \
-	device/lenovo/stuttgart/supercam/LeGA/lbpsvm_gender.xml:system/etc/LeGa/lbpsvm_gender.xml \
-	device/lenovo/stuttgart/supercam/LeGA/LeGaConfig.xml:system/etc/LeGa/LeGaConfig.xml \
-	device/lenovo/stuttgart/supercam/LeGA/RFFprec_501.bmd:system/etc/LeGa/RFFprec_501.bmd \
-	device/lenovo/stuttgart/supercam/LeGA/RFFspeed_501.bmd:system/etc/LeGa/RFFspeed_501.bmd \
-	device/lenovo/stuttgart/supercam/LeGA/RFFstd_501.bmd:system/etc/LeGa/RFFstd_501.bmd
-
-PRODUCT_COPY_FILES += \
-	device/lenovo/stuttgart/configs/mkshrc:system/etc/mkshrc
+#
+# TODO: mkshrc
+#
 
 # RIL
 BOARD_PROVIDES_LIBRIL := true
+
+# System: build.prop
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.strictmode.disable=1 \
     mobiledata.interfaces=pdp0,wlan0,gprs,ppp0,rmnet0 \
@@ -303,26 +245,35 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.config.notification_sound=Heaven_nearby.ogg \
     ro.config.alarm_alert=Dreamland.ogg
 
-# Filesystem management tools
-PRODUCT_PACKAGES += \
-    static_busybox \
-    make_ext4fs \
-    e2fsck \
-    setup_fs
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.opengles.version=131072 \
+    hwui.render_dirty_regions=false
 
-# Live Wallpapers
-PRODUCT_PACKAGES += \
-    Galaxy4 \
-    HoloSpiralWallpaper \
-    LiveWallpapers \
-    LiveWallpapersPicker \
-    MagicSmokeWallpapers \
-    NoiseField \
-    PhaseBeam \
-    VisualizationWallpapers \
-    librs_jni
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    persist.sys.usb.config=mass_storage \
+    ro.build.display.id=lephone.cc_linkscue_cm10.1
 
-# These are the hardware-specific features
+#
+# HAL
+#
+# MARK: 2014年05月16日
+# rm lights.exynos4 libhdmi libhdmiclient libasan_preload
+PRODUCT_PACKAGES += \
+	camera.stuttgart \
+	hwcomposer.exynos4
+#	libsecril-client
+#   libgralloc_ump \
+#   libhwconverter \
+#   libfimg \
+#	libTVOut \
+#	libhwjpeg \
+#	libfimc
+#  	libcec \
+#   libddc \
+#   libedid \
+#   libtinyalsa \
+
+# COMMON: These are the hardware-specific features
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml \
     frameworks/native/data/etc/android.hardware.camera.autofocus.xml:system/etc/permissions/android.hardware.camera.autofocus.xml \
@@ -346,29 +297,11 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
     frameworks/native/data/etc/android.software.sip.xml:system/etc/permissions/android.software.sip.xml \
-    device/lenovo/stuttgart/prebuilt/com.yamaha.android.media.xml:system/etc/permissions/com.yamaha.android.media.xml \
+    $(LOCAL_BASEDIR)/prebuilt/com.yamaha.android.media.xml:system/etc/permissions/com.yamaha.android.media.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
 
-# Feature live wallpaper
-# PRODUCT_COPY_FILES += \
-    packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.opengles.version=131072 \
-    hwui.render_dirty_regions=false
-
-PRODUCT_TAGS += dalvik.gc.type-precise
-
-# Set default USB interface
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    persist.sys.usb.config=mass_storage \
-    ro.build.display.id=lephone.cc_linkscue_cm10.1 
-ADDITIONAL_DEFAULT_PROPERTIES += \
-    ro.secure=0 \
-    ro.allow.mock.location=1 \
-    ro.adb.secure=0 \
-    ro.debuggable=1 
-
+# TODO: pls fix wifi,bluetooth..
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
 # Include exynos4 platform specific parts
