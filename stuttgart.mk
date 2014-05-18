@@ -29,10 +29,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
 
-# Gps
-PRODUCT_COPY_FILES += \
-    $(LOCAL_BASEDIR)/configs/gpsconfig.xml:system/etc/gpsconfig.xml
-
 # This device is xhdpi.  However the platform doesn't
 # currently contain all of the bitmaps at xhdpi density so
 # we do this little trick to fall back to the hdpi version
@@ -116,6 +112,10 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
 PRODUCT_COPY_FILES += \
 	$(LOCAL_BASEDIR)/rril/repository.txt:system/etc/rril/repository.txt \
 	$(LOCAL_BASEDIR)/rril/stmd.conf:system/etc/rril/stmd.conf
+
+# System: Gps
+PRODUCT_COPY_FILES += \
+    $(LOCAL_BASEDIR)/configs/gpsconfig.xml:system/etc/gpsconfig.xml
 
 # System: Audio
 PRODUCT_COPY_FILES += \
