@@ -168,6 +168,8 @@ BOARD_UMS_LUNFILE := "/sys/devices/platform/s3c-usbgadget/gadget/lun%d/file"
 BOARD_USES_MMCUTILS := true
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_HAS_NO_SELECT_BUTTON := true
+TARGET_RECOVERY_FSTAB := device/lenovo/stuttgart/rootdir/fstab.stuttgart
+RECOVERY_FSTAB_VERSION := 2
 
 #
 # TODO: Charging mode
