@@ -37,6 +37,7 @@ lib/libcryptor-1.0.0.so
 lib/libFreqFilter.so
 lib/libhiddencode.so
 lib/libkpencore_v45.so
+lib/libkeystore_client.so
 lib/liblocation-1.0.0.so
 lib/libmsc.so
 lib/libsystemhook-6.so
