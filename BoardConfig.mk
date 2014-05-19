@@ -20,6 +20,7 @@ TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp #mark a
 TARGET_UBOOT_RAMDISK := true
 TARGET_UBOOT_RAMDISK_LOADADDR := 0x40800000
 BOARD_LEGACY_NL80211_STA_EVENTS := true
+BOARD_KERNEL_IMAGE_NAME := device/lenovo/stuttgart/kernel
 
 EXYNOS4X12_ENHANCEMENTS := true
 EXYNOS4_ENHANCEMENTS := true
