@@ -41,6 +41,7 @@ PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
 # Boot: root dir
 PRODUCT_COPY_FILES := \
+    $(LOCAL_BASEDIR)/rootdir/fstab.stuttgart:root/sbin/fstab.stuttgart \
     $(LOCAL_BASEDIR)/rootdir/gpio:root/sbin/gpio \
     $(LOCAL_BASEDIR)/rootdir/init.stuttgart.rc:root/init.stuttgart.rc \
     $(LOCAL_BASEDIR)/rootdir/init.testmode.rc:root/init.testmode.rc \
