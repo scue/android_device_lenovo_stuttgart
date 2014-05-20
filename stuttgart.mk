@@ -42,12 +42,9 @@ PRODUCT_AAPT_PREF_CONFIG := xhdpi
 # Boot: root dir
 PRODUCT_COPY_FILES := \
     $(LOCAL_BASEDIR)/rootdir/gpio:root/sbin/gpio \
-    $(LOCAL_BASEDIR)/rootdir/init.rc:root/init.rc \
     $(LOCAL_BASEDIR)/rootdir/init.stuttgart.rc:root/init.stuttgart.rc \
-    $(LOCAL_BASEDIR)/rootdir/init.stuttgart.usb.rc:root/init.stuttgart.usb.rc \
     $(LOCAL_BASEDIR)/rootdir/init.testmode.rc:root/init.testmode.rc \
     $(LOCAL_BASEDIR)/rootdir/init.cp_update.rc:root/init.cp_update.rc \
-    $(LOCAL_BASEDIR)/rootdir/init.trace.rc:root/init.trace.rc \
     $(LOCAL_BASEDIR)/rootdir/ueventd.stuttgart.rc:root/ueventd.stuttgart.rc
 
 # Boot: vendor firmware
