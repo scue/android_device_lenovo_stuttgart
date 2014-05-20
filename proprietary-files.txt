@@ -102,7 +102,6 @@ lib/modules/bcmdhd.ko
 lib/libcsc.so
 lib/libsurfaceflinger_ddmconnection.so
 lib/libsurfaceflinger.so
-lib/libOpenMAXAL.so
 lib/omx/libOMX.SEC.AVC.Decoder.so
 lib/omx/libOMX.SEC.AVC.Encoder.so
 lib/omx/libOMX.SEC.M2V.Decoder.so
