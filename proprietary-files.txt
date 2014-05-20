@@ -14,7 +14,6 @@ bin/testmode
 bin/nac_server
 bin/fusiond
 bin/lms
-bin/font_root
 xbin/dbus-monitor
 xbin/dbus-send
 xbin/dhdutil
