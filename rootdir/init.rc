@@ -48,84 +48,6 @@ loglevel 3
 # but someday that may change.
     symlink /system/vendor /vendor
 
-# busybox tools
-    symlink /sbin/busybox /sbin/[
-    symlink /sbin/busybox /sbin/[[
-    symlink /sbin/busybox /sbin/ash
-    symlink /sbin/busybox /sbin/awk
-    symlink /sbin/busybox /sbin/basename
-    symlink /sbin/busybox /sbin/bunzip2
-    symlink /sbin/busybox /sbin/bzcat
-    symlink /sbin/busybox /sbin/bzip2
-    symlink /sbin/busybox /sbin/chgrp
-    symlink /sbin/busybox /sbin/clear
-    symlink /sbin/busybox /sbin/comm
-    symlink /sbin/busybox /sbin/cp
-    symlink /sbin/busybox /sbin/cpio
-    symlink /sbin/busybox /sbin/cut
-    symlink /sbin/busybox /sbin/diff
-    symlink /sbin/busybox /sbin/dirname
-    symlink /sbin/busybox /sbin/dos2unix
-    symlink /sbin/busybox /sbin/df
-    symlink /sbin/busybox /sbin/du
-    symlink /sbin/busybox /sbin/echo
-    symlink /sbin/busybox /sbin/env
-    symlink /sbin/busybox /sbin/expr
-    symlink /sbin/busybox /sbin/false
-    symlink /sbin/busybox /sbin/find
-    symlink /sbin/busybox /sbin/free
-    symlink /sbin/busybox /sbin/fuser
-    symlink /sbin/busybox /sbin/getopt
-    symlink /sbin/busybox /sbin/grep
-    symlink /sbin/busybox /sbin/gunzip
-    symlink /sbin/busybox /sbin/head
-    symlink /sbin/busybox /sbin/hexdump
-    symlink /sbin/busybox /sbin/killall
-    symlink /sbin/busybox /sbin/less
-    symlink /sbin/busybox /sbin/md5sum
-    symlink /sbin/busybox /sbin/mkfs.vfat
-    symlink /sbin/busybox /sbin/mknod
-    symlink /sbin/busybox /sbin/more
-    symlink /sbin/busybox /sbin/mount
-    symlink /sbin/busybox /sbin/nice
-    symlink /sbin/busybox /sbin/pidof
-    symlink /sbin/busybox /sbin/pkill
-    symlink /sbin/busybox /sbin/printf
-    symlink /sbin/busybox /sbin/pwd
-    symlink /sbin/busybox /sbin/readlink
-    symlink /sbin/busybox /sbin/realpath
-    symlink /sbin/busybox /sbin/reset
-    symlink /sbin/busybox /sbin/sed
-    symlink /sbin/busybox /sbin/seq
-    symlink /sbin/busybox /sbin/sort
-    symlink /sbin/busybox /sbin/split
-    symlink /sbin/busybox /sbin/stat
-    symlink /sbin/busybox /sbin/strings
-    symlink /sbin/busybox /sbin/stty
-    symlink /sbin/busybox /sbin/sum
-    symlink /sbin/busybox /sbin/sysctl
-    symlink /sbin/busybox /sbin/tac
-    symlink /sbin/busybox /sbin/tail
-    symlink /sbin/busybox /sbin/tar
-    symlink /sbin/busybox /sbin/tee
-    symlink /sbin/busybox /sbin/test
-    symlink /sbin/busybox /sbin/time
-    symlink /sbin/busybox /sbin/timeout
-    symlink /sbin/busybox /sbin/tr
-    symlink /sbin/busybox /sbin/true
-    symlink /sbin/busybox /sbin/uname
-    symlink /sbin/busybox /sbin/uniq
-    symlink /sbin/busybox /sbin/unix2dos
-    symlink /sbin/busybox /sbin/unzip
-    symlink /sbin/busybox /sbin/usleep
-    symlink /sbin/busybox /sbin/vi
-    symlink /sbin/busybox /sbin/watch
-    symlink /sbin/busybox /sbin/wc
-    symlink /sbin/busybox /sbin/wget
-    symlink /sbin/busybox /sbin/which
-    symlink /sbin/busybox /sbin/xargs
-    symlink /sbin/busybox /sbin/zcat
-
 # Create cgroup mount point for cpu accounting
     mkdir /acct
     mount cgroup none /acct cpuacct
@@ -644,10 +566,6 @@ service installd /system/bin/installd
     class main
     socket installd stream 600 system system
 
-service flash_recovery /system/etc/install-recovery.sh
-    class main
-    oneshot
-
 service racoon /system/bin/racoon
     class main
     socket racoon stream 600 system system
@@ -767,3 +685,13 @@ service afmsvr /system/bin/afm_server
 	on property:persist.sys.afmsvr=0
 	stop afmsvr
  # liuxuefei add for LenovoSmartWifi end  2013.5.09
+
+# Add by linkscue start, for /system/etc/init.d/<custom_scripts> autorun supported
+service sysinit /system/xbin/busybox run-parts /system/etc/init.d/
+
+    disabled
+    oneshot
+
+on property:dev.bootcomplete=1
+    start sysinit
+# Add by linkscue end.
