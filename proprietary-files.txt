@@ -13,7 +13,7 @@ bin/stmd
 bin/testmode
 bin/nac_server
 bin/fusiond
-bin/supercmd
+bin/lms
 xbin/dbus-monitor
 xbin/dbus-send
 xbin/dhdutil
