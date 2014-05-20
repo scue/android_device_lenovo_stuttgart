@@ -31,7 +31,6 @@ etc/gps.conf
 lib/libams-1.1.0.so
 lib/libcapsjava.so
 lib/libcryptor-1.0.0.so
-lib/libFreqFilter.so
 lib/libhiddencode.so
 lib/liblocation-1.0.0.so
 lib/egl/libEGL_mali.so
@@ -67,10 +66,8 @@ lib/librapid-ril-core.so
 lib/librapid-ril-util.so
 lib/libswscaler.so
 lib/libLe3d.so
-lib/libLeGaJavaInterface.so
 lib/libLeImageLightness.so
 lib/liblenovo-xdelta.so
-lib/libLeskia.so
 usr/idc/atmel-touchscreen.idc
 usr/idc/ft5x0x_ts.idc
 usr/idc/pixcir-i2c-ts.idc
