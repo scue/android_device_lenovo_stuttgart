@@ -13,7 +13,7 @@ bin/stmd
 bin/testmode
 bin/nac_server
 bin/fusiond
-bin/lms
+bin/supercmd
 xbin/dbus-monitor
 xbin/dbus-send
 xbin/dhdutil
@@ -54,6 +54,8 @@ lib/hw/power.default.so
 lib/hw/sensors.exynos4.so
 lib/libMali.so
 lib/libUMP.so
+lib/libcamera_client.so
+lib/libcameraservice.so
 lib/libfimc.so
 lib/libfimg.so
 lib/libhwconverter.so
