@@ -1,7 +1,10 @@
 bin/IMCDownload
 bin/cksfv
+bin/dmesglog.sh
 bin/glgps
+bin/init.lenovo.sh
 bin/rild
+bin/klog_dump
 bin/wtdd
 bin/hostapd
 bin/btld
