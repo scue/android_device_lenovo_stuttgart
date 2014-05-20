@@ -152,6 +152,12 @@ service wlanmode_open /system/bin/ifconfig wlan0 up
     disabled
     oneshot
 
+# add by zhongwei1@lenovo.com for the jcommand
+service jcommand /system/bin/sh /system/bin/jcommand.sh
+    class main
+    disabled
+    oneshot
+
 service wlanmode_close /system/bin/ifconfig wlan0 down
     class main
     disabled
@@ -192,7 +198,7 @@ on init
    // setprop ro.bt.bdaddr_path /data/misc/bluetoothd/bdaddr_mac
     chmod 0660 /proc/bt_wakelock
     chown bluetooth bluetooth /proc/bt_wakelock
-  
+
 #add for gps
 #service gps-demon /system/bin/glgps -c /system/etc/gpsconfig.xml
 #	user root

@@ -31,7 +31,6 @@ loglevel 3
     export PATH /sbin:/vendor/bin:/system/sbin:/system/bin:/system/xbin
     export LD_LIBRARY_PATH /vendor/lib:/system/lib
     export ANDROID_BOOTLOGO 1
-    export ANDROID_CACHE /cache
     export ANDROID_ROOT /system
     export ANDROID_ASSETS /system/app
     export ANDROID_DATA /data
@@ -39,8 +38,6 @@ loglevel 3
     export ASEC_MOUNTPOINT /mnt/asec
     export LOOP_MOUNTPOINT /mnt/obb
     export BOOTCLASSPATH /system/framework/core.jar:/system/framework/core-junit.jar:/system/framework/bouncycastle.jar:/system/framework/ext.jar:/system/framework/framework.jar:/system/framework/framework2.jar:/system/framework/telephony-common.jar:/system/framework/mms-common.jar:/system/framework/android.policy.jar:/system/framework/services.jar:/system/framework/apache-xml.jar
-    export TERMINFO /system/etc/terminfo
-    export TERM linux
 
 # Backward compatibility
     symlink /system/etc /etc
@@ -51,6 +48,84 @@ loglevel 3
 # but someday that may change.
     symlink /system/vendor /vendor
 
+# busybox tools
+    symlink /sbin/busybox /sbin/[
+    symlink /sbin/busybox /sbin/[[
+    symlink /sbin/busybox /sbin/ash
+    symlink /sbin/busybox /sbin/awk
+    symlink /sbin/busybox /sbin/basename
+    symlink /sbin/busybox /sbin/bunzip2
+    symlink /sbin/busybox /sbin/bzcat
+    symlink /sbin/busybox /sbin/bzip2
+    symlink /sbin/busybox /sbin/chgrp
+    symlink /sbin/busybox /sbin/clear
+    symlink /sbin/busybox /sbin/comm
+    symlink /sbin/busybox /sbin/cp
+    symlink /sbin/busybox /sbin/cpio
+    symlink /sbin/busybox /sbin/cut
+    symlink /sbin/busybox /sbin/diff
+    symlink /sbin/busybox /sbin/dirname
+    symlink /sbin/busybox /sbin/dos2unix
+    symlink /sbin/busybox /sbin/df
+    symlink /sbin/busybox /sbin/du
+    symlink /sbin/busybox /sbin/echo
+    symlink /sbin/busybox /sbin/env
+    symlink /sbin/busybox /sbin/expr
+    symlink /sbin/busybox /sbin/false
+    symlink /sbin/busybox /sbin/find
+    symlink /sbin/busybox /sbin/free
+    symlink /sbin/busybox /sbin/fuser
+    symlink /sbin/busybox /sbin/getopt
+    symlink /sbin/busybox /sbin/grep
+    symlink /sbin/busybox /sbin/gunzip
+    symlink /sbin/busybox /sbin/head
+    symlink /sbin/busybox /sbin/hexdump
+    symlink /sbin/busybox /sbin/killall
+    symlink /sbin/busybox /sbin/less
+    symlink /sbin/busybox /sbin/md5sum
+    symlink /sbin/busybox /sbin/mkfs.vfat
+    symlink /sbin/busybox /sbin/mknod
+    symlink /sbin/busybox /sbin/more
+    symlink /sbin/busybox /sbin/mount
+    symlink /sbin/busybox /sbin/nice
+    symlink /sbin/busybox /sbin/pidof
+    symlink /sbin/busybox /sbin/pkill
+    symlink /sbin/busybox /sbin/printf
+    symlink /sbin/busybox /sbin/pwd
+    symlink /sbin/busybox /sbin/readlink
+    symlink /sbin/busybox /sbin/realpath
+    symlink /sbin/busybox /sbin/reset
+    symlink /sbin/busybox /sbin/sed
+    symlink /sbin/busybox /sbin/seq
+    symlink /sbin/busybox /sbin/sort
+    symlink /sbin/busybox /sbin/split
+    symlink /sbin/busybox /sbin/stat
+    symlink /sbin/busybox /sbin/strings
+    symlink /sbin/busybox /sbin/stty
+    symlink /sbin/busybox /sbin/sum
+    symlink /sbin/busybox /sbin/sysctl
+    symlink /sbin/busybox /sbin/tac
+    symlink /sbin/busybox /sbin/tail
+    symlink /sbin/busybox /sbin/tar
+    symlink /sbin/busybox /sbin/tee
+    symlink /sbin/busybox /sbin/test
+    symlink /sbin/busybox /sbin/time
+    symlink /sbin/busybox /sbin/timeout
+    symlink /sbin/busybox /sbin/tr
+    symlink /sbin/busybox /sbin/true
+    symlink /sbin/busybox /sbin/uname
+    symlink /sbin/busybox /sbin/uniq
+    symlink /sbin/busybox /sbin/unix2dos
+    symlink /sbin/busybox /sbin/unzip
+    symlink /sbin/busybox /sbin/usleep
+    symlink /sbin/busybox /sbin/vi
+    symlink /sbin/busybox /sbin/watch
+    symlink /sbin/busybox /sbin/wc
+    symlink /sbin/busybox /sbin/wget
+    symlink /sbin/busybox /sbin/which
+    symlink /sbin/busybox /sbin/xargs
+    symlink /sbin/busybox /sbin/zcat
+
 # Create cgroup mount point for cpu accounting
     mkdir /acct
     mount cgroup none /acct cpuacct
@@ -58,7 +133,7 @@ loglevel 3
 
     mkdir /system
     mkdir /data 0771 system system
-    mkdir /cache 0771 system cache
+    mkdir /cache 0770 system cache
     mkdir /config 0500 root root
     mkdir /preload 0771 system system
 
@@ -223,7 +298,7 @@ on post-fs-data
     mkdir /data/misc/wifi 0770 wifi wifi
     mkdir /data/misc/wifi/wpa_supplicant 0770 wifi wifi
     mkdir /data/system 0775 system system
-    mkdir /data/system/wpa_supplicant 0771 wifi wifi
+    symlink /data/misc/wifi/wpa_supplicant /data/system/wpa_supplicant
     mkdir /data/local 0771 shell shell
 
     # For security reasons, /data/local/tmp should always be empty.
@@ -237,7 +312,6 @@ on post-fs-data
     mkdir /data/property 0700 root root
     mkdir /data/ssh 0750 root shell
     mkdir /data/ssh/empty 0700 root root
-    mkdir /data/radio 0770 radio radio
 
     # add APlog dir
     mkdir /data/local/log 0771 system system
@@ -247,12 +321,6 @@ on post-fs-data
 
     # create dalvik-cache, so as to enforce our permissions
     mkdir /data/dalvik-cache 0771 system system
-    chown system system /data/dalvik-cache
-    chmod 0771 /data/dalvik-cache
-
-    mkdir /cache/dalvik-cache 0771 system system
-    chown system system /cache/dalvik-cache
-    chmod 0771 /cache/dalvik-cache
 
     # create resource-cache and double-check the perms
     mkdir /data/resource-cache 0771 system system
@@ -323,7 +391,7 @@ on boot
 
 # Memory management.  Basic kernel parameters, and allow the high
 # level system server to be able to adjust the kernel OOM driver
-# parameters to match how it is managing things.
+# paramters to match how it is managing things.
     write /proc/sys/vm/overcommit_memory 1
     write /proc/sys/vm/min_free_order_shift 4
     chown root system /sys/module/lowmemorykiller/parameters/adj
@@ -369,15 +437,8 @@ on boot
     chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/input_boost
 
     # Assume SMP uses shared cpufreq policy for all CPUs
-    chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
-    chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
     chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
-    chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
-    chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
-    chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
-
-    chown system system /sys/block/mmcblk0/queue/scheduler
-    chmod 0664 /sys/block/mmcblk0/queue/scheduler
+    chmod 0660 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
 
     chown system system /sys/class/timed_output/vibrator/enable
     chown system system /sys/class/leds/keyboard-backlight/brightness
@@ -431,21 +492,8 @@ on boot
     setprop net.tcp.buffersize.gprs    4092,8760,11680,4096,8760,11680
     setprop net.tcp.buffersize.evdo    4094,87380,262144,4096,16384,262144
 
-# allow system to modify ksm control files
-    chown root system /sys/kernel/mm/ksm/pages_to_scan
-    chmod 0664 /sys/kernel/mm/ksm/pages_to_scan
-    chown root system /sys/kernel/mm/ksm/sleep_millisecs
-    chmod 0664 /sys/kernel/mm/ksm/sleep_millisecs
-    chown root system /sys/kernel/mm/ksm/run
-    chmod 0664 /sys/kernel/mm/ksm/run
-    write /sys/kernel/mm/ksm/sleep_millisecs 1500
-    write /sys/kernel/mm/ksm/pages_to_scan 256
-
 # Set this property so surfaceflinger is not started by system_init
     setprop system_init.startsurfaceflinger 0
-
-# Run sysinit
-    exec /system/bin/sysinit
 
     class_start core
     class_start main
@@ -490,12 +538,11 @@ on property:selinux.reload_policy=1
 service console /system/bin/sh
     class core
     console
-    disabled
     user shell
     group log
 
-on property:ro.debuggable=1
-    start console
+#on property:ro.debuggable=1
+#    start console
 
 # adbd is controlled via property triggers in init.<platform>.usb.rc
 service adbd /sbin/adbd
@@ -597,11 +644,9 @@ service installd /system/bin/installd
     class main
     socket installd stream 600 system system
 
-# remove by linkscue start, for non-repair recovery when booted.
-#service flash_recovery /system/etc/install-recovery.sh
-#    class main
-#    oneshot
-# remove by linkscue end.
+service flash_recovery /system/etc/install-recovery.sh
+    class main
+    oneshot
 
 service racoon /system/bin/racoon
     class main
@@ -690,7 +735,7 @@ service nac_server /system/bin/nac_server
     class main
     user root
     
-service supercmd /system/bin/supercmd
+service lms system/bin/lms
     class main
     socket supercmdlocalsocket stream 660 system shell
     user root
@@ -722,22 +767,3 @@ service afmsvr /system/bin/afm_server
 	on property:persist.sys.afmsvr=0
 	stop afmsvr
  # liuxuefei add for LenovoSmartWifi end  2013.5.09
-
-# Add by linkscue start, for adb over network
-on property:service.adb.tcp.port=5555
-    stop adbd
-    start adbd
-on property:service.adb.tcp.port=-1
-    stop adbd
-    start adbd
-# add by linkscue, end.
-
-# Add by linkscue start, for /system/etc/init.d/<custom_scripts> autorun supported
-service sysinit /system/xbin/busybox run-parts /system/etc/init.d/
-
-    disabled
-    oneshot
-
-on property:dev.bootcomplete=1
-    start sysinit
-# Add by linkscue end.
