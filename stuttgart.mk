@@ -258,6 +258,7 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 # rm lights.exynos4 libhdmi libhdmiclient libasan_preload
 PRODUCT_PACKAGES += \
 	camera.stuttgart \
+	gralloc.exynos4 \
 	hwcomposer.exynos4
 #	libsecril-client
 #   libgralloc_ump \
