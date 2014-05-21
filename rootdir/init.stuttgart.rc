@@ -280,6 +280,9 @@ on init
     chmod 0660 /proc/bt_wakelock
     chown bluetooth bluetooth /proc/bt_wakelock
 ### on init: add by linkscue start
+    export ANDROID_CACHE /cache
+    export TERMINFO /system/etc/terminfo
+    export TERM linux
     symlink /data/local /local
     mkdir /preload 0771 system system
 ### on init: add by linkscue end
@@ -321,14 +324,11 @@ service ril-daemon /system/bin/rild -l /system/lib/librapid-ril-core.so -- -a /d
     user root
     group radio cache inet misc audio log
 
-
- Run service
 service gps-demon /system/bin/glgps -c /system/etc/gpsconfig.xml
     socket gps seqpacket 0660 gps system
     user gps
     group system inet sdcard_rw
     class main
-#--
 
 service fusiond /system/bin/fusiond
     class main
