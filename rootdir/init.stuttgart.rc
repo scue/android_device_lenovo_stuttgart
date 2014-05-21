@@ -99,6 +99,11 @@ on boot
     chown system system /sys/devices/platform/stuttgart-gpio-keypad/disabled_keys
     chown system system /sys/module/stuttgart_lcd/parameters/ce_control
 
+# ---4
+    # TODO: PLEASE CHEAK VIBE ROM rild.libargs & rild.libargs properties
+    setprop rild.libargs "-- -a /dev/gsmtty2 -n /dev/gsmtty3 -m /dev/gsmtty4 -c /dev/gsmtty6 -u /dev/gsmtty8 -d /dev/gsmtty10 -d /dev/gsmtty11"
+    setprop rild.libpath rild.libpath
+
 #add for gps
 # For GPIOs for REG_PU and nReset
     chown root system /sys/devices/system/gpslenovo/regpu
@@ -317,6 +322,7 @@ service stmd  /system/bin/stmd
     oneshot
 
 # Load Intrinsyc RapidRIL
+# TODO: PLEASE REMOVE service ril-daemon FROM init.rc
 service ril-daemon /system/bin/rild -l /system/lib/librapid-ril-core.so -- -a /dev/gsmtty2 -n /dev/gsmtty3 -m /dev/gsmtty4 -c /dev/gsmtty6 -u /dev/gsmtty8  -d /dev/gsmtty10 -d /dev/gsmtty11
     class main
     socket rild stream 660 root radio
