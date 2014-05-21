@@ -40,8 +40,6 @@ TARGET_BOARD_INFO_FILE := device/lenovo/stuttgart/board-info.txt
 
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
-TARGET_PROVIDES_INIT_RC := true
-TARGET_PROVIDES_INIT := true
 TARGET_PROVIDES_INIT_TARGET_RC := true
 TARGET_RECOVERY_INITRC := device/lenovo/stuttgart/recovery/recovery.rc
 BOARD_USES_DEPRECATED_TOOLCHAIN := true

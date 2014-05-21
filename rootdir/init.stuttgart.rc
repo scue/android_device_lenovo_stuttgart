@@ -20,6 +20,12 @@ on early-init
     #add by wangbin3@lenovo end
     mkdir /storage/extrasd_bind 0000 system system
 
+### on past-fs: add by linkscue start
+on post-fs
+    # enable debugfs
+    mount debugfs none /sys/kernel/debug
+### on past-fs: add by linkscue end
+
 on post-fs-data
     # we will remap this as /mnt/sdcard with the sdcard fuse tool
 #    mkdir /data/media 0775 media_rw media_rw
@@ -27,11 +33,82 @@ on post-fs-data
 
 #add for the samsung ISP patch
      mkdir /data/fimcis 0775 system system
+### on past-fs-data: add by linkscue start
+    mkdir /data/misc/wifi/wpa_supplicant 0770 wifi wifi
+    mkdir /data/system 0775 system system
+    symlink /data/misc/wifi/wpa_supplicant /data/system/wpa_supplicant
+    mkdir /data/local 0771 shell shell
+
+    # add APlog dir
+    mkdir /data/local/log 0771 system system
+    mkdir /data/local/log/aplog 0777 system system
+    mkdir /data/local/log/bplog 0777 system system
+    mkdir /data/local/log/aplog/sec_debug 0777 system system
+
+# Added by Yamaha Corporation.-----------------------------------------
+    chmod 0666 /dev/snd/pcmC0D0c
+    chmod 0666 /dev/snd/pcmC0D0p
+    chmod 0666 /dev/snd/controlC0
+    chmod 0666 /dev/snd/timer
+    chmod 0666 /dev/snd/hwC0D0
+    mkdir /data/ymc
+    chown media media /data/ymc
+# mkdir setup for Yamaha
+    mkdir /data/ymc/setup
+    chown system system /data/ymc/setup
+
+#-----------------------------------------------------------------------
+### on past-fs-data: add by linkscue start
 
 on boot
     setprop ro.build.product stuttgart
     setprop ro.product.device stuttgart
     setprop ro.radio.noril yes
+### on boot: add by linkscue start
+# ---1
+#   chown system input /sys/bus/i2c/devices/4-000f/enable
+#   chown system input /sys/bus/i2c/devices/4-000f/poll
+    chown system input /sys/bus/i2c/devices/7-0039/enable_ps_sensor
+    chown system input /sys/bus/i2c/devices/7-0039/enable_als_sensor
+    chown system input /sys/bus/i2c/devices/7-0039/als_poll_delay
+    chown system input /sys/bus/i2c/devices/7-0039/pilt
+    chown system input /sys/bus/i2c/devices/7-0039/piht
+    chown system input /sys/bus/i2c/devices/7-0039/control
+    chown system input /sys/bus/i2c/devices/7-0039/hwver
+    chown system input /sys/kernel/nvm/psctrl
+    chown system input /sys/kernel/nvm/pscal
+    chown system system /sys/kernel/nvm/wsinfo
+
+    chown system input /sys/class/input/input4/enable
+    chown system input /sys/class/input/input4/delay
+    chown system input /sys/class/input/input4/wake
+    chown system input /sys/class/input/input5/enable
+    chown system input /sys/class/input/input5/delay
+    chown system input /sys/class/input/input5/wake
+    chown compass input /sys/class/input/input6/offsets
+    chown compass input /sys/class/input/input6/dynamic_matrix
+    chown system input /sys/class/input/input7/enable
+    chown system input /sys/class/input/input7/delay
+    chown system input /sys/class/input/input7/wake
+
+# ---2
+    chmod 0660 /sys/devices/platform/smm_modem/usbctl
+    chown system system /sys/devices/platform/smm_modem/usbctl
+
+# ---3
+    chown system system /sys/devices/platform/stuttgart-gpio-keypad/disabled_keys
+    chown system system /sys/module/stuttgart_lcd/parameters/ce_control
+
+# ---4
+    # TODO: PLEASE CHEAK VIBE ROM rild.libargs & rild.libargs properties
+    setprop rild.libargs "-- -a /dev/gsmtty2 -n /dev/gsmtty3 -m /dev/gsmtty4 -c /dev/gsmtty6 -u /dev/gsmtty8 -d /dev/gsmtty10 -d /dev/gsmtty11"
+    setprop rild.libpath rild.libpath
+
+#add for gps
+# For GPIOs for REG_PU and nReset
+    chown root system /sys/devices/system/gpslenovo/regpu
+    chown root system /sys/devices/system/gpslenovo/reset
+### on boot: add by linkscue end
 
 on fs
 #    mount ext4 /dev/block/mmcblk0p2 /system ro wait
@@ -40,6 +117,15 @@ on fs
 #    mount ext4 /dev/block/mmcblk0p5 /cache wait nosuid nodev noatime nomblk_io_submit
 #    mount ext4 /dev/block/mmcblk0p7 /preload wait nosuid nodev noatime nomblk_io_submit
 #    setprop ro.crypto.fuse_sdcard true
+### on fs: add by linkscue start
+    wait /dev/block/mmcblk0p2
+    mount ext4 /dev/block/mmcblk0p2 /system ro wait
+    wait /dev/block/mmcblk0p3
+    exec /system/bin/e2fsck -y /dev/block/mmcblk0p3
+    mount ext4 /dev/block/mmcblk0p3 /data wait nosuid nodev noatime usedm discard,noauto_da_alloc,nodelalloc
+    mount ext4 /dev/block/mmcblk0p5 /cache wait nosuid nodev noatime nomblk_io_submit
+    mount ext4 /dev/block/mmcblk0p7 /preload wait nosuid nodev noatime nomblk_io_submit
+### on fs: add by linkscue start
 
 # Permissions for backlight
     chmod 0664 /sys/class/backlight/pwm-backlight.0/brightness
@@ -152,6 +238,12 @@ service wlanmode_open /system/bin/ifconfig wlan0 up
     disabled
     oneshot
 
+# add by zhongwei1@lenovo.com for the jcommand
+service jcommand /system/bin/sh /system/bin/jcommand.sh
+    class main
+    disabled
+    oneshot
+
 service wlanmode_close /system/bin/ifconfig wlan0 down
     class main
     disabled
@@ -192,9 +284,138 @@ on init
    // setprop ro.bt.bdaddr_path /data/misc/bluetoothd/bdaddr_mac
     chmod 0660 /proc/bt_wakelock
     chown bluetooth bluetooth /proc/bt_wakelock
-  
+### on init: add by linkscue start
+    export ANDROID_CACHE /cache
+    export TERMINFO /system/etc/terminfo
+    export TERM linux
+    symlink /data/local /local
+    mkdir /preload 0771 system system
+### on init: add by linkscue end
+
 #add for gps
 #service gps-demon /system/bin/glgps -c /system/etc/gpsconfig.xml
 #	user root
 #	group root
 #	class main
+
+### add by linkscue, start
+########################################
+# set power reason for leos
+on property:ro.bootmode=power_key
+    setprop rocket.power.on.type.hex 0x01
+on property:ro.bootmode=rtc_alarm
+    setprop rocket.power.on.type.hex 0x02
+on property:ro.bootmode=normal
+    setprop rocket.power.on.type.hex 0x08
+on property:ro.bootmode=usb_cable
+    setprop rocket.power.on.type.hex 0x20
+on property:ro.bootmode=ac_charger
+    setprop rocket.power.on.type.hex 0x40
+
+# adding Telephony
+service stmd  /system/bin/stmd
+    class main
+    socket modem-status stream 777 root radio
+    socket clean-up stream 660 radio system
+    user root
+    group radio cache inet misc
+    oneshot
+
+# Load Intrinsyc RapidRIL
+# TODO: PLEASE REMOVE service ril-daemon FROM init.rc
+service ril-daemon /system/bin/rild -l /system/lib/librapid-ril-core.so -- -a /dev/gsmtty2 -n /dev/gsmtty3 -m /dev/gsmtty4 -c /dev/gsmtty6 -u /dev/gsmtty8  -d /dev/gsmtty10 -d /dev/gsmtty11
+    class main
+    socket rild stream 660 root radio
+    socket rild-debug stream 660 radio system
+    user root
+    group radio cache inet misc audio log
+
+service gps-demon /system/bin/glgps -c /system/etc/gpsconfig.xml
+    socket gps seqpacket 0660 gps system
+    user gps
+    group system inet sdcard_rw
+    class main
+
+service fusiond /system/bin/fusiond
+    class main
+    user compass
+    group input
+
+#add for aplog service
+service tcplog /system/xbin/tcpdump -s 1500 -w /local/log/aplog/tcp -C 1 -W 6 -i any host not 192.168.100.2 and host not 127.0.0.1
+    class main
+    disabled
+    oneshot
+
+service mainlog /system/bin/logcat -r 2048 -n 8 -v threadtime -f /local/log/aplog/logcat
+    class main
+    user system
+    group system root log
+    disabled
+    oneshot
+
+service radiolog /system/bin/logcat -r 5120 -b radio -n 10 -v time -f /local/log/aplog/radio "AT:S *:V"
+    class main
+    user system
+    group system root log
+    disabled
+    oneshot
+
+service dmesglog /system/bin/dmesglog.sh
+    class main
+    disabled
+    oneshot
+
+service custom-setup /system/bin/init.lenovo.sh
+    class main
+    oneshot
+
+
+service nac_server /system/bin/nac_server
+    class main
+    user root
+
+service lms system/bin/lms
+    class main
+    socket supercmdlocalsocket stream 660 system shell
+    user root
+
+service load-logo /system/bin/testmode logo
+    class main
+    console
+    oneshot
+
+#jeff, add for sec_debug dump
+service klog_dump /system/bin/klog_dump /data/local/log/aplog/sec_debug
+    class main
+    user root
+    group radio cache inet misc audio sdcard_rw log
+    oneshot
+
+service watchdog_daemon /system/bin/wtdd
+    class main
+    #disabled
+    user system
+    group system radio cache inet misc audio sdcard_rw log
+ # liuxuefei add for LenovoSmartWifi start  2013.5.09
+service afmsvr /system/bin/afm_server
+    class main
+	user root
+	disabled
+	on property:persist.sys.afmsvr=1
+	start afmsvr
+	on property:persist.sys.afmsvr=0
+	stop afmsvr
+ # liuxuefei add for LenovoSmartWifi end  2013.5.09
+
+# Add by linkscue start, for /system/etc/init.d/<custom_scripts> autorun supported
+service sysinit /system/xbin/busybox run-parts /system/etc/init.d/
+
+    disabled
+    oneshot
+
+on property:dev.bootcomplete=1
+    start sysinit
+# Add by linkscue end.
+########################################
+### add by linkscue, end
