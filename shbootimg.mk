@@ -18,6 +18,11 @@ LOCAL_PATH := $(call my-dir)
 
 $(INSTALLED_BOOTIMAGE_TARGET): $(MKBOOTIMG) $(INTERNAL_BOOTIMAGE_FILES) $(MKIMAGE)
 	$(call pretty,"Target Stuttgart boot image: $@")
+	@echo -e ${CL_CYN}" -> remove service ril-daemon from $(OUT)/root/init.rc"${CL_RST}
+	@echo -e ${CL_CYN}" -> the service ril-daemon had added to init.stuttgart.rc "${CL_RST}
+	$(hide) sed -n '/service ril-daemon/,/group/p' $(OUT)/root/init.rc
+	$(hide) sed -i '/service ril-daemon/,/group/d' $(OUT)/root/init.rc
+	@echo -e ${CL_CYN}" -> modify $(OUT)/root/init.rc, done"${CL_RST}
 	$(hide) $(MKIMAGE) -A ARM -O Linux -T ramdisk -C none -a 0x40800000 -e 0x40800000 -n ramdisk -d $(INSTALLED_RAMDISK_TARGET) $(INSTALLED_RAMDISK_TARGET).uboot
 	$(hide) $(MKBOOTIMG) --kernel $(INSTALLED_KERNEL_TARGET) --ramdisk $(INSTALLED_RAMDISK_TARGET).uboot $(addprefix --second ,$(INSTALLED_2NDBOOTLOADER_TARGET)) \
 		--cmdline "$(strip $(BOARD_KERNEL_CMDLINE))" --base $(strip $(BOARD_KERNEL_BASE)) --pagesize $(strip $(BOARD_KERNEL_PAGESIZE)) --output $@
