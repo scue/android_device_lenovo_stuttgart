@@ -255,10 +255,12 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 # HAL
 #
 # MARK: 2014年05月16日
-# rm lights.exynos4 libhdmi libhdmiclient libasan_preload
+# rm libhdmi libhdmiclient libasan_preload
 PRODUCT_PACKAGES += \
 	camera.stuttgart \
 	hwcomposer.exynos4
+	lights.exynos4 \
+	gralloc.exynos4
 #	libsecril-client
 #   libgralloc_ump \
 #   libhwconverter \

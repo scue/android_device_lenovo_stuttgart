@@ -45,16 +45,9 @@ lib/hw/audio_policy.stuttgart.so
 lib/hw/audio.primary.default.so
 lib/hw/audio.primary.stuttgart.so
 lib/hw/bplus.default.so
-lib/hw/camera.stuttgart.so
 lib/hw/gps.exynos4.so
-lib/hw/gralloc.default.so
-lib/hw/gralloc.stuttgart.so
-lib/hw/hwcomposer.exynos4.so
-lib/hw/keystore.default.so
-lib/hw/lights.stuttgart.so
 lib/hw/local_time.default.so
 lib/hw/power.default.so
-lib/hw/sensors.exynos4.so
 lib/libMali.so
 lib/libUMP.so
 lib/libcamera_client.so
@@ -103,8 +96,6 @@ lib/libmediayamaha_jni.so
 framework/com.yamaha.android.media.jar
 lib/modules/bcmdhd.ko
 lib/libcsc.so
-lib/libsurfaceflinger_ddmconnection.so
-lib/libsurfaceflinger.so
 lib/omx/libOMX.SEC.AVC.Decoder.so
 lib/omx/libOMX.SEC.AVC.Encoder.so
 lib/omx/libOMX.SEC.M2V.Decoder.so
