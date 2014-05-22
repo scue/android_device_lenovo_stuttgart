@@ -163,7 +163,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
 	audio.a2dp.default \
-	audio.primary.smdk4x12 \
 	audio.usb.default \
 	libaudiohw_legacy \
 	Camera

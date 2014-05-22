@@ -36,15 +36,11 @@ lib/liblocation-1.0.0.so
 lib/egl/libEGL_mali.so
 lib/egl/libGLESv1_CM_mali.so
 lib/egl/libGLESv2_mali.so
-lib/hw/audio.a2dp.default.so
-lib/hw/audio_policy.default.so
 lib/hw/audio_policy.stuttgart.so
-lib/hw/audio.primary.default.so
 lib/hw/audio.primary.stuttgart.so
 lib/hw/bplus.default.so
+lib/hw/camera.stuttgart.so
 lib/hw/gps.exynos4.so
-lib/hw/local_time.default.so
-lib/hw/power.default.so
 lib/libMali.so
 lib/libUMP.so
 lib/libcamera_client.so
