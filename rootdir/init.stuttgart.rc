@@ -325,12 +325,6 @@ service ril-daemon /system/bin/rild -l /system/lib/librapid-ril-core.so -- -a /d
     user root
     group radio cache inet misc audio log
 
-service gps-demon /system/bin/glgps -c /system/etc/gpsconfig.xml
-    socket gps seqpacket 0660 gps system
-    user gps
-    group system inet sdcard_rw
-    class main
-
 service fusiond /system/bin/fusiond
     class main
     user compass
@@ -366,14 +360,14 @@ service custom-setup /system/bin/init.lenovo.sh
     oneshot
 
 
-service nac_server /system/bin/nac_server
-    class main
-    user root
-
-service lms system/bin/lms
-    class main
-    socket supercmdlocalsocket stream 660 system shell
-    user root
+#service nac_server /system/bin/nac_server
+#    class main
+#    user root
+#
+#service lms system/bin/lms
+#    class main
+#    socket supercmdlocalsocket stream 660 system shell
+#    user root
 
 service load-logo /system/bin/testmode logo
     class main
