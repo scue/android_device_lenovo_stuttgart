@@ -16,6 +16,16 @@
 
 LOCAL_PATH := $(call my-dir)
 
+# We just build this directly to the install location.
+$(INSTALLED_RAMDISK_TARGET): $(MKBOOTFS) $(INTERNAL_RAMDISK_FILES) | $(MINIGZIP)
+	$(call pretty,"Target ram disk: $@")
+	@echo -e ${CL_CYN}" -> remove service ril-daemon from $(OUT)/root/init.rc"${CL_RST}
+	@echo -e ${CL_CYN}" -> the service ril-daemon had added to init.stuttgart.rc "${CL_RST}
+	$(hide) sed -n '/service ril-daemon/,/group/p' $(OUT)/root/init.rc
+	$(hide) sed -i '/service ril-daemon/,/group/d' $(OUT)/root/init.rc
+	@echo -e ${CL_CYN}" -> modify $(OUT)/root/init.rc, done"${CL_RST}
+	$(hide) $(MKBOOTFS) $(TARGET_ROOT_OUT) | $(MINIGZIP) > $@
+
 $(INSTALLED_BOOTIMAGE_TARGET): $(MKBOOTIMG) $(INTERNAL_BOOTIMAGE_FILES) $(MKIMAGE)
 	$(call pretty,"Target Stuttgart boot image: $@")
 	@echo -e ${CL_CYN}" -> remove service ril-daemon from $(OUT)/root/init.rc"${CL_RST}
