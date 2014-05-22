@@ -59,6 +59,8 @@ lib/libswscaler.so
 lib/libLe3d.so
 lib/libLeImageLightness.so
 lib/liblenovo-xdelta.so
+lib/libsurfaceflinger_ddmconnection.so
+lib/libsurfaceflinger.so
 usr/idc/atmel-touchscreen.idc
 usr/idc/ft5x0x_ts.idc
 usr/idc/pixcir-i2c-ts.idc
