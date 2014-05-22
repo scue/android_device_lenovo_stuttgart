@@ -41,6 +41,7 @@ lib/hw/audio.primary.stuttgart.so
 lib/hw/bplus.default.so
 lib/hw/camera.stuttgart.so
 lib/hw/gps.exynos4.so
+lib/hw/sensors.exynos4.so
 lib/libMali.so
 lib/libUMP.so
 lib/libcamera_client.so

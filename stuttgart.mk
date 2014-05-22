@@ -256,7 +256,6 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 # MARK: 2014年05月16日
 # rm libhdmi libhdmiclient libasan_preload
 PRODUCT_PACKAGES += \
-	camera.stuttgart \
 	hwcomposer.exynos4 \
 	lights.exynos4 \
 	gralloc.exynos4
