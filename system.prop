@@ -15,8 +15,7 @@ dalvik.vm.heapsize=256m
 persist.sys.ui.hw=true
 # 
 # add by linkscue, begin, for rild
-rild.libpath=/system/lib/libreference-ril.so
-rild.libargs=-d /dev/ttyS0
+rild.libpath=/system/lib/librapid-ril-core.so
 # add by linkscue, end.
 #
 # add by linkscue, begin, for dex local
