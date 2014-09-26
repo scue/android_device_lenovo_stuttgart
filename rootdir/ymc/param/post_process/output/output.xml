@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ymc>
+<audio_engine>
+<rootdir path="/ymc/param/post_process/output"/>
+<param name="off">
+	<block type="Speaker" file="dsp_through.dat"/>
+	<block type="Earpiece" file="dsp_through.dat"/>
+	<block type="Headphone" file="dsp_through.dat"/>
+	<block type="Lineout1" file="dsp_through.dat"/>
+	<block type="Lineout2" file="dsp_through.dat"/>
+	<block type="Bluetooth" file="dsp_through.dat"/>
+</param>
+<param name="Pop">
+	<block type="Speaker" file="SP_Pop.dat"/>
+	<block type="Earpiece" file="dsp_through.dat"/>
+	<block type="Headphone" file="HP_Pop.dat"/>
+	<block type="Lineout1" file="dsp_through.dat"/>
+	<block type="Lineout2" file="dsp_through.dat"/>
+	<block type="Bluetooth" file="dsp_through.dat"/>
+</param>
+<param name="Dance">
+	<block type="Speaker" file="SP_Dance.dat"/>
+	<block type="Earpiece" file="dsp_through.dat"/>
+	<block type="Headphone" file="HP_Dance.dat"/>
+	<block type="Lineout1" file="dsp_through.dat"/>
+	<block type="Lineout2" file="dsp_through.dat"/>
+	<block type="Bluetooth" file="dsp_through.dat"/>
+</param>
+<param name="JazzBar">
+	<block type="Speaker" file="SP_JazzBar.dat"/>
+	<block type="Earpiece" file="dsp_through.dat"/>
+	<block type="Headphone" file="HP_JazzBar.dat"/>
+	<block type="Lineout1" file="dsp_through.dat"/>
+	<block type="Lineout2" file="dsp_through.dat"/>
+	<block type="Bluetooth" file="dsp_through.dat"/>
+</param>
+</audio_engine>
+</ymc>

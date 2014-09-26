@@ -1,0 +1,28 @@
+ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),stuttgart)
+
+LOCAL_PATH:= $(call my-dir)
+
+include $(CLEAR_VARS)
+
+LOCAL_MODULE := libsamsungion
+LOCAL_MODULE_TAGS  := optional
+LOCAL_MODULE_PATH  := $(TARGET_OUT)/lib
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+LOCAL_MODULE_SUFFIX := .so
+LOCAL_MODULE_OWNER := samsung
+
+LOCAL_SRC_FILES    := libion.so
+include $(BUILD_PREBUILT)
+#include $(CLEAR_VARS)
+#
+#LOCAL_MODULE := libsecion
+#LOCAL_MODULE_TAGS  := optional
+#LOCAL_MODULE_PATH  := $(TARGET_OUT)/lib
+#LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+#LOCAL_MODULE_SUFFIX := .so
+#LOCAL_MODULE_OWNER := samsung
+#
+#LOCAL_SRC_FILES    := libion.so
+#include $(BUILD_PREBUILT)
+
+endif
