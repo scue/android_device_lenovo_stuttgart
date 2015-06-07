@@ -1,37 +1,61 @@
 #
 # system.prop for stuttgart
 #
-#
-ro.productdef.simmode=onesim
-ro.sf.lcd_density=320
-ro.lcd_min_brightness=20
-ro.ss.enable=true
-audio.smartlevoice.enable=false
-ril.smartvoice.enable=true
-ro.telephony.default_network=0
-dalvik.vm.heapstartsize=16m
-dalvik.vm.heapgrowthlimit=64m
-dalvik.vm.heapsize=256m
-persist.sys.ui.hw=true
-# 
-# add by linkscue, begin, for rild
+
 rild.libpath=/system/lib/librapid-ril-core.so
-# add by linkscue, end.
+rild.libargs=-a /dev/gsmtty2 -n /dev/gsmtty3 -m /dev/gsmtty4 -c /dev/gsmtty6 -u /dev/gsmtty8 -d /dev/gsmtty10 -d /dev/gsmtty11
+
+ro.sf.lcd_density=320
+#liuxq2@lenovo.com: set xdpi and ydpi to 320
+qemu.sf.lcd_density=320
 #
-# add by linkscue, begin, for dex local
-dalvik.vm.dexopt-data-only=1
-# add by linkscue, end.
+# System prop for enable softkey
 #
-# add by linkscue, begin, for media
-ro.config.ringtone=Salt_water.ogg
-ro.config.notification_sound=Heaven_nearby.ogg
-ro.config.alarm_alert=Dreamland.ogg
-# add by linkscue, end.
+qemu.hw.mainkeys=0
+
 #
-# add by linkscue, begin, for remove red border
+# System prop for disable strict mode flash on display
+#
+persist.sys.strictmode.visual=false
 persist.sys.strictmode.disable=1
-# add by linkscue, end
+
+#Video telephony part
+vt.h324m.modem.enable=false
+#low 4 bit: support mp4|h263|h264 ; high 4 bit: perfer: 11-mp4 10-h263 01-h264
+#0001 0111 -- H264 prefer ; mask value = 23
+#0010 0111 -- H263 prefer ; mask value = 39
+#0011 0111 -- MP4  prefer ; mask value = 55
+#0001 0001 -- H264 only ; mask value = 17
+#0010 0010 -- H263 only ; mask value = 34
+#0011 0100 -- MP4  only ; mask value = 52
+#0011 0111 -- default mask value= 55
+vt.codec.support.mask=55
+apps.videocall.enable=true
+
+#Add by liuwei28
+#Please predefine the product variable for the defferent model
+#System prop for model[ModelName]
+#System prop for operator type[none/chinatelecom/chinaunicom/chinamobile]
+#System prop for simmode type[onesim/dualsim]
 #
-# for increase vold copy speed, start
-ro.vold.umsdirtyratio=20
-# end, thanks 秋叶随风ivan: http://weibo.com/hqiwu
+ro.productdef.model=stuttgart
+ro.productdef.operator=none
+ro.productdef.simmode=onesim
+ro.kernel.android.checkjni=0
+
+#Add for bt name
+ro.product.model=Lenovo K860i
+
+# add by xiangming for CTA test
+ro.ss.enable=true
+
+#Yamaha Smart Voice and Smart Music
+audio.smartlevoice.enable=false
+persist.radio.smartvoice.enable=true
+
+# add by yangzh2@lenovo.com
+ro.camera.sound.forced=0
+
+# add by wangyan22
+dalvik.vm.checkjni=false
+

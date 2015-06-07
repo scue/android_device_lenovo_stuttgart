@@ -35,6 +35,7 @@ $(call inherit-product, device/common/gps/gps_us_supl.mk)
 # if the xhdpi doesn't exist.
 PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
+
 # Boot: root dir
 PRODUCT_COPY_FILES := \
     $(LOCAL_BASEDIR)/rootdir/gpio:root/sbin/gpio \
@@ -99,12 +100,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_BASEDIR)/rootdir/ymc/param/voice_process/2mic_sample.dat:root/ymc/param/voice_process/2mic_sample.dat \
     $(LOCAL_BASEDIR)/rootdir/ymc/param/voice_process/voice_process.xml:root/ymc/param/voice_process/voice_process.xml
 
-# Boot: default properties
-ADDITIONAL_DEFAULT_PROPERTIES += \
-    ro.secure=0 \
-    ro.allow.mock.location=1 \
-    ro.adb.secure=0 \
-    ro.debuggable=1
 
 # System: rril
 PRODUCT_COPY_FILES += \
@@ -137,38 +132,63 @@ PRODUCT_COPY_FILES += \
 	device/lenovo/stuttgart/alsa/pcm/surround51.conf:system/usr/share/alsa/pcm/surround51.conf \
 	device/lenovo/stuttgart/alsa/pcm/surround71.conf:system/usr/share/alsa/pcm/surround71.conf
 
-# System: vold
-PRODUCT_COPY_FILES += \
-    $(LOCAL_BASEDIR)/configs/vold.fstab:system/etc/vold.fstab
-
 # System: Wifi
 PRODUCT_COPY_FILES += \
-    $(LOCAL_BASEDIR)/configs/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
+    $(LOCAL_BASEDIR)/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
+    $(LOCAL_BASEDIR)/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
+    $(LOCAL_BASEDIR)/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    wifi.interface=wlan0 \
-    wifi.supplicant_scan_interval=15
+
+# Bluetooth
+PRODUCT_COPY_FILES += \
+    $(LOCAL_BASEDIR)/bluetooth/libbt-vendor.so:system/lib/libbt-vendor.so
+
+
+# COMMON: These are the hardware-specific features
+PRODUCT_COPY_FILES += \
+    external/ant-wireless/antradio-library/com.dsi.ant.antradio_library.xml:system/etc/permissions/com.dsi.ant.antradio_library.xml \
+    frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml \
+    frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
+    frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
+    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
+    frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
+    frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
+    frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
+    frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
+    frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
+    frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
+    frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
+    frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
+    frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:system/etc/permissions/android.hardware.sensor.gyroscope.xml \
+    frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
+    packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml \
+    frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
+    frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
+    frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
+    frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
+    $(LOCAL_BASEDIR)/prebuilt/com.yamaha.android.media.xml:system/etc/permissions/com.yamaha.android.media.xml
 
 #
-# PACKAGE
+# HAL
+#
+# MARK: 2014年05月16日
+# rm libhdmi libhdmiclient libasan_preload
+PRODUCT_PACKAGES += \
+	 audio.a2dp.default \
+    audio.r_submix.default \
+    audio.usb.default \
+    com.android.future.usb.accessory \
+    hwcomposer.exynos4 \
+    gralloc.exynos4 \
+    libsync
+
 #
 # TODO: preload
 PRODUCT_PACKAGES += \
 	hcitool
 
-# TODO: DeviceSettings
 PRODUCT_PACKAGES += \
-	com.android.future.usb.accessory \
-	Torch
-
-PRODUCT_PACKAGES += \
-	audio.a2dp.default \
-	audio.usb.default \
-	libaudiohw_legacy \
-	Camera
-
-PRODUCT_PACKAGES += \
-    sdcard
+	libaudiohw_legacy
 
 PRODUCT_PACKAGES += \
     libsecmfcdecapi \
@@ -185,6 +205,11 @@ PRODUCT_PACKAGES += \
     PhaseBeam \
     VisualizationWallpapers \
     librs_jni
+
+
+# Torch
+PRODUCT_PACKAGES += \
+	Torch
 
 # FS management tools
 PRODUCT_PACKAGES += \
@@ -214,21 +239,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_BASEDIR)/configs/media_profiles.xml:system/etc/media_profiles.xml \
     $(LOCAL_BASEDIR)/configs/media_codecs.xml:system/etc/media_codecs.xml
 
-# Bluetooth
-PRODUCT_COPY_FILES += \
-    $(LOCAL_BASEDIR)/bluetooth/libbt-vendor.so:system/lib/libbt-vendor.so
-
-#
-# TODO: SuperCAM
-#
-
-#
-# TODO: mkshrc
-#
-
-# RIL
-BOARD_PROVIDES_LIBRIL := true
-
 # System: build.prop
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.strictmode.disable=1 \
@@ -237,66 +247,28 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.ril.gprsclass=10 \
     persist.sys.timezone=Asia/Shanghai \
     persist.sys.language=zh \
-    persist.sys.country=CN \
-    ro.config.ringtone=Salt_water.ogg \
-    ro.config.notification_sound=Heaven_nearby.ogg \
-    ro.config.alarm_alert=Dreamland.ogg
+    persist.sys.country=CN
 
 PRODUCT_PROPERTY_OVERRIDES += \
+    wifi.interface=wlan0 \
+    wifi.supplicant_scan_interval=15
+
+# Boot: default properties
+ADDITIONAL_DEFAULT_PROPERTIES += \
+    ro.secure=0 \
+    ro.allow.mock.location=1 \
+    ro.adb.secure=0 \
+    ro.debuggable=1
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.zygote.disable_gl_preload=1 \
     ro.opengles.version=131072 \
-    hwui.render_dirty_regions=false
+    ro.bq.gpu_to_cpu_unsupported=1 \
+    debug.hwui.render_dirty_regions=false
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    persist.sys.usb.config=mass_storage \
-    ro.build.display.id=lephone.cc_linkscue_cm10.1
-
-#
-# HAL
-#
-# MARK: 2014年05月16日
-# rm libhdmi libhdmiclient libasan_preload
-PRODUCT_PACKAGES += \
-	hwcomposer.exynos4 \
-	lights.exynos4 \
-	gralloc.exynos4
-#	libsecril-client
-#   libgralloc_ump \
-#   libhwconverter \
-#   libfimg \
-#	libTVOut \
-#	libhwjpeg \
-#	libfimc
-#  	libcec \
-#   libddc \
-#   libedid \
-#   libtinyalsa \
-
-# COMMON: These are the hardware-specific features
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml \
-    frameworks/native/data/etc/android.hardware.camera.autofocus.xml:system/etc/permissions/android.hardware.camera.autofocus.xml \
-    frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
-    frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
-    frameworks/native/data/etc/android.hardware.camera.xml:system/etc/permissions/android.hardware.camera.xml \
-    frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
-    frameworks/native/data/etc/android.hardware.location.xml:system/etc/permissions/android.hardware.location.xml \
-    frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
-    frameworks/native/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
-    frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:system/etc/permissions/android.hardware.sensor.gyroscope.xml \
-    frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
-    frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
-    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
-    frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
-    frameworks/native/data/etc/android.hardware.touchscreen.multitouch.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.xml \
-    frameworks/native/data/etc/android.hardware.touchscreen.xml:system/etc/permissions/android.hardware.touchscreen.xml \
-    frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
-    frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
-    frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
-    frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
-    frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
-    frameworks/native/data/etc/android.software.sip.xml:system/etc/permissions/android.software.sip.xml \
-    $(LOCAL_BASEDIR)/prebuilt/com.yamaha.android.media.xml:system/etc/permissions/com.yamaha.android.media.xml \
-    frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
+    ro.boot.selinux=0 \
+    persist.sys.usb.config=mtp
 
 
 # TODO: pls fix wifi,bluetooth..
@@ -305,7 +277,6 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 # Include exynos4 platform specific parts
 TARGET_HAL_PATH := hardware/samsung/exynos4/hal
 TARGET_OMX_PATH := hardware/samsung/exynos/multimedia/openmax
+
 #$(call inherit-product, hardware/samsung/exynos4x12.mk)
-#$(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/device-bcm.mk)
 $(call inherit-product-if-exists, vendor/lenovo/stuttgart/stuttgart-vendor.mk)
-#$(call inherit-product-if-exists, vendor/le/packages.mk)
