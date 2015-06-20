@@ -190,7 +190,8 @@ PRODUCT_PACKAGES += \
 	hcitool
 
 PRODUCT_PACKAGES += \
-	libaudiohw_legacy
+	libaudiohw_legacy \
+	Camera
 
 PRODUCT_PACKAGES += \
     libsecmfcdecapi \
