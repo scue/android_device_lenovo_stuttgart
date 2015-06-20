@@ -3,9 +3,13 @@
 #
 
 rild.libpath=/system/lib/librapid-ril-core.so
-rild.libargs=-a /dev/gsmtty2 -n /dev/gsmtty3 -m /dev/gsmtty4 -c /dev/gsmtty6 -u /dev/gsmtty8 -d /dev/gsmtty10 -d /dev/gsmtty11
-
+rild.libargs=-d /dev/ttyS0
 ro.sf.lcd_density=320
+ro.lcd_min_brightness=20
+ro.ss.enable=true
+ro.telephony.default_network=0
+persist.sys.ui.hw=true
+
 #liuxq2@lenovo.com: set xdpi and ydpi to 320
 qemu.sf.lcd_density=320
 #
@@ -16,7 +20,7 @@ qemu.hw.mainkeys=0
 #
 # System prop for disable strict mode flash on display
 #
-persist.sys.strictmode.visual=false
+persist.sys.strictmode.visual=0
 persist.sys.strictmode.disable=1
 
 #Video telephony part
@@ -31,31 +35,4 @@ vt.h324m.modem.enable=false
 #0011 0111 -- default mask value= 55
 vt.codec.support.mask=55
 apps.videocall.enable=true
-
-#Add by liuwei28
-#Please predefine the product variable for the defferent model
-#System prop for model[ModelName]
-#System prop for operator type[none/chinatelecom/chinaunicom/chinamobile]
-#System prop for simmode type[onesim/dualsim]
-#
-ro.productdef.model=stuttgart
-ro.productdef.operator=none
-ro.productdef.simmode=onesim
-ro.kernel.android.checkjni=0
-
-#Add for bt name
-ro.product.model=Lenovo K860i
-
-# add by xiangming for CTA test
-ro.ss.enable=true
-
-#Yamaha Smart Voice and Smart Music
-audio.smartlevoice.enable=false
-persist.radio.smartvoice.enable=true
-
-# add by yangzh2@lenovo.com
-ro.camera.sound.forced=0
-
-# add by wangyan22
-dalvik.vm.checkjni=false
 
