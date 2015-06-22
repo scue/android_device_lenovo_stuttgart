@@ -7,6 +7,7 @@ bin/alsa_ctl
 bin/alsa_aplay
 bin/alsa_amixer
 bin/stmd
+bin/testmode
 bin/fusiond
 etc/firmware/fw_bcmdhd_apsta.bin
 etc/firmware/fw_bcmdhd.bin

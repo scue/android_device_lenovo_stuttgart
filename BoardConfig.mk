@@ -48,6 +48,7 @@ BOARD_KERNEL_PAGESIZE := 2048
 BOARD_CUSTOM_BOOTIMG_MK := device/lenovo/stuttgart/shbootimg.mk
 #TARGET_KERNEL_SOURCE        := kernel/samsung/stuttgart
 #TARGET_KERNEL_CONFIG	    := stuttgart_android_defconfig
+BOARD_RECOVERY_BLDRMSG_OFFSET := 542720
 
 # fix this up by examining /proc/mtd on a running device
 BOARD_USES_UBOOT := true
