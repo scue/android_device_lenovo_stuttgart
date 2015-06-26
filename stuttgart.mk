@@ -191,6 +191,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
 	libaudiohw_legacy \
+	libMali \
 	Camera
 
 PRODUCT_PACKAGES += \

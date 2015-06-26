@@ -30,7 +30,6 @@ lib/hw/camera.stuttgart.so
 lib/hw/gps.exynos4.so
 lib/hw/lights.stuttgart.so
 lib/hw/sensors.exynos4.so
-lib/libMali.so
 lib/libUMP.so
 lib/libfimc.so
 lib/libfimg.so
